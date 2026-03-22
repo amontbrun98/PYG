@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYG Lara S.A. — Financial Summary</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;background:#fff;color:#000;font-size:14px;line-height:1.4}
+a{color:#0b69ff;text-decoration:none}
+
+/* Top nav bar */
+.topbar{background:#fff;border-bottom:1px solid #e0e0e0;padding:0 20px;display:flex;align-items:center;height:44px;position:sticky;top:0;z-index:100}
+.topbar-logo{font-weight:700;font-size:18px;color:#6001d2;margin-right:24px;letter-spacing:-.3px}
+.topbar-nav{display:flex;gap:0}
+.topbar-nav a{padding:10px 14px;font-size:13px;color:#555;font-weight:500;border-bottom:2px solid transparent}
+.topbar-nav a:hover{color:#000}
+.topbar-nav a.active{color:#6001d2;border-bottom-color:#6001d2;font-weight:600}
+
+/* Main container */
+.main{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Ticker header */
+.ticker-header{padding:16px 0 12px;border-bottom:1px solid #e0e0e0}
+.ticker-name{font-size:22px;font-weight:700;color:#000;margin-bottom:2px}
+.ticker-sub{font-size:13px;color:#666;margin-bottom:10px}
+.ticker-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ticker-price .price{font-size:34px;font-weight:700;letter-spacing:-.5px}
+.ticker-price .change{font-size:16px;font-weight:600}
+.ticker-price .change.up{color:#00ab44}
+.ticker-price .change.down{color:#de0000}
+.ticker-price .meta{font-size:12px;color:#888}
+
+/* Tabs */
+.tabs{display:flex;gap:0;border-bottom:2px solid #e0e0e0;margin:0 0 20px}
+.tab{padding:10px 18px;font-size:13px;color:#666;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;user-select:none}
+.tab:hover{color:#000}
+.tab.active{color:#000;border-bottom-color:#6001d2;font-weight:600}
+
+/* Selector row */
+.selector-row{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.selector-label{font-size:12px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+.pill{padding:5px 14px;font-size:12px;font-weight:600;border:1px solid #ccc;border-radius:16px;cursor:pointer;background:#fff;color:#555;transition:all .15s}
+.pill:hover{border-color:#999;color:#000}
+.pill.on{background:#6001d2;border-color:#6001d2;color:#fff}
+.divider-v{width:1px;height:20px;background:#ddd;margin:0 8px}
+
+/* Stats grid */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e0e0e0;border:1px solid #e0e0e0;margin-bottom:20px}
+.stat-cell{background:#fff;padding:12px 14px}
+.stat-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.3px;margin-bottom:2px}
+.stat-val{font-size:20px;font-weight:700;color:#000;letter-spacing:-.3px}
+.stat-val.green{color:#00ab44}
+.stat-val.red{color:#de0000}
+.stat-note{font-size:11px;color:#888;margin-top:1px}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Section */
+.section{margin-bottom:24px}
+.section-title{font-size:15px;font-weight:700;color:#000;margin-bottom:4px}
+.section-sub{font-size:12px;color:#888;margin-bottom:12px}
+
+/* Charts */
+.chart-container{position:relative;height:280px;margin-bottom:8px}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+@media(max-width:700px){.chart-grid{grid-template-columns:1fr}}
+
+/* Tables */
+.fin-table{width:100%;border-collapse:collapse;font-size:13px}
+.fin-table thead th{text-align:right;padding:8px 10px;border-bottom:2px solid #000;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.3px;color:#333}
+.fin-table thead th:first-child{text-align:left}
+.fin-table tbody td{padding:7px 10px;border-bottom:1px solid #eee;text-align:right}
+.fin-table tbody td:first-child{text-align:left;font-weight:600;color:#000}
+.fin-table tbody tr:hover{background:#f5f5ff}
+.fin-table .group-header td{background:#f7f7f7;font-weight:700;font-size:13px;color:#6001d2;border-bottom:1px solid #ddd;padding:10px}
+.fin-table .total-row td{border-top:2px solid #000;font-weight:700;border-bottom:none}
+.green{color:#00ab44}.red{color:#de0000}.purple{color:#6001d2}
+.fw6{font-weight:600}.fw7{font-weight:700}
+.right{text-align:right}
+
+/* Callout box */
+.callout{border:1px solid #e0e0e0;border-left:3px solid #6001d2;padding:14px 16px;margin-bottom:20px;background:#fafafa}
+.callout-title{font-size:13px;font-weight:700;color:#000;margin-bottom:4px}
+.callout-body{font-size:13px;color:#444;line-height:1.5}
+.callout-body strong{color:#000}
+
+/* Highlight bar */
+.highlight-bar{background:#f0ebfa;border:1px solid #d4c4f0;padding:14px 16px;margin-bottom:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.highlight-bar{grid-template-columns:1fr}}
+.hl-item{text-align:center}
+.hl-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.5px}
+.hl-val{font-size:22px;font-weight:700;color:#000;margin:2px 0}
+.hl-note{font-size:11px;color:#888}
+
+/* Footer / sources */
+.sources-section{border-top:1px solid #e0e0e0;padding:16px 0;margin-top:8px}
+.sources-section h3{font-size:12px;font-weight:700;color:#333;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.sources-section p{font-size:11px;color:#888;line-height:1.9}
+
+/* Tabs content */
+.tab-content{display:none}
+.tab-content.visible{display:block}
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<div class="topbar">
+  <div class="topbar-logo">PYG Lara</div>
+  <div class="topbar-nav">
+    <a href="#" class="active" onclick="return false">Summary</a>
+    <a href="#" onclick="switchMainTab('projections');return false">Projections</a>
+    <a href="#" onclick="switchMainTab('copper');return false">Copper Plant</a>
+    <a href="#" onclick="switchMainTab('capex');return false">CapEx</a>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- Ticker Header -->
+<div class="ticker-header">
+  <div class="ticker-name">Prensados y Galvanizados de Lara, S.A.</div>
+  <div class="ticker-sub">Barquisimeto, Edo. Lara, Venezuela · Hot-Dip Galvanizing + Copper Electroplating · Private Acquisition</div>
+  <div class="ticker-price">
+    <span class="price" style="font-size:28px">Precio a Negociar</span>
+    <span class="change up">Oportunidad de Inversión</span>
+    <span class="meta">· Zero Debt · 2 Galpones (3,640 m²) · 400 ton/mo capacity · Service-Only Model</span>
+  </div>
+</div>
+
+<!-- Scenario Selector -->
+<div style="padding:16px 0 4px">
+  <div class="selector-row">
+    <span class="selector-label">Margin</span>
+    <button class="pill on" data-group="margin" data-val="30">30%</button>
+    <button class="pill" data-group="margin" data-val="35">35%</button>
+    <button class="pill" data-group="margin" data-val="50">50%</button>
+    <span class="divider-v"></span>
+    <span class="selector-label">Utilization</span>
+    <button class="pill" data-group="util" data-val="25">25%</button>
+    <button class="pill" data-group="util" data-val="50">50%</button>
+    <button class="pill" data-group="util" data-val="75">75%</button>
+    <button class="pill on" data-group="util" data-val="100">100%</button>
+  </div>
+</div>
+
+<!-- KPI Stats -->
+<div class="stats-grid" id="statsGrid">
+  <div class="stat-cell"><div class="stat-label">Annual Revenue</div><div class="stat-val" id="s-rev"></div><div class="stat-note" id="sn-rev"></div></div>
+  <div class="stat-cell"><div class="stat-label">Total Costs</div><div class="stat-val red" id="s-cost"></div><div class="stat-note" id="sn-cost"></div></div>
+  <div class="stat-cell"><div class="stat-label">Net Profit</div><div class="stat-val green" id="s-prof"></div><div class="stat-note" id="sn-prof"></div></div>
+  <div class="stat-cell"><div class="stat-label">Profit Margin</div><div class="stat-val green" id="s-roi"></div><div class="stat-note" id="sn-roi"></div></div>
+</div>
+
+<!-- TAB: Summary -->
+<div class="tab-content visible" id="tc-summary">
+
+  <!-- Charts row -->
+  <div class="chart-grid">
+    <div class="section">
+      <div class="section-title">Net Profit by Scenario</div>
+      <div class="section-sub">Annual profit at each utilization level, across 30%, 35%, 50% margins</div>
+      <div class="chart-container"><canvas id="profitChart"></canvas></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Revenue Breakdown</div>
+      <div class="section-sub" id="pieSub">Cost structure at selected scenario</div>
+      <div class="chart-container"><canvas id="pieChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="section">
+      <div class="section-title">Total Revenue by Scenario</div>
+      <div class="section-sub">Gross annual revenue across all margin and utilization combinations</div>
+      <div class="chart-container"><canvas id="revenueChart"></canvas></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Annual Profit Margin</div>
+      <div class="section-sub">Net profit at each scenario</div>
+      <div class="chart-container"><canvas id="roiChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Combined Potential -->
+  <div class="section-title" style="margin-bottom:8px">Combined Revenue Potential — Full Capacity</div>
+  <div class="highlight-bar" id="potentialBar"></div>
+
+</div>
+
+<!-- TAB: Projections -->
+<div class="tab-content" id="tc-projections">
+  <div class="section">
+    <div class="section-title">Full Projection Table — Galvanizing Only</div>
+    <div class="section-sub">All 12 scenario combinations · Excludes copper plant revenue</div>
+    <table class="fin-table">
+      <thead><tr><th>Margin / Util.</th><th>Tons/Yr</th><th>Price/Ton</th><th>Revenue</th><th>Total Cost</th><th>Net Profit</th><th>Margin %</th></tr></thead>
+      <tbody id="projBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB: Copper -->
+<div class="tab-content" id="tc-copper">
+  <div class="section">
+    <div class="section-title">Copper Electroplating Plant — Additional Revenue Stream</div>
+    <div class="section-sub">Capacity: 936 rods/day · Est. price: $8–$15 USD/rod · 300 operating days/year</div>
+    <table class="fin-table">
+      <thead><tr><th>Utilization</th><th>Rods/Day</th><th>Annual Rev. (Low)</th><th>Annual Rev. (High)</th><th>Monthly Avg.</th></tr></thead>
+      <tbody id="copperBody"></tbody>
+    </table>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <div class="callout-title">Note</div>
+    <div class="callout-body">Copper electroplating operates as an independent revenue line. At full capacity the copper plant alone can generate <strong>$561K–$1.05M/year</strong> in additional revenue on top of galvanizing operations. Cost structure differs from galvanizing (lower zinc, higher electricity).</div>
+  </div>
+</div>
+
+<!-- TAB: CapEx -->
+<div class="tab-content" id="tc-capex">
+  <div class="section">
+    <div class="section-title">Pre-Startup Maintenance Investment</div>
+    <div class="section-sub">Items identified to bring both lines to optimal operation</div>
+    <table class="fin-table">
+      <thead><tr><th>Item</th><th>Description</th><th>Est. Low</th><th>Est. High</th></tr></thead>
+      <tbody id="capexBody"></tbody>
+    </table>
+  </div>
+
+  <div class="callout" style="margin-top:16px">
+    <div class="callout-title">Total Investment Required for Full Operation</div>
+    <div class="callout-body" id="totalInvestText"></div>
+  </div>
+
+  <div class="section" style="margin-top:20px">
+    <div class="section-title">Asset Replacement Cost Reference</div>
+    <div class="section-sub">What it would cost to build this plant from scratch</div>
+    <table class="fin-table">
+      <thead><tr><th>Component</th><th>Reference Cost</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>7m Furnace System (complete)</td><td class="right">$570,000</td><td class="right">PYG Lara documentation</td></tr>
+        <tr><td>New galvanizing plant construction</td><td class="right">$190K–$220K/linear ft of kettle</td><td class="right">John Malone, finishing.com</td></tr>
+        <tr><td>Full plant (land + equip + startup)</td><td class="right">$1M–$50M range</td><td class="right">Geoff Crowley, Crithwood Ltd.</td></tr>
+        <tr><td>2 Galpones industriales — 3,640 m² (est.)</td><td class="right">$691K–$990K</td><td class="right">Barquisimeto market comps ($190-$272/m²)</td></tr>
+        <tr class="total-row"><td>Replacement value (conservative)</td><td class="right fw7">$1.5M–$3M+</td><td class="right">Combined estimates</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Sources -->
+<div class="sources-section">
+  <h3>Sources &amp; Assumptions</h3>
+  <p>
+    Zinc cost: ~$3,930/ton LME (SHG 99.9%) — London Metal Exchange reference ·
+    Zinc absorption: 10% confirmed — Ing. Miriam (PYGLARA QC controls) ·
+    Service price/ton: calculated as cost + regulated margin — PYG Lara P&amp;L · 
+    Fixed monthly costs: $5,600 — PYG Lara operating documentation · 
+    Chemicals: HCl $1,174/ton, NH4Cl $2,300/ton — PYG Lara documentation · 
+    Regulated margin: 30% on production cost — Ley de Precios Justos / SUNDDE Venezuela · 
+    Internal margin reported: ~50% — PYG Lara P&amp;L (operational efficiency) · 
+    Hydrocarbon royalty cut: 30% → 15% — Al Jazeera, Jan 23, 2026 · 
+    LatAm galvanizing service: $0.50 USD/kg ($500/ton) — QuimiNet, Ecuador · 
+    US galvanizing service: $0.44-$1.10/lb ($440-$1,100/ton) — American Galvanizers Association · 
+    Comparable plants Mexico: 600-6,000 ton/mo — Dirind.com industrial directory · 
+    New plant construction: $190K-$220K/linear ft of kettle — John Malone, finishing.com (50 yrs exp.) · 
+    Global galvanizing market: $66.22B (2024) → $106.75B (2032), CAGR 6.15% — Stellar Market Research · 
+    Oil &amp; gas galvanizing demand: 14.8% growth, 22.1% projected — Dataintelo / Technavio
+  </p>
+</div>
+
+</div>
+
+<script>
+const VCT = 345, FA = 67200, MAX = 4800;
+let aM = 30, aU = 100;
+let charts = {};
+
+function calc(u, m) {
+  const t = MAX * u / 100, vc = t * VCT, tc = vc + FA, cpt = tc / t, ppt = cpt * (1 + m / 100);
+  const rev = Math.round(t * ppt), prof = Math.round(rev - tc), margin_pct = rev > 0 ? (prof / rev * 100) : 0;
+  return { t, vc, tc: Math.round(tc), cpt: Math.round(cpt), ppt: Math.round(ppt), rev, prof, margin_pct };
+}
+
+function $(id) { return document.getElementById(id); }
+function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+function fmtK(n) { return n >= 1e6 ? '$' + (n / 1e6).toFixed(2) + 'M' : n >= 1e3 ? '$' + (n / 1e3).toFixed(0) + 'K' : '$' + n; }
+
+const ms = [30, 35, 50], us = [25, 50, 75, 100];
+const clr = { bars: ['#6001d2', '#0b69ff', '#00ab44'], line: ['#6001d2', '#0b69ff', '#00ab44'] };
+
+// Chart defaults
+Chart.defaults.font.family = "-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif";
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#666';
+Chart.defaults.plugins.legend.labels.boxWidth = 10;
+Chart.defaults.plugins.legend.labels.padding = 12;
+Chart.defaults.elements.bar.borderRadius = 2;
+
+function updateKPIs() {
+  const s = calc(aU, aM);
+  $('s-rev').textContent = fmt(s.rev);
+  $('s-cost').textContent = fmt(s.tc);
+  $('s-prof').textContent = fmt(s.prof);
+  $('s-roi').textContent = s.margin_pct.toFixed(1) + '%';
+  const n = aU + '% util · ' + aM + '% margin';
+  $('sn-rev').textContent = n; $('sn-cost').textContent = n; $('sn-prof').textContent = n; $('sn-roi').textContent = n;
+  $('pieSub').textContent = 'Cost structure at ' + aU + '% utilization, ' + aM + '% margin';
+}
+
+function makeChart(id, type, cfg) {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart($(id).getContext('2d'), { type, ...cfg });
+}
+
+function buildProfitChart() {
+  makeChart('profitChart', 'bar', {
+    data: { labels: us.map(u => u + '%'), datasets: ms.map((m, i) => ({ label: m + '% margin', data: us.map(u => calc(u, m).prof), backgroundColor: clr.bars[i], borderWidth: 0 })) },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { tooltip: { callbacks: { label: c => c.dataset.label + ': ' + fmt(c.raw) } } }, scales: { y: { ticks: { callback: v => fmtK(v) }, grid: { color: '#f0f0f0' } }, x: { grid: { display: false } } } }
+  });
+}
+
+function buildRevenueChart() {
+  makeChart('revenueChart', 'bar', {
+    data: { labels: us.map(u => u + '%'), datasets: ms.map((m, i) => ({ label: m + '% margin', data: us.map(u => calc(u, m).rev), backgroundColor: clr.bars[i], borderWidth: 0 })) },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { tooltip: { callbacks: { label: c => c.dataset.label + ': ' + fmt(c.raw) } } }, scales: { y: { ticks: { callback: v => fmtK(v) }, grid: { color: '#f0f0f0' } }, x: { grid: { display: false } } } }
+  });
+}
+
+function buildPieChart() {
+  const s = calc(aU, aM);
+  const d = [
+    { l: 'Zinc', v: Math.round(s.t * 306) },
+    { l: 'Chemicals', v: Math.round(s.t * 24) },
+    { l: 'Gas/Energy', v: Math.round(s.t * 15) },
+    { l: 'Fixed Costs', v: FA },
+    { l: 'Net Profit', v: s.prof }
+  ];
+  makeChart('pieChart', 'doughnut', {
+    data: { labels: d.map(x => x.l), datasets: [{ data: d.map(x => x.v), backgroundColor: ['#6001d2', '#0b69ff', '#e67e22', '#de0000', '#00ab44'], borderWidth: 2, borderColor: '#fff' }] },
+    options: { responsive: true, maintainAspectRatio: false, cutout: '55%', plugins: { legend: { position: 'right', labels: { font: { size: 11 }, padding: 8 } }, tooltip: { callbacks: { label: c => c.label + ': ' + fmt(c.raw) + ' (' + ((c.raw / d.reduce((a, b) => a + b.v, 0)) * 100).toFixed(1) + '%)' } } } }
+  });
+}
+
+function buildROIChart() {
+  makeChart('roiChart', 'line', {
+    data: { labels: us.map(u => u + '%'), datasets: ms.map((m, i) => ({ label: m + '% margin', data: us.map(u => parseFloat(calc(u, m).margin_pct.toFixed(1))), borderColor: clr.line[i], backgroundColor: 'transparent', borderWidth: 2, pointRadius: 4, pointBackgroundColor: clr.line[i], tension: 0.3 })) },
+    options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 40, ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } }, x: { grid: { display: false } } }, plugins: { tooltip: { callbacks: { label: c => c.dataset.label + ': ' + c.raw + '% margin' } } } }
+  });
+}
+
+function buildProjTable() {
+  let h = '';
+  ms.forEach(m => {
+    h += '<tr class="group-header"><td colspan="7">' + m + '% Margin Scenario' + (m === 30 ? ' — Current Regulated Cap' : m === 50 ? ' — Internal Efficiency Achieved' : '') + '</td></tr>';
+    us.forEach(u => {
+      const s = calc(u, m);
+      h += '<tr><td>' + u + '% utilization</td><td class="right">' + s.t.toLocaleString() + '</td><td class="right">$' + s.ppt + '</td><td class="right fw6">' + fmt(s.rev) + '</td><td class="right red">' + fmt(s.tc) + '</td><td class="right fw7 green">' + fmt(s.prof) + '</td><td class="right">' + s.margin_pct.toFixed(1) + '%</td></tr>';
+    });
+  });
+  $('projBody').innerHTML = h;
+}
+
+function buildCopperTable() {
+  const data = [{ l: '25%', r: 234 }, { l: '50%', r: 468 }, { l: '75%', r: 702 }, { l: '100%', r: 936 }];
+  let h = '';
+  data.forEach(d => {
+    const lo = d.r * 8 * 300, hi = d.r * 15 * 300, avg = Math.round((lo + hi) / 2 / 12);
+    h += '<tr><td>' + d.l + '</td><td class="right">' + d.r + '</td><td class="right">' + fmt(lo) + '</td><td class="right fw6 green">' + fmt(hi) + '</td><td class="right">' + fmt(avg) + '</td></tr>';
+  });
+  $('copperBody').innerHTML = h;
+}
+
+function buildCapex() {
+  const items = [
+    { i: 'Overhead Cranes — Preventive Maintenance', d: 'Load support verification, brakes, lubrication', lo: 5000, hi: 10000 },
+    { i: '7m Kettle — Burner Replacement', d: '4x industrial burners (Hauck RSV120 equivalent)', lo: 15000, hi: 25000 },
+    { i: 'Copper Plant — Rectifier Renewal', d: 'Cathodic protection units', lo: 10000, hi: 20000 },
+    { i: 'Copper Plant — Tank Relining', d: 'Fiberglass coating for structural integrity', lo: 5000, hi: 10000 }
+  ];
+  let h = '', tl = 0, th = 0;
+  items.forEach(x => {
+    tl += x.lo; th += x.hi;
+    h += '<tr><td>' + x.i + '</td><td class="right" style="text-align:left;color:#666">' + x.d + '</td><td class="right">' + fmt(x.lo) + '</td><td class="right">' + fmt(x.hi) + '</td></tr>';
+  });
+  h += '<tr class="total-row"><td colspan="2">TOTAL MAINTENANCE</td><td class="right">' + fmt(tl) + '</td><td class="right">' + fmt(th) + '</td></tr>';
+  $('capexBody').innerHTML = h;
+  $('totalInvestText').innerHTML = 'Acquisition (TBD) + Maintenance ($' + tl.toLocaleString() + '–$' + th.toLocaleString() + ') + Working capital Year 1 (~$500,000 zinc + chemicals) = <strong>Acquisition Price + $' + (tl + 5e5).toLocaleString() + ' – $' + (th + 5e5).toLocaleString() + ' USD operational deployment</strong>';
+}
+
+function buildPotential() {
+  let h = '';
+  ms.forEach(m => {
+    const g = calc(100, m);
+    const cop = Math.round((936 * 8 * 300 + 936 * 15 * 300) / 2);
+    const comb = g.rev + cop;
+    const cp = g.prof + Math.round(cop * 0.35);
+    h += '<div class="hl-item"><div class="hl-label">' + m + '% Margin</div><div class="hl-val">' + fmtK(comb) + '</div><div class="hl-note">Combined Profit: <span class="green fw6">' + fmtK(cp) + '</span></div></div>';
+  });
+  $('potentialBar').innerHTML = h;
+}
+
+// Tab switching
+function switchMainTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('visible'));
+  $('tc-' + (name || 'summary')).classList.add('visible');
+  document.querySelectorAll('.topbar-nav a').forEach((a, i) => {
+    a.classList.remove('active');
+    if ((name === 'summary' || !name) && i === 0) a.classList.add('active');
+    if (name === 'projections' && i === 1) a.classList.add('active');
+    if (name === 'copper' && i === 2) a.classList.add('active');
+    if (name === 'capex' && i === 3) a.classList.add('active');
+  });
+}
+
+// Wire nav
+document.querySelectorAll('.topbar-nav a').forEach((a, i) => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    switchMainTab(['summary', 'projections', 'copper', 'capex'][i]);
+  });
+});
+
+// Wire pills
+document.querySelectorAll('.pill').forEach(b => {
+  b.addEventListener('click', () => {
+    const g = b.dataset.group;
+    document.querySelectorAll('.pill[data-group="' + g + '"]').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    if (g === 'margin') aM = parseInt(b.dataset.val);
+    else aU = parseInt(b.dataset.val);
+    updateKPIs();
+    buildPieChart();
+  });
+});
+
+// Init
+updateKPIs();
+buildProfitChart();
+buildRevenueChart();
+buildPieChart();
+buildROIChart();
+buildProjTable();
+buildCopperTable();
+buildCapex();
+buildPotential();
+</script>
+</body>
+</html>

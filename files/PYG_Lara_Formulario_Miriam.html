@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYGLARA — Formulario de Datos para Inversionistas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#f5f5f5;color:#1a1a1a;font-size:15px;line-height:1.5}
+.header{background:linear-gradient(135deg,#6001d2,#4a00a0);color:#fff;padding:28px 24px;text-align:center}
+.header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.header p{font-size:14px;opacity:.85}
+.container{max-width:800px;margin:0 auto;padding:20px}
+.intro-card{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.intro-card h2{font-size:16px;color:#6001d2;margin-bottom:8px}
+.intro-card p{font-size:14px;color:#555}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.section-num{display:inline-block;background:#6001d2;color:#fff;font-size:12px;font-weight:700;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;margin-right:10px}
+.section h2{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:4px;display:flex;align-items:center}
+.section-desc{font-size:13px;color:#888;margin-bottom:18px;margin-left:38px}
+.q-group{margin-bottom:18px;border-left:3px solid #e8e0f5;padding-left:14px}
+.q-label{font-size:14px;font-weight:600;color:#333;margin-bottom:6px}
+.q-hint{font-size:12px;color:#999;margin-bottom:6px}
+.q-context{font-size:12px;color:#6001d2;background:#f5f0ff;padding:6px 10px;border-radius:6px;margin-bottom:8px;display:inline-block}
+textarea,input[type="text"],input[type="number"],input[type="date"],select{
+  width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;
+  transition:border-color .2s;background:#fafafa}
+textarea:focus,input:focus,select:focus{outline:none;border-color:#6001d2;background:#fff;box-shadow:0 0 0 3px rgba(96,1,210,.08)}
+textarea{min-height:80px;resize:vertical}
+.radio-group{display:flex;gap:12px;flex-wrap:wrap}
+.radio-option{padding:8px 16px;border:2px solid #ddd;border-radius:8px;font-size:14px;cursor:pointer;transition:all .15s;background:#fff}
+.radio-option:hover{border-color:#6001d2;background:#f5f0ff}
+.radio-option.selected{border-color:#6001d2;background:#6001d2;color:#fff}
+.price-table{width:100%;border-collapse:collapse;margin-top:8px}
+.price-table th{background:#f7f3ff;padding:8px 10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;border:1px solid #e8e0f5;color:#6001d2}
+.price-table td{padding:6px 8px;border:1px solid #eee}
+.price-table input{border-radius:6px;padding:6px 8px;font-size:13px;text-align:right;background:#fff}
+.price-table .month-label{font-weight:600;font-size:13px;color:#555;background:#fafafa;text-align:left;padding-left:12px}
+.upload-zone{border:2px dashed #d4c4f0;border-radius:12px;padding:30px 20px;text-align:center;cursor:pointer;transition:all .2s;background:#faf8ff}
+.upload-zone:hover{border-color:#6001d2;background:#f5f0ff}
+.upload-zone .icon{font-size:36px;margin-bottom:8px}
+.upload-zone p{font-size:14px;color:#666}
+.upload-zone small{font-size:12px;color:#999}
+.file-list{margin-top:10px}
+.file-item{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#f0ebfa;border-radius:6px;margin-top:6px;font-size:13px}
+.file-item .remove{color:#de0000;cursor:pointer;margin-left:auto;font-weight:700}
+.year-selector{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.year-btn{padding:6px 16px;border:2px solid #ddd;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;transition:all .15s}
+.year-btn:hover{border-color:#6001d2}
+.year-btn.active{background:#6001d2;border-color:#6001d2;color:#fff}
+.add-year{padding:6px 16px;border:2px dashed #ccc;border-radius:8px;font-size:13px;cursor:pointer;color:#888;background:#fff}
+.add-year:hover{border-color:#6001d2;color:#6001d2}
+.btn-group{display:flex;gap:12px;margin-top:24px;justify-content:center;flex-wrap:wrap}
+.btn{padding:12px 32px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:#6001d2;color:#fff}
+.btn-primary:hover{background:#4a00a0}
+.btn-secondary{background:#fff;color:#6001d2;border:2px solid #6001d2}
+.btn-secondary:hover{background:#f5f0ff}
+.progress-bar{height:4px;background:#e8e0f5;border-radius:2px;margin:16px 0 8px;overflow:hidden}
+.progress-fill{height:100%;background:#6001d2;border-radius:2px;transition:width .4s}
+.progress-text{font-size:12px;color:#888;text-align:right}
+.toast{position:fixed;bottom:24px;right:24px;background:#00ab44;color:#fff;padding:14px 24px;border-radius:10px;font-weight:600;font-size:14px;box-shadow:0 4px 16px rgba(0,0,0,.15);transform:translateY(100px);opacity:0;transition:all .3s}
+.toast.show{transform:translateY(0);opacity:1}
+.divider{border:none;border-top:1px solid #eee;margin:16px 0}
+@media(max-width:600px){.container{padding:12px}.section{padding:16px}.price-table{font-size:12px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>PYGLARA — Recopilación de Datos</h1>
+  <p>Formulario para completar documentación de inversionistas</p>
+</div>
+
+<div class="container">
+
+<div class="intro-card">
+  <h2>Instrucciones</h2>
+  <p>Estimada Ing. Miriam, este formulario recoge la información pendiente para completar el paquete de inversión de PYGLARA. Puede llenar las secciones en cualquier orden y guardar su progreso en cualquier momento. Los campos marcados con <strong style="color:#de0000">*</strong> son prioritarios.</p>
+</div>
+
+<div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+<div class="progress-text" id="progText">0% completado</div>
+
+<!-- SECTION 1: INFRAESTRUCTURA -->
+<div class="section">
+  <h2><span class="section-num">1</span>Infraestructura y Equipos</h2>
+  <div class="section-desc">Confirmaciones finales sobre las instalaciones</div>
+
+  <div class="q-group">
+    <div class="q-label">1.1 ¿Existe una cuba/tina de 3 metros además de la de 7m? <span style="color:#de0000">*</span></div>
+    <div class="q-context">📄 Documentos previos mencionan cuba de 3m, pero no fue confirmada en la entrevista</div>
+    <div class="radio-group" data-field="cuba_3m">
+      <div class="radio-option" onclick="selectRadio(this)">Sí, existe</div>
+      <div class="radio-option" onclick="selectRadio(this)">No existe</div>
+      <div class="radio-option" onclick="selectRadio(this)">Existió pero fue retirada</div>
+    </div>
+    <textarea data-field="cuba_3m_detalle" placeholder="Detalles adicionales (dimensiones, estado, si requiere reparación)..." style="margin-top:8px"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">1.2 Capacidad real de la cuba de 7m funcionando sola <span style="color:#de0000">*</span></div>
+    <div class="q-hint">¿Cuántas toneladas/mes puede procesar solo con la cuba de 7m sin la centrifugadora?</div>
+    <input type="text" data-field="cap_7m_sola" placeholder="Ej: 200 ton/mes solo galvanizado por inmersión">
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">1.3 Estado actual de la centrifugadora</div>
+    <div class="q-hint">¿Funciona? ¿Necesita reparación? ¿Costo estimado de puesta a punto?</div>
+    <textarea data-field="centrifugadora_estado" placeholder="Describa el estado actual..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">1.4 Estado del sistema eléctrico y transformador</div>
+    <div class="q-context">📄 Se mencionó que la electricidad era una limitante</div>
+    <textarea data-field="electrico_estado" placeholder="Capacidad del transformador (kVA), estado de la acometida, costo mensual estimado..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">1.5 Estado de la planta de cobreado electrolítico <span style="color:#de0000">*</span></div>
+    <div class="q-hint">¿Los rectificadores funcionan? ¿Las tinas tienen revestimiento? ¿Se puede reactivar?</div>
+    <textarea data-field="cobre_estado" placeholder="Describa rectificadores, tinas, sistema eléctrico de la línea de cobre..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">1.6 Área total del terreno (m²)</div>
+    <div class="q-context">📄 Se confirmaron 3,640 m² de galpones. ¿Cuánto mide el terreno total?</div>
+    <input type="text" data-field="area_terreno" placeholder="Ej: 5,000 m² terreno total, 3,640 m² techados">
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">1.7 Inventario de zinc y químicos actualmente en planta</div>
+    <input type="text" data-field="inventario_actual" placeholder="Ej: 5 toneladas de zinc SHG, 200L HCl, etc.">
+  </div>
+</div>
+
+<!-- SECTION 2: P&L HISTÓRICO -->
+<div class="section">
+  <h2><span class="section-num">2</span>Estado de Resultados Histórico (P&L)</h2>
+  <div class="section-desc">Datos financieros reales para proyecciones creíbles</div>
+
+  <div class="q-group">
+    <div class="q-label">2.1 ¿Existen registros contables o fiscales de años anteriores? <span style="color:#de0000">*</span></div>
+    <div class="q-hint">Declaraciones SENIAT, balances generales, estados de resultados</div>
+    <div class="radio-group" data-field="registros_contables">
+      <div class="radio-option" onclick="selectRadio(this)">Sí, tenemos registros</div>
+      <div class="radio-option" onclick="selectRadio(this)">Parcialmente</div>
+      <div class="radio-option" onclick="selectRadio(this)">No hay registros formales</div>
+    </div>
+    <textarea data-field="registros_detalle" placeholder="¿De qué años? ¿En qué formato están? ¿Se pueden compartir digitalizados?" style="margin-top:8px"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">2.2 Precios de servicio por mes (tabla histórica) <span style="color:#de0000">*</span></div>
+    <div class="q-hint">Seleccione un año y llene los precios cobrados por tonelada de galvanizado en cada mes. Puede agregar varios años.</div>
+
+    <div class="year-selector" id="yearSelector">
+      <div class="year-btn active" onclick="switchYear(2000)">2000</div>
+      <div class="year-btn" onclick="switchYear(2004)">2004</div>
+      <div class="year-btn" onclick="switchYear(2010)">2010</div>
+      <div class="year-btn" onclick="switchYear(2015)">2015</div>
+      <div class="year-btn" onclick="switchYear(2020)">2020</div>
+      <div class="year-btn" onclick="switchYear(2024)">2024</div>
+      <div class="year-btn" onclick="switchYear(2025)">2025</div>
+      <div class="add-year" onclick="addCustomYear()">+ Otro año</div>
+    </div>
+
+    <table class="price-table" id="priceTable">
+      <thead>
+        <tr>
+          <th style="text-align:left;width:120px">Mes</th>
+          <th>Precio/Ton (Bs.)</th>
+          <th>Toneladas</th>
+          <th>Ingresos (Bs.)</th>
+          <th>Gastos (Bs.)</th>
+          <th>Tasa $/Bs.</th>
+        </tr>
+      </thead>
+      <tbody id="priceTableBody"></tbody>
+    </table>
+    <div style="font-size:12px;color:#888;margin-top:6px">💡 Si no tiene el dato exacto de cada mes, puede llenar solo los meses que recuerde. El dato de noviembre 2000 ya fue registrado.</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">2.3 Último año con operación continua <span style="color:#de0000">*</span></div>
+    <input type="text" data-field="ultimo_anio_operacion" placeholder="Ej: 2018 fue el último año con producción regular">
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">2.4 ¿Cuál fue el período de mayor producción (mejor año)?</div>
+    <textarea data-field="mejor_periodo" placeholder="Ej: En 2004-2005 con el pedido de ENELVEN procesamos 20,000 barras de cobre..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">2.5 Nómina y costos de personal</div>
+    <div class="q-hint">Salario promedio de los 3 trabajadores actuales + prestaciones</div>
+    <input type="text" data-field="nomina_mensual" placeholder="Ej: $150/mes c/u + prestaciones = $600 total mensual">
+  </div>
+</div>
+
+<!-- SECTION 3: COSTOS OPERATIVOS -->
+<div class="section">
+  <h2><span class="section-num">3</span>Costos Operativos Detallados</h2>
+  <div class="section-desc">Para calcular punto de equilibrio y proyecciones</div>
+
+  <div class="q-group">
+    <div class="q-label">3.1 Costo actual del zinc por tonelada <span style="color:#de0000">*</span></div>
+    <div class="q-context">📄 Documentos usan $3,600/ton. LME actual ~$3,930/ton. ¿A cuánto consiguen en Venezuela?</div>
+    <input type="text" data-field="costo_zinc" placeholder="Ej: $4,200/ton puesto en planta, proveedor: X">
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">3.2 Costo actual del gas natural (PDVSA Gas) <span style="color:#de0000">*</span></div>
+    <div class="q-context">📄 Contrato PDVSA con Obligación Máxima de Entrega = $1,800/mes fijo</div>
+    <textarea data-field="costo_gas" placeholder="¿Los $1,800/mes siguen vigentes? ¿Cuánto m³ incluye? ¿Hay costo variable adicional?"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">3.3 Costo mensual de electricidad operando a diferentes niveles</div>
+    <input type="text" data-field="costo_electricidad" placeholder="Ej: Sin producción ~$200/mes, a 50% capacidad ~$800/mes">
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">3.4 Confirmación de tasas de consumo químico</div>
+    <div class="q-context">📄 HCl: 4.2% por ton · NH4Cl: 3% por ton — ¿Estos porcentajes son correctos para la cuba de 7m?</div>
+    <div class="radio-group" data-field="consumo_confirmado">
+      <div class="radio-option" onclick="selectRadio(this)">Sí, son correctos</div>
+      <div class="radio-option" onclick="selectRadio(this)">No, las tasas son diferentes</div>
+    </div>
+    <input type="text" data-field="consumo_correcto" placeholder="Si es diferente: HCl = __% por ton, NH4Cl = __% por ton" style="margin-top:8px">
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">3.5 ¿Existen otros costos fijos no mencionados?</div>
+    <div class="q-hint">Seguros, impuestos municipales, mantenimiento recurrente, vigilancia, etc.</div>
+    <textarea data-field="otros_costos" placeholder="Liste cualquier costo fijo mensual adicional..."></textarea>
+  </div>
+</div>
+
+<!-- SECTION 4: CLIENTES Y MERCADO -->
+<div class="section">
+  <h2><span class="section-num">4</span>Clientes, Mercado y Demanda</h2>
+  <div class="section-desc">Para validar proyecciones de ingresos</div>
+
+  <div class="q-group">
+    <div class="q-label">4.1 Lista de clientes históricos principales <span style="color:#de0000">*</span></div>
+    <div class="q-hint">Nombre de empresa, tipo de trabajo, volumen aproximado, año</div>
+    <textarea data-field="clientes_historicos" placeholder="Ej:&#10;- ENELVEN: 20,000 barras de cobre, 2004&#10;- Empresa X: pletinas para puentes, 100 ton, 2015&#10;- Ferretería Y: clavos, tornillos, regular"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">4.2 ¿Hay clientes que hayan expresado interés en reactivar pedidos? <span style="color:#de0000">*</span></div>
+    <textarea data-field="clientes_potenciales" placeholder="¿Alguien ha preguntado si están operando? ¿Hay demanda represada?"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">4.3 Competidores actuales en Venezuela</div>
+    <div class="q-context">📄 Se mencionaron 5 galvanizadores en el país. ¿Puede nombrarlos?</div>
+    <textarea data-field="competidores" placeholder="Ej:&#10;- Creicinex (referencia mencionada)&#10;- Empresa Z en Valencia&#10;- ..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">4.4 ¿Qué sectores industriales son los principales clientes?</div>
+    <div class="q-hint">Construcción, petróleo, electricidad, telecomunicaciones, etc.</div>
+    <textarea data-field="sectores_clientes" placeholder="Ordene de mayor a menor volumen histórico..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">4.5 ¿Existe posibilidad de contratos con PDVSA, CORPOELEC, u otras empresas del Estado?</div>
+    <textarea data-field="contratos_estado" placeholder="¿Se ha trabajado antes con entes del Estado? ¿Qué se requiere?"></textarea>
+  </div>
+</div>
+
+<!-- SECTION 5: LEGAL Y REGULATORIO -->
+<div class="section">
+  <h2><span class="section-num">5</span>Documentación Legal</h2>
+  <div class="section-desc">Documentos requeridos para due diligence de inversionistas</div>
+
+  <div class="q-group">
+    <div class="q-label">5.1 ¿Está al día el Registro Mercantil de la empresa?</div>
+    <div class="radio-group" data-field="registro_mercantil">
+      <div class="radio-option" onclick="selectRadio(this)">Sí, actualizado</div>
+      <div class="radio-option" onclick="selectRadio(this)">Necesita actualización</div>
+      <div class="radio-option" onclick="selectRadio(this)">No sé</div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">5.2 ¿Existe algún pasivo, demanda o gravamen sobre la empresa o terreno?</div>
+    <textarea data-field="pasivos_legales" placeholder="Deudas, hipotecas, demandas laborales, embargos, etc."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">5.3 Tipo de propiedad del terreno</div>
+    <div class="radio-group" data-field="tipo_propiedad">
+      <div class="radio-option" onclick="selectRadio(this)">Propio (título de propiedad)</div>
+      <div class="radio-option" onclick="selectRadio(this)">Alquilado</div>
+      <div class="radio-option" onclick="selectRadio(this)">Comodato</div>
+      <div class="radio-option" onclick="selectRadio(this)">Otro</div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">5.4 Permisos ambientales y de funcionamiento</div>
+    <div class="q-hint">Conformidad de uso, permiso de emisiones, permiso de efluentes</div>
+    <textarea data-field="permisos" placeholder="¿Cuáles permisos tienen? ¿Están vigentes? ¿Cuáles faltarían?"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">5.5 ¿Quiénes son los accionistas actuales y qué porcentaje tiene cada uno?</div>
+    <textarea data-field="accionistas" placeholder="Nombre — % participación"></textarea>
+  </div>
+</div>
+
+<!-- SECTION 6: DOCUMENTOS PARA SUBIR -->
+<div class="section">
+  <h2><span class="section-num">6</span>Documentos a Compartir</h2>
+  <div class="section-desc">Suba cualquier documento digital que tenga disponible</div>
+
+  <div class="q-group">
+    <div class="q-label">Documentos solicitados:</div>
+    <div style="font-size:13px;color:#555;margin-bottom:12px;line-height:1.8">
+      ✅ Registro Mercantil / Acta Constitutiva<br>
+      ✅ Título de propiedad del terreno<br>
+      ✅ Contrato con PDVSA Gas<br>
+      ✅ Declaraciones SENIAT (últimos años disponibles)<br>
+      ✅ Balance General / Estado de Resultados<br>
+      ✅ Fotos actuales de las instalaciones<br>
+      ✅ Planos de la planta (si existen)<br>
+      ✅ Facturas recientes de servicios (electricidad, agua, gas)<br>
+      ✅ Cualquier otro documento relevante
+    </div>
+
+    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+      <div class="icon">📎</div>
+      <p>Haga clic aquí para seleccionar archivos</p>
+      <small>PDF, Word, Excel, imágenes, fotos · Máximo 50MB por archivo</small>
+    </div>
+    <input type="file" id="fileInput" multiple style="display:none" onchange="handleFiles(this.files)">
+    <div class="file-list" id="fileList"></div>
+  </div>
+</div>
+
+<!-- SECTION 7: NOTAS ADICIONALES -->
+<div class="section">
+  <h2><span class="section-num">7</span>Notas Adicionales</h2>
+  <div class="section-desc">Cualquier información que considere relevante para inversionistas</div>
+
+  <div class="q-group">
+    <div class="q-label">7.1 ¿Cuánto tiempo tomaría reactivar la planta de galvanizado?</div>
+    <textarea data-field="tiempo_reactivacion" placeholder="Ej: 2-3 semanas para encender calderas, 1 mes para primer lote..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">7.2 ¿Cuántos trabajadores se necesitarían para operar a capacidad completa?</div>
+    <input type="text" data-field="personal_necesario" placeholder="Ej: 8-10 operadores + 1 supervisor + 1 administrativo">
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">7.3 ¿Cuál sería la inversión mínima para arrancar solo galvanizado?</div>
+    <div class="q-hint">Capital de trabajo: zinc, químicos, gas, nómina para los primeros 3 meses</div>
+    <textarea data-field="inversion_minima" placeholder="Estime el monto mínimo necesario para encender la planta..."></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">7.4 Comentarios, correcciones o información adicional</div>
+    <textarea data-field="notas_libres" placeholder="Cualquier cosa que quiera agregar o corregir de la información que ya tenemos..." style="min-height:120px"></textarea>
+  </div>
+</div>
+
+<!-- ACTION BUTTONS -->
+<div class="btn-group">
+  <button class="btn btn-secondary" onclick="saveProgress()">💾 Guardar Progreso</button>
+  <button class="btn btn-primary" onclick="exportData()">📤 Exportar Respuestas</button>
+</div>
+
+<div style="text-align:center;padding:20px;font-size:12px;color:#999">
+  PYGLARA — Formulario de Recopilación v1.0 · Datos confidenciales
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+let currentYear = 2000;
+let priceData = {};
+let uploadedFiles = [];
+
+// Pre-fill November 2000 data from Miriam's answers
+priceData[2000] = {};
+priceData[2000][10] = { precio: '48200000', tons: '', ingresos: '48200000', gastos: '22200000', tasa: '680' };
+
+function selectRadio(el) {
+  el.parentElement.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  updateProgress();
+}
+
+function switchYear(year) {
+  currentYear = year;
+  document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  buildPriceTable(year);
+}
+
+function addCustomYear() {
+  const y = prompt('Ingrese el año:');
+  if (y && !isNaN(y) && y > 1990 && y < 2030) {
+    const yr = parseInt(y);
+    const sel = document.getElementById('yearSelector');
+    const btn = document.createElement('div');
+    btn.className = 'year-btn';
+    btn.textContent = yr;
+    btn.onclick = function() { switchYear(yr); };
+    sel.insertBefore(btn, sel.lastElementChild);
+    switchYear(yr);
+    btn.classList.add('active');
+  }
+}
+
+function buildPriceTable(year) {
+  if (!priceData[year]) priceData[year] = {};
+  let h = '';
+  months.forEach((m, i) => {
+    const d = priceData[year][i] || {};
+    h += '<tr>';
+    h += '<td class="month-label">' + m + '</td>';
+    h += '<td><input type="text" data-year="' + year + '" data-month="' + i + '" data-col="precio" value="' + (d.precio || '') + '" onchange="savePriceCell(this)" placeholder="—"></td>';
+    h += '<td><input type="text" data-year="' + year + '" data-month="' + i + '" data-col="tons" value="' + (d.tons || '') + '" onchange="savePriceCell(this)" placeholder="—"></td>';
+    h += '<td><input type="text" data-year="' + year + '" data-month="' + i + '" data-col="ingresos" value="' + (d.ingresos || '') + '" onchange="savePriceCell(this)" placeholder="—"></td>';
+    h += '<td><input type="text" data-year="' + year + '" data-month="' + i + '" data-col="gastos" value="' + (d.gastos || '') + '" onchange="savePriceCell(this)" placeholder="—"></td>';
+    h += '<td><input type="text" data-year="' + year + '" data-month="' + i + '" data-col="tasa" value="' + (d.tasa || '') + '" onchange="savePriceCell(this)" placeholder="—"></td>';
+    h += '</tr>';
+  });
+  document.getElementById('priceTableBody').innerHTML = h;
+}
+
+function savePriceCell(el) {
+  const y = parseInt(el.dataset.year), m = parseInt(el.dataset.month), c = el.dataset.col;
+  if (!priceData[y]) priceData[y] = {};
+  if (!priceData[y][m]) priceData[y][m] = {};
+  priceData[y][m][c] = el.value;
+  updateProgress();
+}
+
+function handleFiles(files) {
+  for (let f of files) {
+    uploadedFiles.push({ name: f.name, size: f.size, file: f });
+    const div = document.createElement('div');
+    div.className = 'file-item';
+    div.innerHTML = '📄 ' + f.name + ' <span style="color:#888;font-size:11px">(' + (f.size / 1024).toFixed(0) + ' KB)</span><span class="remove" onclick="this.parentElement.remove()">✕</span>';
+    document.getElementById('fileList').appendChild(div);
+  }
+  updateProgress();
+}
+
+function updateProgress() {
+  const fields = document.querySelectorAll('textarea[data-field], input[data-field]');
+  let filled = 0, total = fields.length;
+  fields.forEach(f => { if (f.value.trim()) filled++; });
+  // Count radio groups
+  const radios = document.querySelectorAll('.radio-group[data-field]');
+  total += radios.length;
+  radios.forEach(r => { if (r.querySelector('.selected')) filled++; });
+  // Count price data
+  let priceEntries = 0;
+  Object.values(priceData).forEach(y => Object.values(y).forEach(m => { if (m.precio || m.ingresos) priceEntries++; }));
+  if (priceEntries > 0) filled += 1;
+  total += 1;
+
+  const pct = Math.round(filled / total * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progText').textContent = pct + '% completado (' + filled + ' de ' + total + ' campos)';
+}
+
+function collectData() {
+  const data = { timestamp: new Date().toISOString(), version: '1.0' };
+  // Text fields
+  document.querySelectorAll('textarea[data-field], input[data-field]').forEach(f => {
+    data[f.dataset.field] = f.value;
+  });
+  // Radio groups
+  document.querySelectorAll('.radio-group[data-field]').forEach(r => {
+    const sel = r.querySelector('.selected');
+    data[r.dataset.field] = sel ? sel.textContent : '';
+  });
+  // Price tables
+  data.precios_historicos = priceData;
+  // Files
+  data.archivos = uploadedFiles.map(f => f.name);
+  return data;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function saveProgress() {
+  const data = collectData();
+  localStorage.setItem('pyglara_form', JSON.stringify(data));
+  showToast('✅ Progreso guardado localmente');
+}
+
+function exportData() {
+  const data = collectData();
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'PYGLARA_Respuestas_' + new Date().toISOString().slice(0, 10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('📤 Archivo exportado correctamente');
+}
+
+// Load saved data
+try {
+  const saved = JSON.parse(localStorage.getItem('pyglara_form'));
+  if (saved) {
+    Object.keys(saved).forEach(k => {
+      const el = document.querySelector('[data-field="' + k + '"]');
+      if (el && el.tagName !== 'DIV') el.value = saved[k];
+      if (el && el.classList.contains('radio-group')) {
+        el.querySelectorAll('.radio-option').forEach(o => { if (o.textContent === saved[k]) o.classList.add('selected'); });
+      }
+    });
+    if (saved.precios_historicos) priceData = saved.precios_historicos;
+  }
+} catch(e) {}
+
+// Init
+buildPriceTable(2000);
+updateProgress();
+
+// Drag & drop
+const uz = document.getElementById('uploadZone');
+uz.addEventListener('dragover', e => { e.preventDefault(); uz.style.borderColor = '#6001d2'; uz.style.background = '#f0ebfa'; });
+uz.addEventListener('dragleave', () => { uz.style.borderColor = '#d4c4f0'; uz.style.background = '#faf8ff'; });
+uz.addEventListener('drop', e => { e.preventDefault(); uz.style.borderColor = '#d4c4f0'; uz.style.background = '#faf8ff'; handleFiles(e.dataTransfer.files); });
+</script>
+</body>
+</html>

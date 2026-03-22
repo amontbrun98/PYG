@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.galvanizers.co.nz)",
+      "WebFetch(domain:www.galvanizing.org.au)",
+      "WebFetch(domain:www.zincinstitute.org)",
+      "WebFetch(domain:www.nzsteel.co.nz)"
+    ]
+  }
+}

@@ -1,5 +1,7 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+lastStep: 14
+completedAt: '2026-03-23'
 inputDocuments:
   - product-brief-PYG-2026-03-11.md
   - prd.md
@@ -113,7 +115,7 @@ Contacto / Contact               ← GENERAL (quote form for international, What
 - **Investor inquiries (Maria):** Footer-linked partnership inquiry form (name, organization, email, phone, message). Separate email notification to Sir.
 - **General contact form: ELIMINATED.** Redundant. Footer shows phone, WhatsApp, email, and address on every page.
 - **Context-aware WhatsApp pre-fills:** Different pre-filled messages per page. Galvanizing page: "Hola, me interesa el servicio de galvanizado." Copper rod page: "Hola, me interesan las varillas de puesta a tierra." Homepage: generic greeting.
-- **Confirmation pages (FR10b):** Set response time expectations — "Respuesta en menos de 2 horas en horario laboral" for quotes, "72 horas" for partnership inquiries. Includes fallback contact info.
+- **Confirmation pages (FR10b):** Set response time expectations — "Respuesta en menos de 2 horas en horario laboral" for quotes, "24 horas" for partnership inquiries (investor priority). Includes fallback contact info and 3-step next-steps sequence for partnership inquiries.
 
 ### Investor Document UX
 
@@ -348,7 +350,7 @@ Sir sent the investor document to Maria via DocSend two days ago. He checks the 
 |---|---|---|
 | 1 | **Story first, specs second** | Every document's opening line answers "Why does this matter?" before "What is this?" The first sentence is Sir's pitch when he's not in the room. |
 | 2 | **Print drives, digital follows** | Design documents for print first, then adapt for screen. The printed handoff is the primary UX; the website is the echo. Short docs must also pass the phone-screen test. |
-| 3 | **Every page stands alone** | Any single printed page, if separated from the stack, must contain: what PYGLARA does, a key capability, and complete contact info with WhatsApp QR. No page is orphaned. |
+| 3 | **Every printed page stands alone** | Any single PRINTED page (capability statement, spec sheet, sales kit), if separated from the stack, must contain: what PYGLARA does, a key capability, and complete contact info with WhatsApp QR. Does NOT apply to the investor document, which is a bound sequential document with contact info on cover and final page only. |
 | 4 | **Design the stack, not just the pages** | Each document has a distinct physical form factor (size, weight, stock color). Sir identifies and pulls the right document in 2 seconds without flipping. |
 | 5 | **Escalate, don't dump** | Each document earns the right to the next conversation. Capability statement → Sales Kit → Investor Document. Never hand the investor document cold. |
 | 6 | **30 seconds to "these people are serious"** | Every touchpoint — printed page, website homepage, WhatsApp catalog — must create a professional credibility impression within 30 seconds. |
@@ -989,7 +991,7 @@ The website did its job: PYGLARA looked professional enough that a Miami-based a
 | **Carlos** | WhatsApp opens with pre-filled message | Instant confirmation — the app he trusts is now the interface |
 | **Rodriguez** | Specs match his project needs | Data in scannable format — answer found in under 30 seconds |
 | **James** | PDF downloads immediately | Browser shows download progress. File named professionally: PYGLARA-Vendor-Qualification-Pack-EN.pdf |
-| **Maria** | Confirmation page appears | Thank-you message, expected response time (72 hours), fallback contact info |
+| **Maria** | Confirmation page appears | Thank-you message, expected response time (24 hours), 3-step next-steps, fallback contact info |
 | **All users** | Site loads fast, feels solid | No jank, no layout shift, no half-loaded states. Full render or WhatsApp fallback. |
 
 **4. COMPLETION — What happens after:**
@@ -1030,7 +1032,7 @@ The website did its job: PYGLARA looked professional enough that a Miami-based a
 
 ### Visual Tone
 
-**Airy and confident.** Generous whitespace signals professionalism. Dense layouts feel cheap on mobile. The plant photo does the heavy lifting; the surrounding space lets it breathe. Industrial confidence, not corporate stiffness.
+**Bold and data-driven.** Dark navy backgrounds with high-contrast white text and copper accents. Inspired by Path Robotics: stat-forward, minimal text, maximum visual impact. Whitespace is generous WITHIN sections but the overall palette is dark-dominant. Industrial confidence through bold numbers and real plant photography, not corporate softness.
 
 ### Two Visual Registers
 
@@ -1244,4 +1246,922 @@ The one-pager uses the industrial-energetic register — opposite rules from the
 
 - No animations that could trigger vestibular issues
 - Any future animations respect `prefers-reduced-motion` media query
-- Current MVP has zero JavaScript animations — not applicable but documented for future
+- All animations respect `prefers-reduced-motion` media query -- single wrapper disables all motion
+- Total animation JS budget: ~700 bytes inline (IntersectionObserver for scroll triggers + counter function)
+
+## Design Direction Decision
+
+### Primary Design Reference: Path Robotics (path-robotics.com)
+
+PYGLARA's website design follows the Path Robotics visual language: dark, bold, data-forward industrial design with scroll-triggered animations and stat-driven storytelling.
+
+**Why Path Robotics is the right reference:**
+
+- Industrial company selling to B2B buyers -- same context as PYGLARA
+- Dark backgrounds with high-contrast typography -- stands out from every Venezuelan competitor
+- Data/stats as visual elements, not buried in tables -- "400 t/mes" IS the design
+- Minimal text per section (2-3 sentences max) -- matches Venezuelan mobile scanning behavior
+- Video-first process demonstration -- matches our plant walk-through concept
+- Clean, restrained color palette -- navy + one accent, nothing more
+- Professional enough for James (EPC Houston) while bold enough for Carlos (ferreteria mobile)
+
+### Design Patterns Adopted from Path Robotics
+
+**Homepage Structure (top to bottom):**
+
+1. Status bar: "PLANTA OPERATIVA -- ACEPTANDO PEDIDOS" (green on dark)
+2. Navigation: PYGLARA logo + 4 nav items + ES|EN toggle + WhatsApp icon
+3. Hero section: Dark navy background, bold headline, inline stats, dual CTA (WhatsApp primary + Solicitar Cotizacion secondary)
+4. Problem statement with data chart: Venezuela's galvanizing capacity gap (SVG chart with animated line draw) + 4 supporting metrics
+5. Dual capability showcase: Two cards (navy for galvanizing, copper for ground rods) with photo backgrounds and bullet capabilities
+6. Quality and equipment section: Ing. Miriam story + Pilling equipment + per-lot certification process
+7. Spec block: Big typographic numbers (7m, 400, 936, 50+) as visual anchors
+8. Equipment trust bar: W. Pilling, Honeywell, Allen Bradley logos
+9. Association membership bar: FEDECAMARAS, AVGAL, AIMM, Camara de Comercio (once obtained)
+10. Footer: Minimal -- logo, address, RIF, "Alianzas Estrategicas" link, copyright
+
+**Typography approach (Path-inspired):**
+
+- Headlines: Bold, large (48px desktop / 32px mobile), white on dark backgrounds
+- Stats: Oversized numbers (56-72px) as typographic focal points -- "400" not "400 t/mes capacity"
+- Body: Minimal -- 2-3 sentences max per section. If it takes a paragraph to explain, it needs a simpler headline.
+- Section labels: Uppercase, letter-spaced, copper accent color (like Path's subtle category labels)
+
+**Color application (Path-adapted):**
+
+- Dark navy (#1B3A5C) as dominant background for hero and alternating sections -- NOT white-dominant
+- White (#FFFFFF) for text on dark sections and as alternating section background
+- Copper (#B87333) as the only accent -- section labels, stat units, decorative lines
+- Green (#2D8B4E) for operational status only
+- WhatsApp green (#25D366) for CTA buttons only
+
+**Data presentation (Path-inspired):**
+
+Path presents stats as bold typographic elements integrated into headlines. PYGLARA adapts this:
+
+| Stat | Display | Context |
+|---|---|---|
+| 400 | Massive number, navy or white depending on section | "toneladas por mes" in small copper text below |
+| 936 | Massive number | "varillas por dia" below |
+| 7m | Massive number | "Cuba Pilling (Alemania, 1873)" below |
+| 50+ | Massive number | "anos de proteccion" below |
+| 81% | Massive number (in chart section) | "de la capacidad industrial destruida" below |
+| 0 | Massive number | "proveedores domesticos de varillas de cobre" below |
+| 350 | Massive number | "km hasta el competidor mas cercano" below |
+
+**Problem statement with chart (Path's welder shortage graph adapted):**
+
+PYGLARA's equivalent: "Venezuela's Galvanizing Gap" section with:
+
+- SVG line chart showing demand (110K-220K tonnes/year) vs. current domestic capacity (near zero)
+- Animated line draw on scroll (CSS stroke-dashoffset, zero JS)
+- Four supporting metrics alongside the chart:
+  - "81% de la base industrial destruida"
+  - "0 proveedores domesticos de varillas de cobre"
+  - "350km al competidor mas cercano"
+  - "$183B en inversion proyectada"
+
+### Animation Specification
+
+**All animations are CSS-based with a single IntersectionObserver script (~700 bytes inline). No animation libraries.**
+
+**Animation 1: Scroll-reveal fade-up**
+
+Every section fades up when scrolled into view. CSS transition on opacity and transform, triggered by adding a "visible" class via IntersectionObserver.
+
+- Initial state: opacity 0, translateY(24px)
+- Final state: opacity 1, translateY(0)
+- Duration: 0.6s
+- Easing: ease-out
+- Trigger: element 15% visible in viewport
+
+**Animation 2: Hero entrance stagger**
+
+On page load, hero elements fade up in sequence with 150ms stagger:
+
+- Title: 0ms delay
+- Subtitle: 150ms delay
+- Stats bar: 300ms delay
+- CTA buttons: 450ms delay
+- Duration: 0.8s each
+- Easing: ease-out
+- Uses CSS @keyframes, no JS
+
+**Animation 3: Stat counter animation**
+
+Big numbers (400, 936, 7, 50) count from 0 to their target value when scrolled into view.
+
+- Duration: 1.5s
+- Easing: cubic ease-out (decelerating count)
+- Triggered by IntersectionObserver (same observer as scroll-reveal)
+- Uses tabular-nums font variant to prevent layout shift during count
+- ~400 bytes inline JS
+
+**Animation 4: Chart line draw**
+
+SVG capacity gap chart line draws itself when scrolled into view.
+
+- Duration: 2s
+- Easing: ease-out
+- Pure CSS: stroke-dasharray + stroke-dashoffset transition
+- Triggered by adding "visible" class (same observer)
+- 0 bytes JS
+
+**Animation 5: Card hover lift**
+
+Dual capability cards (galvanizing + copper rods) lift slightly on hover with shadow.
+
+- Transform: translateY(-4px) on hover
+- Box-shadow increases on hover
+- Duration: 0.2s
+- Easing: ease
+- Pure CSS, 0 bytes JS
+
+**Reduced motion support:**
+
+Single CSS media query disables all animations:
+
+- All reveal elements: immediate visibility, no transform
+- Hero entrance: no animation
+- Chart line: immediate draw, no transition
+- Counters: display final number immediately (JS check)
+
+**Total animation budget:**
+
+- CSS: ~1.5KB (keyframes + transitions + reveal classes)
+- JS: ~700 bytes inline (IntersectionObserver + counter function)
+- Combined: ~2.2KB -- negligible impact on page weight
+
+### Design Rationale
+
+**Why dark/bold over clean/minimal:**
+
+- ALF Galvanizados uses a standard white-background industrial site. PYGLARA going dark and bold creates instant visual differentiation -- you remember which site you visited.
+- Dark backgrounds with large white stats feel premium and confident. This matches the "familiar format, unfamiliar quality" emotional design principle.
+- Path Robotics proves this aesthetic works for industrial B2B -- it's not "too startup" when executed with industrial photography and real data.
+- Venezuelan mobile users browsing in sunlight: dark backgrounds with white text actually have HIGHER perceived contrast than light backgrounds with dark text in high-ambient-light conditions.
+
+**What we changed from Path:**
+
+| Path Robotics | PYGLARA Adaptation | Why |
+|---|---|---|
+| Video hero | Static photo hero (video post-MVP) | Venezuelan internet can't reliably stream video |
+| 5 nav items | 4 bottom tabs (mobile) + desktop nav | Mobile-first for Venezuelan users |
+| Newsletter signup footer | "Alianzas Estrategicas" footer link | PYGLARA's investor pathway replaces newsletter |
+| Carousel of 5 videos | Single plant photo or horizontal photo scroll | Bandwidth constraint |
+| Testimonial cards with client logos | Equipment manufacturer logos as trust bar (MVP) | No client testimonials yet -- Pilling/Honeywell/AB serve same trust function |
+| RaaS business model section | Dual capability cards (galvanizing + copper) | PYGLARA's unique selling point is the two services, not a business model |
+| Hamburger mobile nav | Bottom tab bar | Always-visible nav, thumb-reachable, Venezuelan mobile UX preference |
+
+### Implementation Notes
+
+- The HTML mockup file at `_bmad-output/planning-artifacts/ux-design-directions.html` shows early direction explorations. Direction F (Navy Immersive) is closest to the final Path-inspired direction but should be updated to incorporate Path's stat-forward approach, chart section, and animation patterns.
+- The Visual Tone section reflects the Path Robotics-inspired direction: bold, dark-dominant, stat-forward. Whitespace is generous within sections.
+- Section spacing remains: 48px mobile, 96px desktop between major sections.
+
+## User Journey Flows
+
+### Journey Quick Reference (Developer Cheat Sheet)
+
+| Journey | User | Goal | Entry | CTA | Target Time |
+|---|---|---|---|---|---|
+| J1 | Carlos (ferreteria, mobile, ES) | WhatsApp contact | Google/forwarded link | WhatsApp button | 5 seconds |
+| J2 | Rodriguez (construction PM, ES) | Structured quote | Nav to Galvanizado | WhatsApp pre-fill | 2 minutes |
+| J3 | James (EPC Houston, EN) | Vendor pack download | EN toggle then Quality | Download button | 3 minutes |
+| J4 | Maria (investor Miami, EN) | Partnership inquiry | Footer link | Form submit | 1 minute |
+| J5 | Luis (electrical Maracaibo, ES) | Copper rod inquiry | Deep link from PDF QR | WhatsApp pre-fill | 1 minute |
+| J6 | Sir (admin) | Document handoff | In-person or digital | Escalation ladder | N/A |
+| J7 | Returning client | Repeat order | Existing WhatsApp thread | Quick reply template | 30 seconds |
+
+### Journey 1: Carlos -- Referral to WhatsApp (5-Second Target)
+
+```mermaid
+flowchart TD
+    A[Hears about PYGLARA via WhatsApp or trade event] --> B[Googles PYGLARA or taps forwarded link]
+    B --> C{Site loads on mobile}
+    C -->|Loads under 2.4s| D[Sees: dark hero, plant photo, status indicator, headline, WhatsApp button]
+    C -->|Slow/partial load| E[Raw HTML fallback: WhatsApp redirect link + phone + address visible]
+    E --> F[Taps WhatsApp link from raw HTML]
+    D --> G{What does Carlos do?}
+    G -->|Taps WhatsApp button| H[WhatsApp opens via pyglara.com/wa redirect with pre-fill]
+    G -->|Scrolls down| I[Sees service grid + specs + association logos]
+    I --> J[Taps WhatsApp from service section]
+    J --> H
+    H --> K[Sends voice note or text describing his need]
+    K --> L[Sir receives notification]
+    L --> M[Sir responds within 2 hours with quick reply pricing template]
+    M --> N[Negotiation continues on WhatsApp]
+    F --> H
+```
+
+**Optimizations:**
+- WhatsApp button visible without scrolling on ALL phone sizes (320px+)
+- If page partially loads, WhatsApp redirect link is in raw HTML -- works without CSS or JS
+- Pre-filled message eliminates "what do I type?" hesitation
+- No form, no email, no registration -- one tap to conversation
+- WhatsApp links use pyglara.com/wa redirect (protects phone number from scraping, enables future rate limiting)
+
+### Journey 2: Rodriguez -- Specs to Structured Quote (2-Minute Target)
+
+```mermaid
+flowchart TD
+    A[Colleague mentions PYGLARA or sees capability statement] --> B[Opens website on desktop or mobile]
+    B --> C[Lands on homepage -- sees hero + nav]
+    C --> D[Taps Galvanizado in bottom tab bar or nav]
+    D --> E[Galvanizing page loads]
+    E --> F[Scans What We Galvanize visual grid]
+    F --> G{Finds his use case?}
+    G -->|Yes -- Estructural| H[Scrolls to specifications section]
+    G -->|Not sure| I[Taps Custom in grid]
+    I --> H
+    H --> J[Reads: 7m kettle, max piece 6.8m x 1.2m, 400 t/mes, 3-5 day turnaround]
+    J --> K{Piece fits in kettle?}
+    K -->|Yes| L[Scrolls to quality certification section]
+    K -->|No or unsure| M[Taps WhatsApp to ask about dimensions]
+    L --> N[Reads: per-lot certificates, Ing. Miriam, 36 years, coating thickness measurements]
+    N --> O[Taps Solicitar Cotizacion button]
+    O --> P[WhatsApp opens with structured pre-fill via pyglara.com/wa]
+    P --> Q[Rodriguez fills in: Material, Tonelaje, Dimension maxima]
+    Q --> R[Sends structured quote request]
+    R --> S[Sir forwards to Ing. Miriam for pricing]
+    S --> T[Response by next business day]
+    M --> P
+```
+
+**Optimizations:**
+- Visual grid lets Rodriguez identify his use case in one scan
+- Specs section answers key questions: will it fit? how fast? what quality docs?
+- Structured WhatsApp pre-fill collects info Sir needs to quote without a form
+- Quality certification details prevent follow-up call from structural engineer
+
+### Journey 3: James -- Vendor Qualification Pack (3-Minute Target)
+
+```mermaid
+flowchart TD
+    A[Field manager mentions PYGLARA] --> B[Opens website on desktop]
+    B --> C[Lands on homepage -- Spanish default]
+    C --> D[Clicks ES/EN toggle to switch to English]
+    D --> E[English homepage loads]
+    E --> F[Scans nav for qualification info]
+    F --> G[Clicks Quality and Safety in nav]
+    G --> H[Quality page loads]
+    H --> I[Reads Ing. Miriam story + QC process]
+    I --> J[Sees HSE commitment section]
+    J --> K[Sees equipment list with model numbers]
+    K --> L[Sees association membership logos]
+    L --> M{Finds Download Vendor Qualification Pack button}
+    M -->|Clicks download| N[ZIP/PDF downloads immediately]
+    M -->|Wants to ask questions| O[Clicks Contact in nav]
+    O --> P[Contact page with form: name, email, message]
+    P --> Q[Submits technical questions]
+    Q --> R[Confirmation: Response within 48 hours]
+    N --> S[Forwards English URL + vendor pack to procurement team]
+    R --> T[Sir responds with professional email within 48 hours]
+    S --> U[PYGLARA added to vendor shortlist]
+```
+
+**Optimizations:**
+- Language toggle is the FIRST action James takes -- visible, instant, no page reload
+- Quality and Safety page structured as vendor qualification checklist, not narrative
+- Download button prominent -- file named PYGLARA-Vendor-Qualification-Pack-EN.pdf
+- Contact form minimal (3 fields) -- detailed questions in message field
+- Desktop fallback: "or email us at [address]" below WhatsApp buttons for desktop users without WhatsApp
+
+### Journey 4: Maria -- Partnership Inquiry (1-Minute Target)
+
+```mermaid
+flowchart TD
+    A[Associate mentions industrial plant in Barquisimeto] --> B[Googles PYGLARA Barquisimeto]
+    B --> C[Lands on homepage]
+    C --> D[Switches to English]
+    D --> E[Scans page for legitimacy signals]
+    E --> F{Does it look professional?}
+    F -->|Yes| G[Notes: real plant photo, physical address, RIF number, operational status]
+    F -->|No -- amateur| H[Closes tab, moves on]
+    G --> I[Scrolls to footer]
+    I --> J[Sees Strategic Partnerships link]
+    J --> K[Clicks through to partnerships page]
+    K --> L[Reads: brief text about welcoming strategic partners and investors]
+    L --> M[Fills form: name, organization, email, phone, message]
+    M --> N[Submits inquiry]
+    N --> O[Confirmation page: Response within 24 hours + 3-step next-steps + fallback contact]
+    O --> P[Sir receives partnership notification email -- separate from quote notifications]
+    P --> Q[Sir qualifies with 15-minute call using 3-question checklist]
+    Q --> R{Qualified?}
+    R -->|Yes -- represents capital, OFAC ok, understands price| S[Sir sends investor document via DocSend]
+    R -->|No -- curiosity only or not qualified| T[Sir thanks them, no document sent]
+    S --> U[Maria reads investor doc -- tracked via DocSend]
+```
+
+**Optimizations:**
+- Footer placement self-selecting: sophisticated users check footers, Carlos never does
+- On mobile: subtle text link "Interested in partnership opportunities?" above footer for reachability
+- Partnership page copy brief and neutral -- not "BUY THIS PLANT"
+- Separate notification channel so Sir doesn't confuse client and investor inquiries
+- 3-question qualification checklist: (1) real capital? (2) OFAC-compliant? (3) understands asking price?
+- Investor document last page includes: "Sharing with colleagues? Contact us so we can assist them directly."
+
+### Journey 5: Luis -- Copper Rod Deep Link (1-Minute Target)
+
+```mermaid
+flowchart TD
+    A[Receives copper rod spec sheet PDF via WhatsApp] --> B[Scans QR code on PDF]
+    B --> C[Lands directly on /es/varillas-de-cobre]
+    C --> D[Copper rod page loads]
+    D --> E[Sees: product headline, specs, UL 467 compliance, production capacity]
+    E --> F[Sees proof elements: sample certificate, real product photo, PYGLARA vs Imported comparison]
+    F --> G{Finds his size?}
+    G -->|Yes -- 5/8 x 2.4m| H[Notes coating thickness: 300um exceeds UL 467]
+    G -->|Needs custom size| I[Taps WhatsApp to ask about custom specs]
+    H --> J[Scrolls to delivery/logistics section]
+    J --> K[Sees: capacity 936/day, delivery options, lead time 5-7 business days]
+    K --> L[Sees sample offer: 5 rods for evaluation]
+    L --> M[Taps WhatsApp button]
+    M --> N[WhatsApp opens via pyglara.com/wa with copper-specific pre-fill]
+    N --> O[Luis asks: price per rod, MOQ, delivery to Maracaibo, thickness certificate]
+    O --> P[Sir responds with copper quick reply template: pricing tiers, lead time, shipping estimate]
+    I --> N
+```
+
+**Optimizations:**
+- Deep link from PDF QR code bypasses homepage -- direct to product page
+- Copper page is a PRODUCT page (buy this thing) not a SERVICE page
+- Proof elements: sample QC certificate, real product photo, PYGLARA vs. Imported comparison table
+- Sample offer: "Solicite 5 varillas de muestra para evaluacion" -- $50-75 sample unlocks $3,000+ orders
+- Delivery info prominent -- Luis is 500km away, shipping matters
+- Bulk buyer mention: "Alto volumen: contactenos para produccion dedicada"
+- Production status transparency: "Linea de cobre: [status]"
+- Sir has copper-specific quick reply template with pricing tiers and shipping costs pre-calculated
+
+**Copper Rod Independent Go-to-Market:**
+- Standalone spec sheet designed as campaign asset (not dependent on galvanizing distribution)
+- Distribution target: Sir identifies 5 electrical contractor WhatsApp groups in Zulia/Maracaibo
+- Short URL: pyglara.com/cobre links directly to copper page
+- Consider MercadoLibre or TuProducto.com listing for product discovery
+- WhatsApp-optimized PDF: large headline visible at WhatsApp thumbnail preview size
+
+### Journey 6: Sir -- Document Escalation Ladder
+
+```mermaid
+flowchart TD
+    A[Sir meets someone at event, meeting, or via referral] --> B{What type of contact?}
+    B -->|Potential client| C[Hands capability statement from stack]
+    B -->|Potential investor| D[Hands capability statement first -- NOT investor doc]
+    B -->|International EPC contact| E[Hands capability statement + mentions English website]
+    C --> F{Client shows interest?}
+    F -->|Asks about galvanizing| G[Discusses services, gives sales kit]
+    F -->|Asks about copper rods| H[Gives copper rod spec sheet]
+    F -->|No interest| I[Moves on -- capability statement stays with them]
+    D --> J{Investor shows interest?}
+    J -->|Tell me more about the opportunity| K[Sir shares 2-page executive summary]
+    J -->|No interest| L[Moves on]
+    K --> M[Follow-up call to qualify with 3-question checklist]
+    M --> N{Qualified?}
+    N -->|Yes| O[Send full investor document via DocSend]
+    N -->|Not a fit| P[Thank them, no document sent]
+    O --> Q[DocSend tracking shows engagement]
+    Q --> R{Reading behavior?}
+    R -->|Read 15+ pages, forwarded to team| S[Hot lead -- call within 48 hours]
+    R -->|Read pages 1-8, stopped| T[Warm -- follow up in 3-5 days with exec summary]
+    R -->|Opened but closed quickly| U[Cold -- single follow-up, then move on]
+    G --> V[WhatsApp conversation continues]
+    H --> V
+    E --> W[James visits English website, downloads vendor pack]
+```
+
+### Journey 7: Repeat Client + Referral Loop
+
+```mermaid
+flowchart TD
+    A[First order completed and delivered] --> B[Day 1: Sir sends delivery confirmation via WhatsApp]
+    B --> C[Day 30: Sir sends check-in message]
+    C --> D{Client responds?}
+    D -->|Yes, positive -- has more material| E[Repeat order via WhatsApp -- Sir uses returning client quick reply]
+    D -->|Yes, positive -- no immediate need| F[Sir sends forwardable referral message with capability statement PDF]
+    D -->|No response| G[No further follow-up on this cycle]
+    E --> H[Quote using pre-approved pricing matrix -- no Miriam delay]
+    H --> I[Order placed -- cycle repeats]
+    F --> J{Client forwards to colleague?}
+    J -->|Yes| K[New J1 journey begins for referred contact]
+    J -->|No| L[Referral message stays in their WhatsApp -- may forward later]
+    I --> A
+```
+
+**Post-delivery WhatsApp sequence:**
+- Day 1: "Su material esta listo. Gracias por confiar en PYGLARA."
+- Day 30: "Como le fue? Tiene mas material? Estamos a la orden."
+- Day 30 (if positive): "Nos alegra. Si conoce alguien que necesite galvanizado, con gusto le envio nuestra informacion." + forwardable referral message with capability statement PDF attached.
+
+**Forwardable referral message design:**
+Client taps Forward, picks a contact, and sends. Message includes: one-line intro ("Mi proveedor de galvanizado en Barquisimeto -- excelente servicio"), capability statement PDF attached, WhatsApp contact link. Zero effort for the referrer.
+
+### Viral Loop: Delivery Documents as Marketing
+
+Every quality certificate, delivery note, and invoice issued by PYGLARA includes a one-line footer:
+
+"Servicio de galvanizado por PYGLARA -- pyglara.com -- WhatsApp +58 424 571 5349"
+
+When Rodriguez's engineer reviews the quality certificate, PYGLARA's contact info is there. When Carlos shows galvanized product to his client, the delivery note has PYGLARA's info. The product itself becomes a marketing channel at zero ongoing cost.
+
+### Journey Patterns
+
+**Navigation patterns:**
+
+| Pattern | Usage | Implementation |
+|---|---|---|
+| Bottom tab bar (mobile) | J1, J2, J5 navigate between sections | 4 tabs, always visible, active state by URL |
+| Language toggle | J3, J4 switch to English | ES/EN in header, link-based, immediate |
+| Footer as secondary nav | J4 finds partnership inquiry | Strategic Partnerships link in footer only |
+| Deep link from PDF | J5 arrives at copper page directly | QR codes on printed materials link to specific pages |
+| Plant entrance sign | Walk-in visitors | $20 sign with WhatsApp QR + phone + "Servicio de Galvanizado" |
+
+**Conversion patterns:**
+
+| Pattern | Usage | Implementation |
+|---|---|---|
+| WhatsApp via domain redirect | J1, J2, J5 | pyglara.com/wa redirects to wa.me link (protects number, enables rate limiting) |
+| Structured WhatsApp pre-fill | J2 | Pre-fill includes fields: Material, Tonelaje, Dimension |
+| Context-aware pre-fills | J1, J2, J5 | Different pre-fill text per page section |
+| Desktop email fallback | J3, desktop users | "or email us" text link below WhatsApp buttons on desktop viewports |
+| Minimal web form | J3 (contact), J4 (partnership) | 3-5 fields max, native HTML |
+| Download button | J3 (vendor pack) | Single prominent button, professional filename |
+
+**Trust patterns:**
+
+| Pattern | Usage | Implementation |
+|---|---|---|
+| Plant photo as first impression | All users | Hero section, real photo, dark navy background |
+| Big stats as credibility | All users | 400, 936, 7m, 50+ as oversized typographic focal points |
+| Source citations on all data | J3 (James verifies claims) | Every chart and stat has source line |
+| Named people | J2, J3 | Ing. Miriam with 36 years, Sir as contact |
+| Equipment references | J3 | Pilling, Honeywell, Allen Bradley with model numbers |
+| Association logos | J3, J4 | FEDECAMARAS, AVGAL, AIMM (once obtained) |
+| Address + RIF | J4 | Verifiable via Google Maps and SENIAT |
+
+**Fallback patterns:**
+
+| Pattern | When | Implementation |
+|---|---|---|
+| Raw HTML WhatsApp redirect | Page partially loads | pyglara.com/wa link in raw HTML, no JS dependency |
+| Desktop email fallback | WhatsApp not available on desktop | "or email us" text below WhatsApp buttons |
+| Phone number visible | Any fallback scenario | Phone in header and footer on every page |
+| Confirmation with fallback contact | After form submission | "Response within X hours. Immediate contact: phone, WhatsApp" |
+
+### Shared Dependencies and Mitigations
+
+**Sir as single point of failure (ALL journeys):**
+- WhatsApp conversation priority protocol: investor (J4) > returning client (J7) > new quote (J1, J2, J5) > international (J3)
+- Simple conversation tracker: Google Sheet with contact name, type, date, status
+- WhatsApp auto-reply sets response time expectations
+- Backup: Ing. Miriam handles technical questions if Sir unavailable 48+ hours
+
+**Ing. Miriam pricing bottleneck (J1, J2, J5, J7):**
+- Pre-approved pricing matrix: galvanizing per ton by weight range, copper per rod by quantity tier
+- Delegation thresholds: Sir can quote standard jobs within +/-10% without Miriam approval
+- Must be agreed BEFORE website or materials launch
+
+**Capability statement as root distribution node (J1, J2, J3, J4):**
+- Distribution target: 50 in first month (10 ferreterias, 5 construction offices, 3 trade events, personal network)
+- Two versions: print (physical handoff) + WhatsApp-optimized PDF (large headline at thumbnail size, under 5MB)
+- Batch-specific QR codes for tracking which distribution channel converts
+
+**Google Business Profile (J1, J3, J4):**
+- Week 1 setup checklist: claim, verify, add 5+ photos, set hours, add WhatsApp number, bilingual description
+- Link website when live
+- Request first Google review after first completed client order
+
+### Revised Priority Sequencing
+
+Based on reverse engineering and dependency analysis:
+
+| Week | Deliverable | Enables |
+|---|---|---|
+| Week 1 | Google Business Profile claimed and verified | J1, J3, J4 can find PYGLARA via Google |
+| Week 1 | WhatsApp Business set up (auto-reply, quick replies, catalog) | J1, J2, J5, J7 conversations |
+| Week 1 | Association membership applications submitted | Trust signals for website and printed materials |
+| Week 1 | Pricing matrix agreed with Ing. Miriam | Sir can quote without delay |
+| Week 2 | Minimal homepage live (photo + contact + status) | Investors who Google find something |
+| Week 2 | Capability statement printed (50 copies) | Distribution begins -- J1, J2, J3, J4 ignition |
+| Week 3-4 | Investor document complete | J4 (Maria) -- the multiplier journey |
+| Week 3-4 | Copper rod spec sheet printed | J5 (Luis) distribution begins |
+| Week 4-6 | Full website live (all 4 pages, bilingual) | All digital journeys at full capability |
+| Week 6+ | Plant entrance sign installed | Walk-in journey |
+
+**Primary success metric:** Time from investor document completion to first investor meeting. This is the single most important metric because J4 (investor) is the multiplier node -- its success accelerates every other journey.
+
+### Flow Optimization Principles
+
+| Principle | Application |
+|---|---|
+| **Minimum steps to WhatsApp** | Carlos: 1 step. Rodriguez: 3 steps. Never more than 3. |
+| **Progressive disclosure** | Homepage shows headline + stats. Inner pages show detail. Never forced upfront. |
+| **Context-aware pre-fills** | Every WhatsApp link knows which page the user is on. |
+| **No dead ends** | Every page has WhatsApp + phone + address. Every form has confirmation + fallback. |
+| **Separate notification channels** | Quote and partnership inquiries go to different emails. |
+| **Escalation, not dumping** | Capability statement earns sales kit. Sales kit earns investor doc. |
+| **Product as marketing channel** | Every delivery document carries PYGLARA contact info. |
+| **Clients as distribution nodes** | Forwardable referral messages turn satisfied clients into lead generators. |
+| **Source everything** | Every stat and chart on the website has a citation. James verifies claims. |
+
+## Component Strategy
+
+### Design System Coverage
+
+**Framework:** Astro + Tailwind CSS. No component library. All components are custom `.astro` files with Tailwind utilities. Zero client-side JavaScript for component rendering.
+
+**Available from Tailwind:** Typography scale, colors, spacing, responsive breakpoints, flexbox/grid layouts, print utilities, hover/focus/active states, transition utilities.
+
+**Must be built custom:** All 7 interactive components + BaseLayout + section patterns.
+
+### Public-Facing Identity Rule
+
+No personal names on public-facing website materials. The commercial contact is "PYGLARA" -- the company entity, not an individual. Ing. Miriam appears by name ONLY as the technical authority on the Quality and Safety page (36 years, plant engineer, issues quality certificates). All form confirmations, email responses, and public messaging use "Our team" or "PYGLARA." Sir operates WhatsApp Business and email behind the scenes, intercepting all communications.
+
+### Component Specifications
+
+#### WhatsAppButton.astro
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Primary CTA -- bridges user from website to WhatsApp conversation |
+| **Usage** | Every page. Mobile: floating bottom-right, ABOVE tab bar (bottom: 72px). Desktop: header icon + inline buttons. |
+| **Props** | `message` (pre-fill text), `variant` ("float" or "inline" or "bar"), `label` (button text) |
+| **States** | Default (green #25D366), hover (darken 10%), active (darken 15%), focus (2px navy outline) |
+| **Variants** | Float: 56px circle, fixed position, always visible on mobile (no conditional hiding). Inline: full-width green bar. Header: small icon in nav. |
+| **Pre-fill rules** | Homepage: generic ("Hola, me interesa conocer los servicios de PYGLARA"). Inner pages: service-specific. Copper sample CTA: includes sample request fields. |
+| **Multiple instances** | Multiple WhatsApp buttons per page supported with different `message` props (e.g., copper page has general inquiry + sample request). |
+| **Desktop behavior** | Float becomes header icon. "or email us at [address]" text appears below inline variants on desktop viewports. |
+| **Implementation** | `<a>` tag linking to pyglara.com/wa?text={message}. Zero JS. Redirect protects phone number. |
+| **Accessibility** | `aria-label="Contact PYGLARA on WhatsApp"`, keyboard focusable, visible focus ring |
+| **Print behavior** | `print:hidden` -- replaced by QR code in print stylesheet |
+
+#### BottomTabBar.astro
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Primary mobile navigation -- 4 tabs always visible at bottom of viewport |
+| **Usage** | All pages, mobile only (hidden on desktop via `md:hidden`) |
+| **Tabs** | Galv / Cobre / Calidad / Contacto |
+| **Icons** | Custom inline SVGs (20px, 2px stroke, outline only, single color): Kettle/dip symbol (Galv), Vertical rod with pointed bottom (Cobre), Shield with checkmark (Calidad), Phone handset (Contacto) |
+| **States** | Default (gray #888), active (navy #1B3A5C with copper underline) |
+| **Props** | `currentPage` (determines active tab, matched against URL at build time) |
+| **Implementation** | Fixed to bottom, 56px height, flexbox row. Min touch target 44px per tab. Z-index below WhatsApp float. |
+| **Accessibility** | `role="navigation"`, `aria-label="Main navigation"`, `aria-current="page"` on active tab |
+| **Print behavior** | `print:hidden` |
+
+#### LanguageToggle.astro
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Switch between Spanish and English versions of current page |
+| **Usage** | Header, all pages |
+| **Props** | `currentLang` ("es" or "en"), `targetPath` (URL of same page in other language) |
+| **States** | Current language bold navy, other language gray link |
+| **Implementation** | `<a>` tag. If on `/es/servicios`, links to `/en/services`. Zero JS. No cookies. URL determines language. |
+| **Visual** | Small text in header: "ES | EN" with border, 2px border-radius |
+| **Accessibility** | `aria-label="Switch to English"` (or Spanish). `lang` attribute on link text. |
+| **Print behavior** | `print:hidden` |
+
+#### StatusIndicator.astro
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Shows plant operational status and kettle expansion timeline |
+| **Usage** | Homepage hero section |
+| **Props** | `status` ("active", "maintenance", "limited"), `kettles` (array of {name, status, date}) |
+| **States** | Active: green dot + green text. Maintenance/limited: amber text. |
+| **Implementation** | Content from markdown frontmatter. Server-rendered. Green dot is CSS circle (8px, border-radius 50%). |
+| **Visual** | On dark hero: green dot + white status text, copper text for kettle timeline |
+| **Accessibility** | `role="status"`, `aria-label="Plant operational status: active, accepting orders"` |
+| **Print behavior** | Visible in print -- shows current operational status |
+
+#### ServiceGrid.astro
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Visual menu of galvanizing applications -- in-page navigation to spec sections |
+| **Usage** | Galvanizing page |
+| **Content** | 6 items: Estructural, Techos, Barandas, Electrico, Agricola, Custom |
+| **Props** | `services` (array of {icon, label, anchorId}) |
+| **Behavior** | Each cell is an anchor link (`<a href="#estructural">`) that smooth-scrolls to the corresponding spec section. NOT a WhatsApp link. WhatsApp CTAs live at the end of each spec section. |
+| **States** | Default (border, navy text), hover (lift 4px + shadow + copper border), active (pressed) |
+| **Layout** | CSS Grid. 2 columns on mobile (320px+), 3 columns on tablet/desktop (768px+). 8px gap. |
+| **Implementation** | Each cell is an `<a>` with `href="#anchorId"`. Icons as inline SVG (18px, copper). Min touch target 44px. |
+| **Accessibility** | Each cell has descriptive `aria-label`. Grid has `role="navigation"`, `aria-label="Service categories"`. |
+| **Print behavior** | Static grid without hover effects. Anchor links non-functional in print. |
+
+#### QuoteForm.astro
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Formal contact/quote request for international clients (James) |
+| **Usage** | Contact page |
+| **Visible fields** | Name (text, required), Email (email, required), Message (textarea, required). 3 fields. |
+| **Progressive disclosure** | `<details>` element: "Add professional details (optional)" reveals Company (text) and Title/Role (text). Collapsed by default. Zero JS. Shown on EN version, hidden on ES version via `lang` prop. |
+| **Props** | `formType` ("quote"), `action` (submission endpoint), `lang` ("es" or "en") |
+| **States** | Default, focus (navy border), error (red border + error text), submitting (disabled), success (redirect to confirmation page) |
+| **Spam protection** | Honeypot field (`<input name="website" class="hidden" tabindex="-1">`), server-side rate limiting |
+| **Implementation** | Native HTML `<form method="POST">`. HTML5 `required`, `type="email"` validation. No JS. |
+| **Accessibility** | All inputs have `<label>` elements. Errors via `aria-describedby`. Focus visible (2px navy). Min 44px input height. |
+| **Visual** | Narrow container (max 600px centered). Navy labels. Light gray input backgrounds. |
+| **Print behavior** | `print:hidden` -- shows contact info instead |
+
+#### PartnershipForm.astro
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Discreet inquiry form for investors and strategic partners (Maria) |
+| **Usage** | Partnership page (linked from footer only) |
+| **Fields** | Name (text, required), Organization (text, required), Email (email, required), Phone (tel, optional), Message (textarea, required). 5 fields. |
+| **Props** | `action` (submission endpoint -- SEPARATE from quote form endpoint) |
+| **Email routing** | Submissions go to separate email notification. Subject: "Partnership Inquiry" -- distinct from quote notifications. |
+| **Implementation** | Same as QuoteForm. Separate API route or Formspree endpoint. |
+| **Confirmation page** | Redirects to /[lang]/partnership-confirmation: "Thank you. Your inquiry has been received. Our team will respond within 24 hours. Next steps: (1) Review within 24 hours. (2) Introductory call if there is a fit. (3) Detailed materials shared following the call. For immediate contact: +58 424 571 5349." |
+| **Accessibility** | Same as QuoteForm. Phone field: `type="tel"`, `inputmode="tel"`. |
+| **Print behavior** | `print:hidden` |
+
+### BaseLayout.astro (Architectural Foundation)
+
+| Spec | Detail |
+|---|---|
+| **Purpose** | Shared HTML shell for all pages |
+| **Contains** | `<html lang>`, `<head>`, header (logo + nav + language toggle), `<main>` slot, footer, bottom tab bar, WhatsApp float, scroll-reveal script |
+| **Props** | `lang`, `title`, `description`, `ogImage`, `canonicalUrl`, `alternateUrl` |
+| **Structured data** | LocalBusiness schema (address, phone, hours, geo coordinates) |
+| **hreflang** | Links ES and EN versions of each page |
+| **Global CSS** | `html { scroll-behavior: smooth; }` and `[id] { scroll-margin-top: 64px; }` for anchor links that clear fixed header |
+| **Scroll-reveal script** | ~700 bytes inline: IntersectionObserver for fade-up reveals + stat counter animation |
+| **Print stylesheet** | See consolidated print spec below |
+
+### Consolidated Print Specification
+
+When any PYGLARA page is printed:
+
+**Hidden:** WhatsApp float, bottom tab bar, language toggle, navigation header, all inline WhatsApp buttons, forms, dark background colors
+
+**Shown:** All content text, spec blocks, service grid (as static list), association logos, plant photos, status indicator
+
+**Added:** QR code linking to pyglara.com/wa (replaces WhatsApp buttons), full contact block at bottom (phone, email, address, RIF)
+
+**Layout:** Single column, max width 100%, white background (save ink), navy text. Dark navy sections become white with navy text. Images print in color if available.
+
+### Section Patterns (Reusable, Not Standalone Components)
+
+| Pattern | Description | Used On |
+|---|---|---|
+| **HeroSection** | Dark navy full-bleed, plant photo, headline (48px desktop / 32px mobile), stat bar, dual CTA. Path Robotics inspired. | Homepage |
+| **StatBar** | Row of 3-4 oversized numbers (56-72px) with small labels below. Animated counter on scroll. | Homepage, galvanizing page |
+| **ChartSection** | SVG capacity gap chart with animated line draw (CSS stroke-dashoffset). Source citation below. | Homepage |
+| **DualCapabilityCards** | Two cards: navy (galvanizing) + copper (ground rods). Photo background, title, 3 bullets, CTA. Hover lift 4px. | Homepage |
+| **SpecBlock** | Left-bordered data block with label-value pairs. Copper left border on ALL backgrounds. Distinguishes workpiece dimensions vs. kettle dimensions. | Galvanizing, copper pages |
+| **AssociationBar** | Full-width row of association logos. Light gray background. | Homepage, quality page |
+| **TrustBar** | Equipment manufacturer logos (Pilling, Honeywell, Allen Bradley) with "Equipped by" label. | Homepage, quality page |
+
+### Vendor Qualification Pack (Download Asset)
+
+**Format:** ZIP file containing separate PDFs + individual download links on the Quality page.
+
+**Contents:**
+- PYGLARA-Capability-Statement-EN.pdf
+- PYGLARA-HSE-Policy-EN.pdf
+- PYGLARA-Equipment-List-EN.pdf
+- PYGLARA-Quality-Process-EN.pdf
+
+**Implementation:** ZIP generated at build time, stored in `/public/documents/`. Individual PDFs also available. Download button on Quality page offers both: "Download All (ZIP)" + individual file links below.
+
+**Filename convention:** PYGLARA-[Document]-[Lang].pdf -- professional, consistent, self-explanatory.
+
+### Component Implementation Roadmap
+
+**Phase 1 -- Core (Week 2, minimal homepage):**
+
+| Component | Why First |
+|---|---|
+| BaseLayout.astro | Foundation for all pages |
+| WhatsAppButton.astro (float variant) | Primary CTA -- must work from day one |
+| StatusIndicator.astro | Homepage hero -- signals "plant is alive" |
+| LanguageToggle.astro | James and Maria need English immediately |
+
+**Phase 2 -- Full site (Weeks 4-6):**
+
+| Component | Why |
+|---|---|
+| BottomTabBar.astro | Mobile navigation for all inner pages |
+| ServiceGrid.astro | Galvanizing page anchor navigation |
+| QuoteForm.astro | International contact path (James) |
+| PartnershipForm.astro | Investor inquiry path (Maria) |
+| All section patterns | HeroSection, StatBar, ChartSection, DualCapabilityCards, SpecBlock, AssociationBar, TrustBar |
+| Vendor pack ZIP | James's download asset |
+
+**Phase 3 -- Enhancement (post-launch):**
+
+| Component | Why |
+|---|---|
+| Photo gallery / plant walk-through | Visual proof enhancement |
+| Copper rod comparison table | PYGLARA vs. Imported -- trust builder for Luis |
+| Client testimonial cards | Once first clients served |
+| Blog/news section | Operational updates (7m kettle restart, certifications achieved) |
+
+### Footer Design
+
+**Structure:**
+
+- Company: PYGLARA -- Prensados y Galvanizados de Lara, S.A.
+- Address: Calle 26, Galpon 25-90, Zona Industrial I, Barquisimeto, Estado Lara, Venezuela
+- RIF: J-XXXXXXXX-X
+- Phone: +58 424 571 5349
+- Thin horizontal rule
+- "Strategic Partnerships" link -- copper color (#B87333), 14px font, visually distinct from address text, clearly clickable
+- Copyright: 2026 PYGLARA
+- Privacy Policy link
+
+**Desktop:** Single row or two-column layout within 1024px container.
+**Mobile:** Stacked, left-aligned, above the tab bar (padding-bottom: 72px to clear tab bar).
+
+## UX Consistency Patterns (11 Rules)
+
+The complete pattern library for PYGLARA. Every UX decision on the site derives from these 11 rules.
+
+**Rule 1: Three button types.**
+Green (#25D366) = contact action (WhatsApp). Navy (#1B3A5C) fill = navigate/download. Navy outline (2px border) = alternative path. Maximum ONE green button per viewport. All buttons: min 44px height, padding 14px 24px. On dark backgrounds: navy fill becomes white fill with navy text, outline becomes white outline with white text.
+
+**Rule 2: One focus style.**
+All interactive elements (buttons, links, inputs, tabs): 2px navy (#1B3A5C) outline on focus. Global rule. No exceptions. Replaces browser default.
+
+**Rule 3: One spacing unit.**
+Base: 16px. All spacing derives from multiples: 2x (32px) between element groups and desktop edge padding. 3x (48px) between major sections on mobile. 6x (96px) between major sections on desktop. 16px mobile edge padding. Every spacing decision is a multiple of 16.
+
+**Rule 4: Two link colors.**
+Navigation links: navy. Content and footer links: copper (#B87333), underline on hover. No other link styles exist.
+
+**Rule 5: Dark/light section alternation.**
+Sections alternate between navy (#1B3A5C) background and white (#FFFFFF) background. Hard cut between sections -- no gradients, no rounded transitions. Navy sections: white text, copper accents, white outline buttons. White sections: navy text, copper accents, navy fill/outline buttons.
+
+**Rule 6: One animation.**
+All sections: fade-up (opacity 0 to 1, translateY 24px to 0, 0.6s ease-out) when 15% visible via IntersectionObserver. Hero entrance staggers at 150ms intervals (title, subtitle, stats, CTA). No other animation types -- no slide-left, no scale, no rotate. All animations disabled when `prefers-reduced-motion: reduce` is set.
+
+**Rule 7: Forms -- labels visible, errors red, confirmation redirect.**
+Labels above inputs (never placeholder-only). Required fields marked with asterisk. Invalid fields: 2px red border + error text via `aria-describedby`. Success: redirect to separate confirmation page with next-steps and fallback contact info. Optional fields in collapsible `<details>` element (zero JS). Input height: min 44px. Input background: light gray (#F5F5F5) on white sections, white on dark sections.
+
+**Rule 8: Empty sections hidden.**
+Never show empty sections, placeholder boxes, or "coming soon" containers. If content doesn't exist yet, the section doesn't render. Two exceptions: (1) Copper line status -- show transparently even if not operational ("Linea de cobre: reinicio programado [fecha]"). (2) Hero photo -- dark navy gradient fallback acceptable at launch if plant photos not yet available.
+
+**Rule 9: Z-index stack (4 values).**
+Page content: 0 (default). Header: 10. Bottom tab bar: 20. WhatsApp float button: 30. No other z-index values exist. No conflicts possible.
+
+**Rule 10: Two 404 pages.**
+/es/404 (Spanish) and /en/404 (English). Language detected from URL prefix -- `/en/` URLs show English 404, everything else shows Spanish. Each includes: "page not found" message, WhatsApp button, phone number, link to homepage in that language. Static pages generated at build time.
+
+**Rule 11: Anchor IDs are English and language-neutral.**
+All `id` attributes on anchor targets use English names (#structural, #roofing, #electrical) regardless of page language. Language toggle strips the hash when switching languages (links to page root, not anchored position). Smooth scroll via CSS `scroll-behavior: smooth`. Anchors clear fixed header via `scroll-margin-top: 64px`. Image specifications, animation JS budget, and print stylesheet are defined in the Visual Design Foundation and Component Strategy sections -- not repeated here.
+
+## Responsive Design and Accessibility
+
+### Responsive Strategy
+
+**Mobile-first.** All design starts at 320px and scales up. Non-negotiable for Venezuelan B2B (80%+ mobile browsing).
+
+**Breakpoints (Tailwind defaults):**
+
+| Breakpoint | Width | Key Changes |
+|---|---|---|
+| **Base (mobile)** | 320-767px | Single column. Bottom tab bar. WhatsApp float. 16px edge padding. Hero 32px. Service grid 2 col. |
+| **md (tablet)** | 768-1023px | Service grid 3 col. Tab bar hidden, desktop nav appears. 24px edge padding. |
+| **lg (desktop)** | 1024px+ | Content max 1024px centered. Hero 48px. Forms max 600px. Desktop nav + WhatsApp icon. 32px edge padding. |
+
+**Element behavior per breakpoint:**
+
+| Element | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Navigation | Bottom tab bar (fixed) | Desktop horizontal nav | Desktop horizontal nav |
+| WhatsApp | Float 56px circle (bottom: 72px) | Float (same) | Header icon + inline buttons + "or email us" fallback |
+| Hero headline | 32px | 36px | 48px |
+| Stat numbers | 40px | 56px | 72px |
+| Service grid | 2 columns | 3 columns | 3 columns |
+| Dual capability cards | Stacked vertically | Side by side | Side by side |
+| Forms | Full width, stacked labels | Same | Max 600px centered |
+| Section spacing | 48px | 72px | 96px |
+| Footer | Stacked, padding-bottom 72px | Two columns | Two columns within 1024px |
+
+**No layout surprises between breakpoints.** Content reflows; it doesn't reorganize. Same information hierarchy on mobile and desktop -- just more breathing room.
+
+### Accessibility Strategy
+
+**Target: WCAG 2.1 Level AA.**
+
+**Built into the spec from the start:**
+
+- Color contrast: navy on white 10.3:1 (AAA). Body text 16.6:1 (AAA). Copper restricted to 24px+ only (3.5:1).
+- Touch targets: 44px minimum on all interactive elements.
+- Focus: 2px navy outline on all interactive elements (Pattern Rule 2).
+- Keyboard: all forms navigable via Tab, all links focusable, skip-to-content link.
+- Semantic HTML: heading hierarchy (h1 > h2 > h3), landmarks (nav, main, footer), role and aria-label on all components.
+- Language: `<html lang="es">` or `<html lang="en">` per page.
+- Images: `alt` text in current page language. Decorative images: `alt=""`.
+- Reduced motion: all animations respect `prefers-reduced-motion`.
+- SVG charts: `role="img"` with `aria-label` describing the data.
+
+**Component accessibility checklist:**
+
+| Component | Requirements |
+|---|---|
+| WhatsAppButton | `aria-label="Contact PYGLARA on WhatsApp"`. Focusable. Focus ring. |
+| BottomTabBar | `role="navigation"`, `aria-label="Main navigation"`, `aria-current="page"` on active. |
+| LanguageToggle | `aria-label="Switch to English/Spanish"`. `lang` attribute on link text. |
+| StatusIndicator | `role="status"`, `aria-label` with full status text. |
+| ServiceGrid | `role="navigation"`, `aria-label="Service categories"`. Descriptive `aria-label` per cell. |
+| QuoteForm | `<label>` on every input. Errors via `aria-describedby`. Honeypot: `tabindex="-1"`, `aria-hidden="true"`. |
+| PartnershipForm | Same as QuoteForm. |
+| ChartSection SVG | `role="img"`, `aria-label` with chart description. Source citation as visible text. |
+
+### Testing Strategy
+
+**Real device testing:**
+
+| Device | Priority | Why |
+|---|---|---|
+| Samsung Galaxy A14 (budget Android, LCD, 3GB RAM) | Critical | Carlos's phone. Most common Venezuelan device. Test: WhatsApp button, page load, service grid, outdoor readability. |
+| iPhone SE (375px, iOS Safari) | High | Smallest common iOS. Test: tab bar + float stacking, QR code to WhatsApp flow. |
+| Chrome desktop (1920px) | High | James in Houston. Test: desktop nav, vendor pack download, EN form layout. |
+| Samsung Galaxy Tab A | Medium | Tablet breakpoint validation. |
+
+**Browser context testing:**
+
+| Context | Why | What to Test |
+|---|---|---|
+| **WhatsApp in-app browser** | Carlos receives links ON WhatsApp -- opens in WhatsApp's WebView, not Chrome | Full site rendering, WhatsApp button behavior, CSS compatibility |
+| **QR code scan flow (iOS)** | QR scan opens Safari, not Chrome. Safari opens wa.me link. | Test on 3 different phones: does WhatsApp open? What if WhatsApp isn't installed? |
+| **QR code scan flow (Android)** | Camera app varies (Samsung Camera, Google Camera, third-party). Some open Chrome, some Samsung Internet. | Test QR-to-WhatsApp on Samsung + Xiaomi + Motorola. |
+| **Chrome DevTools throttled 4G** | Simulates Venezuelan connection speed | All pages under 2.4 seconds. Add 100ms to results for Venezuelan CDN latency (nearest Vercel edge: Miami/Sao Paulo). |
+
+**Android memory management awareness:** On 3GB RAM devices, Chrome kills background tabs aggressively. If user switches to WhatsApp and returns, the tab may reload. All scroll positions reset. Reveal animations re-trigger. This is expected behavior, not a bug. Design so re-triggered animations don't feel broken (fade-up re-plays gracefully).
+
+**Automated testing:**
+
+| Tool | What |
+|---|---|
+| Lighthouse | Performance 90+, Accessibility 95+, SEO 90+. Run on throttled 4G profile. Add 100ms to load times for Venezuelan reality. |
+| axe DevTools (browser extension) | Deep accessibility scan. Run on every page in both languages. |
+| Keyboard-only navigation | Tab through entire site without mouse. Every element reachable. Focus always visible. |
+| Screen reader (NVDA on Windows) | Full reading order. Form labels announced. Status indicator announced. Chart described. |
+| High contrast mode (Windows) | Site usable in forced high-contrast. |
+| Color blindness simulator | Copper and green distinguishable in deuteranopia (red-green blindness). |
+
+**Venezuelan internet testing:**
+
+| Test | Target |
+|---|---|
+| Throttled 4G page load | Under 2.4 seconds (+ 100ms CDN latency buffer) |
+| Intermittent connection (toggle offline during load) | WhatsApp link, phone, address visible on partial load |
+| Total page weight | Under 500KB per page |
+| JavaScript disabled | All content visible. WhatsApp links work. Forms submit. Only scroll animations break. |
+
+**Outdoor sunlight readability test:**
+Take a Samsung A14 (or similar LCD Android) outside at noon in direct sunlight. Open the site. Can you read the navy hero section headline? If not, consider lightening navy to #2A4F75 or increasing mobile hero text size. This test MUST happen before launch.
+
+### Implementation Guidelines
+
+**HTML:**
+- Semantic elements: `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`. No `<div>` soup.
+- One `<h1>` per page. Heading hierarchy never skips levels.
+- Every `<img>` has `alt` text. Decorative: `alt=""`.
+- Every `<a>` has descriptive text (never "click here").
+- Forms: every `<input>` has a `<label>` with linked `id`/`for`.
+- `<html lang="es">` or `<html lang="en">` per page.
+
+**CSS (Tailwind):**
+- Mobile-first: base styles, then `md:` and `lg:` overrides.
+- Tailwind responsive variants only -- no custom media queries.
+- `print:` variant for print styles.
+- Custom CSS limited to: scroll-behavior, scroll-margin-top, keyframe animations, reveal class, and Safari `<details>` element styling (`-webkit-details-marker` overrides -- test on Safari, rendering differs from Chrome/Firefox).
+
+**Images:**
+- WebP format via Astro `astro:assets` optimization.
+- Responsive `srcset` for hero (400px, 800px, 1200px widths).
+- Lazy-load all except hero (`loading="eager"` on hero).
+- Icons as inline SVG in components -- never `<img>` tags.
+
+**Performance:**
+- Zero external fonts. System font stack.
+- Inline critical CSS (Astro automatic).
+- Scroll-reveal script inline in `<body>`, not external file.
+- No analytics for first 2 weeks. Use Vercel built-in analytics (server-side, zero page weight). Add GA4 in Week 3 if needed -- it adds 28KB JS to every page.
+
+**WhatsApp redirect implementation:**
+Use Vercel redirects with query parameters for context-aware pre-fills:
+
+```
+pyglara.com/wa?from=homepage  -> generic pre-fill
+pyglara.com/wa?from=galvanizing -> galvanizing pre-fill
+pyglara.com/wa?from=copper -> copper rod pre-fill
+pyglara.com/wa?from=copper-sample -> copper sample request pre-fill
+```
+
+Implemented as Vercel redirect rules or a single Astro API route that reads the `from` parameter and constructs the wa.me URL with the appropriate text. Phone number stays server-side -- never in client HTML.
+
+**Bilingual build coupling:**
+Astro content collections require both ES and EN versions of every page before the build succeeds. A missing translation fails the build. This is a FEATURE -- prevents deploying incomplete bilingual pages. But it means both language versions must be written before any page can launch. Factor into timeline: minimal homepage (Week 2) requires both Spanish AND English content ready.
+
+**Vercel hosting awareness:**
+- Free tier: 100GB bandwidth/month. At sub-500KB pages, that's ~200,000 page views. Sufficient for initial traffic. Monitor if WhatsApp distribution goes viral.
+- Nearest CDN edge to Venezuela: Miami or Sao Paulo. Add 50-100ms latency to all Lighthouse results when estimating real Venezuelan user experience.

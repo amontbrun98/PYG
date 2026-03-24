@@ -39,8 +39,10 @@ documentCounts:
 workflowType: 'prd'
 date: '2026-03-13'
 author: 'Sir'
-lastEdited: '2026-03-19'
+lastEdited: '2026-03-24'
 editHistory:
+  - date: '2026-03-24'
+    changes: 'UX spec alignment: investor doc elevated to Priority 1, printed materials added as Deliverable 1b, breakpoints updated (mobile 320-767, tablet 768-1023, desktop 1024+), hamburger replaced with bottom tab bar, FR8-FR10 rewritten for WhatsApp-first Venezuelan flows, FR10b response times updated (24h partnership), FR22 bottom tab bar, FR25 investor doc section reordering (financials to #3), new FR32 (printed materials), FR33-FR34 (WhatsApp Business), NFR15 Google Sheets fallback, Journey 2 WhatsApp-first, new Journey 8 (repeat client + referral loop), Journey Requirements Summary expanded'
   - date: '2026-03-19'
     changes: 'Post-validation edits: operational phasing (3m active), new Journey 6 (investor doc reading), Journey 7 (copper rod buyer), expanded investor doc FRs (FR25-FR31), new website FRs (FR6b-FR6e, FR10b-FR10c, FR17b, FR24b), expanded domain requirements (legal, HSE, privacy), copper SEO keywords, FR measurability fixes, NFR implementation leakage cleanup, analytics NFR19, additional success criteria'
 ---
@@ -56,14 +58,16 @@ PYGLARA (Prensados y Galvanizados de Lara, S.A.) is a fully equipped, debt-free 
 
 **Operational Status:** The plant is not starting from zero. The 3m kettle is currently operational with active commercial jobs. The 7m Pilling kettle requires burner replacement ($15K-$25K) before restart. The 9m Pilling kettle requires foundation work, crane modifications, and gas line extension — months after 7m restart. Website content must reflect this phased reality: current 3m capability, near-term 7m expansion, and future 9m capacity. Installed capacity figures (400 tons/month) represent full-fleet potential, not day-one availability.
 
-This PRD defines two independent deliverables:
+This PRD defines three deliverable categories, prioritized by business impact:
 
-1. **Bilingual Website (Spanish/English)** — A professional digital platform with two user funnels:
-   - **Client funnel:** Service catalog, galvanizing capacity specs, copper ground rod product pages, quote request forms, and WhatsApp Business integration — targeting Venezuelan construction firms, ferreterías, industrial fabricators, and international EPC contractors.
-   - **Investor/partner inquiry funnel:** A discreet contact pathway for individuals or entities interested in investment or partnership opportunities. This captures leads only — no investor materials, financials, or sensitive business data are displayed on the site. Investor documentation is shared privately after qualification.
+1. **Comprehensive Investor Document (Bilingual, Offline) — PRIORITY 1.** Capital is the bottleneck; client interest already exists through existing relationships and the active 3m kettle. A standalone, investor-grade document covering plant capabilities, current standing, SWOT analysis, competitive landscape, financial projections (at 30% regulated margin per Ley de Precios Justos), asset inventory, and market thesis. Distributed via tracked link (DocSend) or presented in person — completely separate from the website. Never published online. A 2-page standalone executive summary serves as a qualification tool before sharing the full document.
+
+2. **Printed Materials Ecosystem — PRIORITY 1b.** Physical distribution assets that Sir carries to meetings and seeds in ferretería networks: one-page capability statement (bilingual), 3-page sales kit (capability + copper rods + how to order with WhatsApp QR), and one-page copper rod spec sheet. These are the primary viral distribution assets — forwarded on WhatsApp and handed out at events. Designed print-first, then adapted for digital forwarding.
+
+3. **Bilingual Website (Spanish/English) — PRIORITY 2.** A professional digital verification layer with two user funnels:
+   - **Client funnel:** Service catalog, galvanizing capacity specs, copper ground rod product pages, WhatsApp-native quote flows for Venezuelan clients, web contact form for international contacts, and WhatsApp Business integration — targeting Venezuelan construction firms, ferreterías, industrial fabricators, and international EPC contractors.
+   - **Investor/partner inquiry funnel:** A discreet contact pathway in the footer for individuals or entities interested in investment or partnership opportunities. This captures leads only — no investor materials, financials, or sensitive business data are displayed on the site. Investor documentation is shared privately after qualification.
    - **UX as a first-class concern:** The site requires dedicated UX design — proper user journeys for each funnel, bilingual navigation patterns, mobile-first for Venezuelan internet conditions, and conversion-optimized flows. This warrants its own epic in the implementation plan.
-
-2. **Comprehensive Investor Document (Bilingual, Offline)** — A standalone, investor-grade document covering plant capabilities, current standing, SWOT analysis, competitive landscape, financial projections (at 30% regulated margin per Ley de Precios Justos), asset inventory, and market thesis. Distributed as PDF or presented in person — completely separate from the website. Never published online.
 
 The constraint is not demand — PYGLARA's 4,800 tons/year capacity represents 2-4% of estimated national demand. The constraint is visibility. These deliverables convert an invisible idle asset into a discoverable, credible industrial services provider at the exact moment Venezuela's reconstruction creates captive demand.
 
@@ -158,11 +162,11 @@ Two independent deliverables with phased development. See "Project Scoping & Pha
 
 **Rising Action:** He goes straight to Services. He needs to know: Can they handle 7-meter trusses? (Yes — 7m kettle operational.) What's the turnaround? What quality documentation do they provide? He finds the quality certification section — per-lot certificates with adherence, appearance, zinc weight, and functionality measurements, signed by a 36-year veteran engineer. That's more documentation than he's gotten from any galvanizer before.
 
-**Climax:** He fills out the quote request form: 20 tons, structural trusses, max piece length 6.5m, needed within 3 weeks. He attaches a rough sketch of the truss dimensions. He also checks — can they supply copper ground rods for the building's electrical grounding? Yes, 5/8" x 2.4m, 300um copper coating. He adds that to the quote request.
+**Climax:** He taps "Solicitar Cotizacion" which opens WhatsApp with a structured pre-fill: "Necesito cotizacion de galvanizado: Material: ___ Tonelaje: ___ Dimension maxima: ___". He fills in: structural trusses, 20 tons, 6.5m max piece length, needed within 3 weeks. He sends a photo of the truss sketch via WhatsApp. He also checks — can they supply copper ground rods for the building's electrical grounding? Yes, 5/8" x 2.4m, 300um copper coating. He sends a second message asking about rods.
 
-**Resolution:** Rodriguez gets a quote by phone the next day. The price is competitive, the plant is 10 minutes from his job site (no trucking to Valencia), and he can get galvanized trusses AND grounding rods from one supplier. He sends a purchase order. When his structural engineer asks about quality certs, he forwards the website link.
+**Resolution:** Rodriguez gets a quote via WhatsApp the next day (Sir forwards to Ing. Miriam for pricing). The price is competitive, the plant is 10 minutes from his job site (no trucking to Valencia), and he can get galvanized trusses AND grounding rods from one supplier. He sends a purchase order screenshot on WhatsApp. When his structural engineer asks about quality certs, he forwards the website link.
 
-**Requirements revealed:** Quote request form with attachment capability, technical specs page (kettle dimensions, piece size limits), quality certification details, copper rod cross-sell visibility on services page, desktop-friendly layout for office use.
+**Requirements revealed:** WhatsApp-native quote flow with structured pre-fill, technical specs page (kettle dimensions, workpiece size limits vs. kettle internal dimensions), quality certification details, copper rod cross-sell visibility on services page, desktop-friendly layout for office use.
 
 ---
 
@@ -236,30 +240,49 @@ Two independent deliverables with phased development. See "Project Scoping & Pha
 
 ---
 
+### Journey 8: Repeat Client — Returning for More (WhatsApp, Any Language)
+
+**Opening Scene:** Carlos galvanized 5 tons of angle iron two weeks ago. A new project requires 15 tons of roof trusses. He opens his existing WhatsApp conversation with PYGLARA.
+
+**Rising Action:** He sends a voice note: "Necesito galvanizar 15 toneladas de cerchas para un galpón. Mismas condiciones que la vez pasada." No website visit. No form. No browsing. The relationship is already established.
+
+**Climax:** Sir uses a pre-saved "returning client" quick reply template that skips the introduction and goes straight to: specs confirmation, timeline, and pricing. Quote sent within hours.
+
+**Resolution:** Order placed. At delivery, Sir sends a post-delivery message: "Su material está listo. Gracias por confiar en PYGLARA." At Day 30, a check-in: "Cómo le fue? Tiene más material?" And a referral prompt: "Si conoce alguien que necesite galvanizado, con gusto le envío nuestra información" with the capability statement PDF attached as a forwardable message.
+
+**Requirements revealed:** WhatsApp quick reply templates for returning clients, post-delivery WhatsApp sequence (Day 1, Day 30, referral prompt), forwardable capability statement PDF optimized for WhatsApp thumbnail preview, no website dependency for repeat business.
+
+---
+
 ### Journey Requirements Summary
 
 | Capability | Revealed By | Priority |
 | --- | --- | --- |
-| WhatsApp click-to-chat (pre-filled message) | Carlos (ferretería) | Critical |
+| WhatsApp click-to-chat (context-aware pre-filled messages) | Carlos, Rodriguez, Luis | Critical |
+| WhatsApp Business optimization (auto-reply, quick replies, catalog) | All Venezuelan clients, repeat clients | Critical |
 | Spanish-first, mobile-optimized homepage | Carlos, Rodriguez | Critical |
-| Service specs page (kettle dimensions, capacity, turnaround) | Rodriguez, James | Critical |
-| Copper ground rod product page | Carlos, Rodriguez, James | Critical |
-| Quote request form (with attachment support) | Rodriguez | Critical |
+| Bottom tab bar (4 always-visible tabs, no hamburger) | Carlos, Rodriguez, Luis | Critical |
+| Service specs page (kettle dimensions, workpiece limits, capacity, turnaround) | Rodriguez, James | Critical |
+| Copper ground rod product page (with sample offer, MOQ, delivery info) | Luis, James | Critical |
+| WhatsApp-native quote flow (structured pre-fill, no web form for VE clients) | Carlos, Rodriguez | Critical |
 | Language toggle (ES/EN) — seamless, every page | James, Maria | Critical |
 | Quality certification details (per-lot QC process) | Rodriguez, James | Critical |
-| "Partnership Opportunities" inquiry page | Maria | Critical |
-| Contact form with email notifications (by type) | Maria, Rodriguez, Sir | Critical |
+| "Strategic Partnerships" inquiry (footer link, not main nav) | Maria | Critical |
+| Vendor qualification pack download (ZIP + individual PDFs) | James | Critical |
 | Professional English copy (not machine-translated) | James | Critical |
 | Copper rod UL 467 compliance details on product page | Luis, James | Critical |
 | Copper-specific pricing model (per rod, not per ton) | Luis | Critical |
-| Copper production capacity and lead times | Luis | High |
+| Printed capability statement (bilingual, WhatsApp QR, every page has contact info) | All distribution | Critical |
+| Post-delivery WhatsApp sequence (Day 1, Day 30, referral prompt) | Repeat clients | High |
+| Copper rod independent go-to-market (electrical contractor networks, spec sheet) | Luis | High |
+| Copper production capacity, lead times, and MOQ | Luis | High |
 | Delivery/logistics info for out-of-state clients | Luis | High |
 | Equipment manufacturer references | James | High |
 | Code-level bilingual content updates (CMS Phase 2) | Sir | High |
-| Fast page load (<3s on Venezuelan mobile) | Carlos, Rodriguez, Luis | High |
+| Fast page load (<2.4s on Venezuelan 4G) | Carlos, Rodriguez, Luis | High |
 | Basic SEO ("galvanizado Barquisimeto", "PYGLARA") | All external users | High |
 | Copper-specific SEO ("varillas de puesta a tierra Venezuela") | Luis | High |
-| Google Business Profile integration | Carlos | Medium |
+| Google Business Profile (claimed, verified, with photos, Week 1) | Carlos, Maria | High |
 
 ## Domain-Specific Requirements
 
@@ -335,9 +358,9 @@ Static-first bilingual marketing website with form-based lead capture. No dynami
 
 ### Responsive Design Requirements
 
-- **Mobile (320-480px):** Primary breakpoint. All content accessible, WhatsApp button prominent, forms usable with touch. Hamburger navigation.
-- **Tablet (481-768px):** Two-column layouts where appropriate. Same functionality as mobile.
-- **Desktop (769px+):** Full navigation bar, multi-column service specs, wider form layouts. Side-by-side content for services page.
+- **Mobile (320-767px):** Primary breakpoint. All content accessible, WhatsApp floating button prominent (above tab bar), forms usable with touch. Bottom tab bar with 4 always-visible tabs (Galvanizado, Varillas de Cobre, Calidad y Seguridad, Contacto). No hamburger menu.
+- **Tablet (768-1023px):** Two-column layouts where appropriate. Same bottom tab bar as mobile.
+- **Desktop (1024px+):** Full horizontal navigation bar, multi-column service specs, wider form layouts. WhatsApp icon in header. Side-by-side content for services page.
 
 ### SEO Strategy
 
@@ -373,19 +396,23 @@ Static-first bilingual marketing website with form-based lead capture. No dynami
 | Journey | MVP Support | Notes |
 | --- | --- | --- |
 | Carlos (ferretería, mobile, Spanish) | Full | Primary use case — WhatsApp + mobile-first |
-| Rodriguez (construction PM, specs) | Full | Quote form + technical specs |
-| James (EPC, English) | Full | Language toggle + professional EN copy |
-| Maria (investor inquiry) | Full | Partnership inquiry form |
+| Rodriguez (construction PM, specs) | Full | WhatsApp structured pre-fill + technical specs |
+| James (EPC, English) | Full | Language toggle + vendor qualification pack download |
+| Maria (investor inquiry) | Full | Footer partnership inquiry form |
+| Luis (electrical, copper rods, mobile) | Full | Copper rod page + WhatsApp pre-fill |
 | Sir (admin) | Partial | Email notifications only — no CMS dashboard |
+| Repeat client (returning) | Full | Existing WhatsApp thread + quick reply templates |
 
 **Must-Have Capabilities:**
 
 - Bilingual homepage (ES/EN) with language toggle on every page
 - Services page with galvanizing specs (kettle dimensions, capacity, turnaround, quality certification process)
 - Copper ground rod product page (sizes, coating thickness, applications)
-- WhatsApp Business click-to-chat with pre-filled messages
-- Quote request form with email notification to Sir
-- Partnership inquiry form (discreet, no financials) with separate email notification
+- WhatsApp Business click-to-chat with context-aware pre-filled messages per page
+- WhatsApp Business optimization: auto-reply, quick reply templates, product catalog
+- WhatsApp-native quote flows for Venezuelan clients (no web form required)
+- Web contact form for international clients only (EN version with optional company/title fields)
+- Partnership inquiry form (discreet, footer-linked, no financials) with separate email notification
 - Mobile-first responsive design (<3s load on Venezuelan 4G)
 - Basic SEO (meta tags, structured data, Google Business Profile claim)
 - Static site on Vercel free tier (global CDN, auto HTTPS)
@@ -462,11 +489,11 @@ Static-first bilingual marketing website with form-based lead capture. No dynami
 ### Client Communication
 
 - FR7: Visitors can initiate a WhatsApp conversation with PYGLARA via a click-to-chat button with a pre-filled message (works on mobile app and desktop web)
-- FR8: Visitors can submit a quote request form including project details, tonnage, piece dimensions, and timeline
-- FR9: Visitors can attach files (sketches, drawings) to the quote request form
-- FR10: Visitors can submit a general contact inquiry with name, email, phone, and message
-- FR10b: Visitors see a confirmation page after submitting any form, displaying a thank-you message, expected response timeframe (24-48 hours for quotes, 72 hours for partnership inquiries), and fallback contact information (phone, WhatsApp)
-- FR10c: Visitors receive an automatic confirmation email after submitting any form, confirming receipt and restating the expected response timeframe
+- FR8: Venezuelan clients can initiate a structured quote request via WhatsApp with context-aware pre-filled messages (galvanizing page: material/tonnage/dimensions template; copper page: size/quantity/delivery template). International clients (EN) can submit a quote request form with name, email, message, and optional company/title fields via progressive disclosure.
+- FR9: International quote form supports file attachment for technical drawings. Venezuelan clients send attachments via WhatsApp natively.
+- FR10: Footer displays phone, WhatsApp, email, and physical address on every page, providing persistent contact access without a dedicated general contact form. Desktop WhatsApp buttons include "or email us" fallback text for users without WhatsApp.
+- FR10b: Visitors see a confirmation page after submitting any form, displaying a thank-you message, expected response timeframe (24 hours for partnership inquiries, 2 hours during business hours for quotes), a 3-step next-steps sequence for partnership inquiries (review, introductory call, materials shared after qualification), and fallback contact information (phone, WhatsApp).
+- FR10c: Visitors receive an automatic confirmation email after submitting any form, confirming receipt, restating the expected response timeframe, and for partnership inquiries, describing the qualification process.
 
 ### Investor/Partner Inquiry
 
@@ -491,20 +518,29 @@ Static-first bilingual marketing website with form-based lead capture. No dynami
 
 ### Responsive & Mobile Experience
 
-- FR22: Visitors can access all site content and functionality on mobile devices (320px+) with minimum 44px touch targets and hamburger navigation
+- FR22: Visitors can access all site content and functionality on mobile devices (320px+) with minimum 44px touch targets and a bottom tab bar with 4 always-visible tabs (Galvanizado, Varillas de Cobre, Calidad y Seguridad, Contacto)
 - FR23: Visitors can find and tap the WhatsApp click-to-chat button without scrolling on mobile (above the fold or fixed position) and in the site header on desktop
 - FR24: Visitors can complete all forms on mobile devices with correct HTML input types (tel, email), minimum 44px touch targets, and no horizontal scrolling on 320px screens
 - FR24b: All site content is available in both Spanish and English with human-reviewed, technically accurate translations — not machine-translated. Industrial terminology must use standard terms in each language.
 
 ### Investor Document (Offline Deliverable)
 
-- FR25: A standalone investor document exists as a professionally designed PDF with the following sections in order: (1) Executive Summary with clear investment ask, (2) Plant Capabilities & Equipment, (3) Current Operational Status (3m kettle active, 7m restart plan, 9m future), (4) Market Thesis & Demand Analysis, (5) Competitive Landscape, (6) Financial Projections at 30% regulated margin with capital deployment timeline and path-to-first-revenue, (7) SWOT Analysis, (8) Asset Inventory & Valuation, (9) Management & Operations Team (including Ing. Miriam's role and continuity plan), (10) Deal Structure Options, (11) Contact Information
+- FR25: A standalone investor document exists as a professionally designed PDF with the following sections in order: (1) Executive Summary with clear investment ask on page 1, (2) Current Operational Status (3m kettle active, 7m restart plan, 9m future), (3) Financial Projections at 30% regulated margin with capital deployment timeline and path-to-first-revenue, (4) Market Thesis & Demand Analysis, (5) Competitive Landscape, (6) Plant Capabilities & Equipment, (7) Asset Inventory & Valuation, (8) Management & Operations Team (including Ing. Miriam's role and continuity plan), (9) Deal Structure Options, (10) SWOT Analysis, (11) Contact & Next Steps. A 2-page standalone executive summary is extracted as a separate qualification document.
 - FR26: The investor document exists as two separate language versions — one in Spanish, one in English — not a single bilingual document
 - FR27: Ing. Miriam reviews and signs off on all technical specifications in the investor document through a structured review process: she receives a marked-up PDF, provides written corrections, and her sign-off is recorded with date. Her corrections override all other content without debate.
 - FR28: The investor document is never published on the website — shared only after qualification
 - FR29: The investor document addresses international investor concerns: USD repatriation mechanisms, BOD exchange rate risk, OFAC compliance for US-connected investors, and Venezuelan corporate governance structure
 - FR30: The investor document includes a version number and date, with a defined update process when material changes occur (certifications achieved, new clients, capacity changes, regulatory updates)
 - FR31: The investor document target length is 25-35 pages per language version, with professional typography, data visualizations for financial projections, and plant photography
+
+### Printed Materials (Physical Distribution Assets)
+
+- FR32: A printed meeting kit exists with visually distinct documents: one-page capability statement (bilingual), 3-page sales kit (capability + copper rods + how to order with WhatsApp QR code), and one-page copper rod spec sheet. Each printed page contains complete contact information (phone, WhatsApp, email, address). All documents print-optimized for Carta (Letter) paper, readable in grayscale, with WhatsApp QR code linking to pyglara.com/wa redirect.
+
+### WhatsApp Business (Primary Sales Channel)
+
+- FR33: WhatsApp Business profile is configured with: auto-reply during non-business hours setting response expectations, pre-saved quick reply templates for galvanizing quotes, copper rod specs, and pricing process, and a product catalog showcasing galvanizing services and copper ground rods with specifications.
+- FR34: WhatsApp contact links on the website use a domain redirect (pyglara.com/wa?from=[page]) instead of raw wa.me URLs, protecting the phone number from HTML scraping and enabling context-aware pre-filled messages per page.
 
 ## Non-Functional Requirements
 
@@ -533,7 +569,7 @@ Static-first bilingual marketing website with form-based lead capture. No dynami
 
 - NFR13: WhatsApp click-to-chat links open correctly on both mobile (native app) and desktop (WhatsApp Web)
 - NFR14: Form submission emails deliver within 5 minutes via transactional email service
-- NFR15: Failed email deliveries trigger a fallback notification and backup logging to a persistent store, ensuring zero form submissions are lost
+- NFR15: Failed email deliveries trigger a fallback notification and backup logging to Google Sheets as a persistent fallback store, ensuring zero form submissions are lost
 - NFR16: Google Business Profile is linked and reflects accurate business information (address, phone, hours)
 
 ### Reliability

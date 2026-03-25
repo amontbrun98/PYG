@@ -47,7 +47,8 @@
       "Bash(find c:UsersamontDesktopPYG_bmad-output -name *.md -type f)",
       "Bash(xargs grep:*)",
       "WebFetch(domain:www.designrush.com)",
-      "WebFetch(domain:www.wecreate.com)"
+      "WebFetch(domain:www.wecreate.com)",
+      "WebFetch(domain:www.path-robotics.com)"
     ],
     "additionalDirectories": [
       "c:\\Users\\amont\\Desktop\\PYG\\_bmad-output\\planning-artifacts\\research",

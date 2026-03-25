@@ -1,0 +1,79 @@
+"Timestamp","1.1 Existe una cuba/tina de 3 metros ademas de la de 7m?","1.2 Detalles de la cuba de 3m (si existe)","1.3 Capacidad de la cuba de 7m sola (ton/mes)","1.4 Estado de la centrifugadora","1.5 Estado del sistema electrico y transformador","1.6 Estado de la planta de cobreado electrolitico","1.7 Detalles planta de cobre","1.8 Area total del terreno en m2","1.9 Inventario actual de zinc y quimicos","2.1 Marque TODOS los activos que existen en la planta","2.2 Estado de cada activo","2.3 Hay vehiculos o montacargas propios?","2.4 Otros activos no listados","2.5 Valor estimado de reposicion de equipos (USD)","3.1 Existen registros contables?","3.2 Ultimo anio con operacion continua","3.3 Mejor anio de produccion","3.4 Datos financieros anio 2000","3.5 Datos financieros 2004-2005 (pedido ENELVEN)","3.6 Datos financieros 2010-2015","3.7 Datos ultimo periodo de operacion","3.8 Nomina mensual total (3 trabajadores) en USD","4.1 Costo zinc/ton puesto en planta (USD)","4.2 Contrato PDVSA Gas","4.3 Costo electricidad mensual por nivel","4.4 HCl 4.2% y NH4Cl 3% por ton son correctos?","4.5 Si son diferentes cuales son las tasas?","4.6 Otros costos fijos mensuales","5.1 Lista clientes historicos","5.2 Clientes interesados en reactivar pedidos","5.3 Los 5 competidores galvanizadores en Venezuela","5.4 Principales sectores clientes","5.5 Posibilidad contratos con PDVSA, CORPOELEC, Estado","6.1 Registro Mercantil al dia?","6.2 Pasivos, demandas o gravamenes","6.3 Propiedad del terreno","6.4 Permisos ambientales y funcionamiento","6.5 Accionistas y % de cada uno","7.1 Tiempo para reactivar galvanizado","7.2 Personal necesario a capacidad completa","7.3 Inversion minima para arrancar (USD)","7.4 Reparaciones urgentes antes de arrancar","7.5 Comentarios adicionales o correcciones"
+"2026/03/24 12:36:11 PM AST","Si pero necesita reparacion","L=3.5m,  a=0.65,  h=1.20m","Capacidad instalada 1440 Tn/m mejor mes 300 tn/mes","Esta en funcionamiento","Demanda asignada y contratada 66 (kVA) demanda consumida febrero 2026 = 9 kVA, pero se cancela lo contratado Febrero 2026= 63666.23 = 147.71$ con una variacion de 200$ ","Necesita reparaciones mayores (>$10K)","Existen 6 rectificadores trifasicos, 10 tanques de diferentes tamaños tambien 2 polipastos y de 2 TM","3640 mts2 area total de los 2 galpones","Acido Clorhidrico 4.600kg Zinc SGH 2041 kg y Cloruro de amonio 500Kg.","Cuba/caldero 7m;Cuba/caldero 3m;Centrifugadora;Puente grua #1;Puente grua #2;Tinas de decapado HCl;Tina de flux NH4Cl;Tinas de enjuague;Horno/quemadores caldero 7m;Planta cobre - rectificadores;Planta cobre - tinas;Conexion gas PDVSA;Oficinas;Bascula industrial;Montacargas;Herramientas menores","Cuba/caldero 7m BUENA NECESITA MANTENIMIENTO
+Cuba/caldero 3m NECESITA REPARACION
+Centrifugadora BUENA
+Puente grua #1 BUENO,  NECESITA MANTENIMIENTO
+Puente grua #2 BUENO, NECESITA MANTENIMIENTO
+Tanque de decapado acido:  BUENO NECESITA MANTENIMIENTO
+Tanque de preflux:  BUENO
+TANQUE de LAVADO CON AGUA:  BUENO
+Horno/quemadores Cuba 7m:  BUENO
+Planta cobre - rectificadores NECESITAN  REPARACION
+Planta cobre - tanques:  NECESITAN  REPARACION
+Transformador electrico 
+Conexion gas PDVSA BUENA NECESITA MANTENIMIENTO
+Oficinas BUENAS
+Bascula industrial: BUENAS
+Montacargas BUENOS, POR MANTENIMIENTO
+Herramientas menores BUENAS","Si","Mobiliario de oficina, 3 computadoras de mesa y 3 laptos, 1 impresora, mobiliario de oficina, archivadores, puente grua Capacidad ( ENTRE 2 Y 5 TN   ) 3 montacargas Clark de  2500 kilos","","Parciales","2015, la operacion continua se detuvo por falta de materia prima Zinc SHG 99.99%.","en base a la informacion 2005-2015 coincidimos que el mejor año de produccion fue el 2015.","2005: VT: 1.599.457.521,54 OI: 6.307.603,86  GO: 398.179.622,17 UE: 179.954.733,49 
+2006: VT: 3.681.798.284,14 OI: 20.305.032,35| GO: 786.872.489,01 UE: 618.282.941,49 
+2007: VT: 3.459.902,12  OI: 31.524,93  GO: 999.740.72| UE: 589.262,72 
+2008: VT: 3.597.502,06  OI: 13.080,63  GO: 1.224.104,75  UE: 655.278,75 
+2009: VT: 3.739.046,25  OI: 5.564,26  GO: 1.359.356,20  UE: 678.436,62 
+2010: VT: 3.752.890,24 OI: 843,18 GO: 2.245.538,26  UE: 711.947,35 
+2011: VT: 4.981.490,08  OI: 8.152,92  GO: 2.831.954,86  UE: 933.908,90 
+2012: VT: 7,422,523.62  OI: 3,807.11 GO: 2,560,033.59 UE: 874,332.50 
+2013: VT: 7.177.299,23  OI: 22.152,82  GO: 3.927.335,79 UE: 606.178,68 
+2014: VT: 22.945.610,97  OI: 10.715,12  GO: 8.506.066,82  UE: 4.248.324,78 
+2015: VT: 92.545.421,09  OI: 22.689,47 GO: 19.307.419,86  UE: 19.676.988,59 
+2016: VT: 36.634.098,18  OI: 24.630,41  GO: 37.280.210,60  UE: 34.960.618,21 
+2017: VT: 349.037.740,30  OI: 4.396,68  GO: 158.111.878,08 UE: 117.874.654,20 
+2018: VT: 220.999,25 OI: 2,07 GO: 146.576,44  UE: 74.426,35 
+2019: VT: 57.265.091,83  OI: 113,26  GO: 9.451.215,10  UE: 7.782.948,87 ","Precio por varilla (Precio Unitario): Bs. 16.104,18.
+Volumen (Cantidad): 20.000 unidades.
+Ingresos (Monto Total de la Oferta): Bs. 322.083.647,95.
+Gastos
+Componente Importado o Nacional afect. por paridad (73%): Bs. 235.200.000,00.
+Componente Nacional (6%): Bs. 18.164.800,00.
+Mano de Obra (2%): Bs. 5.018.847,95.
+Otros Gastos (19%): Bs. 63.700.000,00.
+Tasa dólar: Bs. 1.920,00 por dólar.","2015= 675 Tm solo de Pletinas ","2025= 52.360 el precio flutua entre 1.20$ a 1.70$ 2026= 4.376 ","Actualmente trabajamos bajo relacion de destajo.","Costo de ultimo zinc 2024 puesto en planta= 3737,26$/TM; Costo actual de zinc Shg 99.99 hoy en dia se sitúa aproximadamente en 3.269 - 3.270$/TM + 590$ de CIF puesto en puerto Cabello, mas gastos de nacionalización  que aproximadamente es un 9.32% adicional del precio de factura.","Si, actualmente el contrato sigue vigente y es sujeto a variacion del precio segun lo establecido por PDVSA GAS, sin embargo el precio varia un mes 1500$ y siguiente mes 1800$ entre esos dos montos.","El costo de Electricidad mensual es un monto variable de 150 a 200$ / mes segun 66 kVA contratados, pero su consumo es menor a 20 kVA mensual con menos de un 50% de produccion.","Si correctos","","Vigilancia 1200$/mes, impuestos varian segun lo declarado ante el Seniat y el Semat y dependen de lo producido mes.","FREYSSINET TIERRA ARMADA DE VENEZUEA 
+DISMACA
+SASGO
+DALMINE
+ENELVEN
+ENELBAR
+ELECTRICIDAD DE CARACAS
+INDUSTRIAS MARULLO 
+TORNILLOS AVILA
+GEDISA
+INDUESCA
+CA. TECNOELECTRICA CABIMAS
+TALLER CHAMA
+OPTODADA
+SUGEVEN
+MANPEG
+TORACERO
+INVERSIONES PORCINA
+ALIMENTOS LAS TUNAS
+PROALCA
+TALLER MECANICO ALFREDLUZ
+INAMECA
+TORNI RODA BARQUISIMETO
+TORNILLOS FALCON
+ZN FUNDICIONES
+AGROPECUARIA LA FELICIANA
+ELECTRICA INDUSTRIAL LARA
+SERPECA
+TORNILLOS CARABOBO
+GEMACA
+INDUSTRIAS DEMATORCA
+VENHETOCA VENEZOLANA DE HERRAJES
+COMERCIAL ORNELARA
+COMERCIAL ALEXMAR
+","FREYSSINET TIERRA ARMADA DE VENEZUEA 
+DISMACA
+SASGO
+INDUSTRIAS MARULLO
+GEDISA
+MEICA G&L","Al momento solo dos competidores, el resto en proyectos de instalación","Prensados y Galvanizados de Lara, su produccion estar dirigida principalmente al sector electrico.","Segun politicas De Prensados y Galvanizados de Lara, nunca se trabajo directamente con PDVSA, solo con el Sector Electrico y de telecomunicaciones, sin embargo para el futuro se puede tomar en cuenta que estamos dispuestos a trabajar con todos los sectores incluyendo PDVSA.","Necesita actualizacion","Cuenta por pagar en Pdvsa","Propio","Si","si 84% Francisco Ballesteros y 16% Nelly de Ballesteros.","Despues de llegado el zinc en planta aproximadamente se tarda en 3 semanas de reactivar.","15 trabajadores obreros.","336000$ que se dividen en 70TM de zinc SHG 99.99%, Acido Clorhidrico 15 TM, 2 TM de Cloruro de Amonio y 3 meses de Gas","Mantenimiento General",""

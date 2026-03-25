@@ -1,13 +1,15 @@
 # Venezuela Galvanizing Industry — Competitive Analysis
 
-**Date:** March 13, 2026
+**Date:** March 13, 2026 (updated 2026-03-24 with Ing. Miriam confirmation)
 **Subject:** Deep competitive landscape for PYGLARA acquisition due diligence
 
 ---
 
 ## Executive Summary
 
-Venezuela has approximately **7-8 hot-dip batch galvanizing service providers**, concentrated in Valencia/Carabobo, Zulia, and Caracas. PYGLARA is one of only **two galvanizers in Barquisimeto/Lara** (alongside POSTVEN). The dominant player is **ALF Galvanizados** (Grupo SUGACA) with ~4x PYGLARA's capacity. Most competitors are vertically integrated fabricator-galvanizers focused on electrical transmission infrastructure, **not** pure service galvanizers like PYGLARA. The copper electroplating line has **no identified domestic competitor**. With $183B in oil & gas capex projected through 2040, the market is structurally undersupplied.
+> **UPDATE (2026-03-24):** Per Ing. Miriam, there are currently **only 2 active competitors** in Venezuela. The rest of the companies listed below are either in installation/project phase or inactive. This significantly strengthens PYGLARA's market position.
+
+Our earlier research identified approximately 7-8 hot-dip batch galvanizing service providers concentrated in Valencia/Carabobo, Zulia, and Caracas. Ing. Miriam's on-the-ground confirmation narrows the active field to just 2 operators. PYGLARA is one of only **two galvanizers in Barquisimeto/Lara** (alongside POSTVEN). Most competitors are vertically integrated fabricator-galvanizers focused on electrical transmission infrastructure, **not** pure service galvanizers like PYGLARA. The copper electroplating line has **no identified domestic competitor**. With $183B in oil & gas capex projected through 2040, the market is structurally undersupplied.
 
 ---
 

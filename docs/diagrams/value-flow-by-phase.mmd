@@ -1,0 +1,61 @@
+flowchart TB
+    subgraph P0["PHASE 0 — COMPLETED | Value: $25K-$39K"]
+        direction LR
+        D01["D-01<br/>Plant Due Diligence<br/>$5K-$8K"]
+        D02["D-02<br/>Competitive Intel<br/>$3K-$5K"]
+        D03["D-03<br/>34 Client Profiles<br/>$8K-$12K"]
+        D04["D-04<br/>Financial Models<br/>$4K-$6K"]
+        D05["D-05<br/>Historical P&L<br/>$2K-$3K"]
+        D06["D-06<br/>Investor Docs<br/>$3K-$5K"]
+    end
+
+    subgraph P1["PHASE 1 — OUTREACH Wk 1-8 | Revenue Pipeline: $2.1M-$4.1M/yr"]
+        direction LR
+        D07["D-07<br/>Tier 1 Outreach<br/>5 KEY accounts"]
+        D08["D-08<br/>CORPOELEC<br/>Copper Rod Bid"]
+        D09["D-09<br/>Tier 2 Outreach<br/>6 accounts"]
+        D10["D-10<br/>Tier 3 Outreach<br/>5 accounts"]
+        D11["D-11<br/>LOI Collection<br/>Signed commitments"]
+        D12["D-12<br/>Sales Collateral<br/>Brochure + Deck"]
+    end
+
+    subgraph P2["PHASE 2 — OPERATIONS Mo 3-6 | Revenue Flowing: $1.2M-$2.4M/yr"]
+        direction LR
+        D13["D-13<br/>Pricing Schedule<br/>Ley Precios Justos"]
+        D14["D-14<br/>Client Onboarding<br/>First orders"]
+        D15["D-15<br/>Monthly Reports<br/>Pipeline tracking"]
+        D16["D-16<br/>OG Prospecting<br/>10+ new leads/qtr"]
+        D17["D-17<br/>Quality Cert<br/>Strategy"]
+    end
+
+    subgraph P3["PHASE 3 — SCALE Mo 7-12 | Revenue at Scale: $1.8M-$3.5M/yr"]
+        direction LR
+        D18["D-18<br/>Copper Line<br/>Clients"]
+        D19["D-19<br/>9m Kettle<br/>Demand Study"]
+        D20["D-20<br/>OG Expansion<br/>Campaign"]
+        D21["D-21<br/>Annual Report<br/>Performance"]
+    end
+
+    subgraph INV["NEEDS INVESTIGATION — 17 Items"]
+        direction LR
+        I1["PDVSA Vendor<br/>Qualification"]
+        I2["CORPOELEC<br/>Procurement Rules"]
+        I3["Gov Tender<br/>Calendar"]
+        I4["Export<br/>Feasibility"]
+        I5["ISO 9001<br/>Certification Path"]
+        I6["Insurance<br/>Quotes"]
+        I7["Transport Costs<br/>by Region"]
+    end
+
+    P0 -->|"Enables"| P1
+    P1 -->|"Zinc arrives + plant restarts"| P2
+    P2 -->|"Capacity fills"| P3
+    INV -.->|"Feeds into"| P1
+    INV -.->|"Feeds into"| P2
+    INV -.->|"Feeds into"| P3
+
+    style P0 fill:#27ae60,color:#fff
+    style P1 fill:#2980b9,color:#fff
+    style P2 fill:#8e44ad,color:#fff
+    style P3 fill:#d35400,color:#fff
+    style INV fill:#c0392b,color:#fff

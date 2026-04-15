@@ -1,0 +1,50 @@
+{
+  "es": {
+    "nav": {
+      "galvanizing": "Galvanización",
+      "copper_rods": "Varillas de Cobre",
+      "quality": "Calidad y Seguridad",
+      "contact": "Contacto"
+    },
+    "footer": {
+      "phone": "+58 424 571 5349",
+      "email": "info@pyglara.com",
+      "address": "Zona Industrial I, Barquisimeto, Estado Lara 3001, Venezuela",
+      "rif": "RIF J-07014488-0"
+    },
+    "whatsapp": {
+      "general": "Hola, quisiera información sobre los servicios de PYGLARA.",
+      "galvanizing": "Hola, quisiera cotizar servicios de galvanización en caliente. Tengo [__] toneladas/mes de [tipo de pieza].",
+      "copper_rods": "Hola, quisiera cotizar varillas de tierra cobre-enchapado. Necesito diámetro [__] y longitud [__].",
+      "partnership": "Hola, tengo interés en explorar una oportunidad de inversión o asociación con PYGLARA.",
+      "contact": "Hola, quisiera hacer una consulta general."
+    },
+    "meta": {
+      "site_name": "PYGLARA"
+    }
+  },
+  "en": {
+    "nav": {
+      "galvanizing": "Galvanizing",
+      "copper_rods": "Copper Ground Rods",
+      "quality": "Quality & Safety",
+      "contact": "Contact"
+    },
+    "footer": {
+      "phone": "+58 424 571 5349",
+      "email": "info@pyglara.com",
+      "address": "Zona Industrial I, Barquisimeto, Lara State 3001, Venezuela",
+      "rif": "RIF J-07014488-0"
+    },
+    "whatsapp": {
+      "general": "Hello, I'd like information about PYGLARA's services.",
+      "galvanizing": "Hello, I'd like to request a quote for hot-dip galvanizing. I have approximately [__] MT/month of [part type].",
+      "copper_rods": "Hello, I'd like to request a quote for copper-plated ground rods. I need diameter [__] and length [__].",
+      "partnership": "Hello, I'm interested in exploring an investment or partnership opportunity with PYGLARA.",
+      "contact": "Hello, I'd like to make a general inquiry."
+    },
+    "meta": {
+      "site_name": "PYGLARA"
+    }
+  }
+}

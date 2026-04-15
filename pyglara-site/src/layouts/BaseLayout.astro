@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: 'es' | 'en';
+}
+
+const { title, description, lang } = Astro.props;
+
+// GA4 Measurement ID — replace with actual ID from Story 1.2 Task 3
+// If GA4 ID is not yet available, use placeholder 'G-XXXXXXXXXX' and update when ID is confirmed
+const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+// Canonical URL for this page
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Alternate language URL for hreflang
+const altLang = lang === 'es' ? 'en' : 'es';
+const altPathname = Astro.url.pathname.replace(`/${lang}/`, `/${altLang}/`);
+const altURL = new URL(altPathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={lang} href={canonicalURL} />
+    <link rel="alternate" hreflang={altLang} href={altURL} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/es/', Astro.site)} />
+
+    <!-- GA4 inline — no external script loader, zero CLS impact -->
+    <script is:inline define:vars={{ GA4_MEASUREMENT_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA4_MEASUREMENT_ID, {
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    </script>
+    <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`} async></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

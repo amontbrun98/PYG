@@ -24,9 +24,14 @@
       "site_name": "PYGLARA"
     },
     "hero": {
-      "headline": "Galvanice su acero. Aterrice sus edificios. Una planta, dos servicios, cero importaciones.",
-      "heritage": "Barquisimeto, desde 1976",
-      "cta_whatsapp": "Solicite cotización"
+      "headline": "Galvanización en caliente hasta 9 metros.",
+      "subheadline": "Proteja su acero contra la corrosión. Atendemos pedidos de cualquier volumen desde Barquisimeto.",
+      "bullet1": "Cubas Pilling hasta 9m — la mayor capacidad del occidente venezolano",
+      "bullet2": "300 TM/mes de capacidad comprobada",
+      "bullet3": "Certificación por lote: COVENIN 1212-81 / ASTM A123",
+      "copper_note": "También disponible: varillas de tierra cobre-enchapado",
+      "heritage": "Barquisimeto · Desde 1976",
+      "cta_whatsapp": "Solicitar cotización"
     },
     "status": {
       "active": "Planta Operativa — Aceptando Pedidos",
@@ -94,8 +99,13 @@
       "site_name": "PYGLARA"
     },
     "hero": {
-      "headline": "Galvanize your steel. Ground your buildings. One plant, two services, zero imports.",
-      "heritage": "Barquisimeto, since 1976",
+      "headline": "Hot-dip galvanizing up to 9 meters.",
+      "subheadline": "Protect your steel from corrosion. We handle orders of any size from Barquisimeto, Venezuela.",
+      "bullet1": "Pilling kettles up to 9m — largest capacity in western Venezuela",
+      "bullet2": "300 MT/month proven capacity",
+      "bullet3": "Per-lot certification: COVENIN 1212-81 / ASTM A123",
+      "copper_note": "Also available: copper-clad ground rods",
+      "heritage": "Barquisimeto · Since 1976",
       "cta_whatsapp": "Request a quote"
     },
     "status": {

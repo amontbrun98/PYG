@@ -3,7 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { t, buildWhatsAppUrl } from '../../utils/i18n';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
-import StatusIndicator from '../../components/StatusIndicator.astro';
 import imgEsfumer from '../../assets/images/esfumer.jpeg';
 import imgPilling1 from '../../assets/images/pilling1.jpeg';
 import imgPlantClean from '../../assets/images/plant-clean.jpeg';
@@ -14,13 +13,6 @@ import imgNails from '../../assets/images/nails.jpeg';
 import imgNails2 from '../../assets/images/nails2.jpeg';
 
 const lang = 'en' as const;
-
-const kettles = [
-  { name: "65cm", status: "active" as const,      label_es: "Activa",        label_en: "Active" },
-  { name: "3.5m", status: "maintenance" as const, label_es: "En reparación", label_en: "Under repair" },
-  { name: "7m",   status: "pending" as const,     label_es: "Q2 2026",       label_en: "Q2 2026" },
-  { name: "9m",   status: "pending" as const,     label_es: "2027",          label_en: "2027" },
-];
 ---
 
 <BaseLayout
@@ -57,28 +49,48 @@ const kettles = [
       loading="eager"
       fetchpriority="high"
       class="absolute inset-0 w-full h-full object-cover"
-      style="opacity: 0.30;"
+      style="opacity: 0.55;"
     />
+    <!-- Gradient overlay: dark at bottom for legibility, lighter at top to show photo -->
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(27,58,92,0.35) 0%, rgba(27,58,92,0.60) 40%, rgba(27,58,92,0.92) 100%);"></div>
 
-    <div class="relative z-10 flex flex-col px-6 pt-8 max-w-2xl mx-auto" style="min-height: 100svh;">
-      <div class="flex-1 flex flex-col justify-center gap-6">
-        <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight">
-          {t(lang, 'hero.headline')}
-        </h1>
+    <!-- Hero content -->
+    <div class="relative z-10 flex flex-col justify-center px-6 py-24 max-w-3xl mx-auto" style="min-height: 100svh;">
+      <!-- Tag -->
+      <p class="text-copper text-xs font-semibold uppercase tracking-widest mb-5">
+        {t(lang, 'hero.heritage')}
+      </p>
 
-        <StatusIndicator status="active" lang={lang} kettles={kettles} />
+      <!-- Headline -->
+      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-5">
+        {t(lang, 'hero.headline')}
+      </h1>
 
-        <p class="text-white/60 text-sm">{t(lang, 'hero.heritage')}</p>
-      </div>
-    </div>
+      <!-- Subheadline -->
+      <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
+        {t(lang, 'hero.subheadline')}
+      </p>
 
-    <!-- Inline WhatsApp CTA — absolute bottom-8, above fold on 375px (Carlos test) -->
-    <div class="absolute bottom-8 left-6 right-6 z-20 max-w-sm">
-      <WhatsAppButton
-        href={buildWhatsAppUrl(lang, 'general')}
-        variant="inline"
-        label={t(lang, 'hero.cta_whatsapp')}
-      />
+      <!-- Capacity bullets -->
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          {t(lang, 'hero.bullet1')}
+        </li>
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          {t(lang, 'hero.bullet2')}
+        </li>
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          {t(lang, 'hero.bullet3')}
+        </li>
+      </ul>
+
+      <!-- Secondary copper mention — subtle -->
+      <p class="text-white/40 text-xs tracking-wide">
+        {t(lang, 'hero.copper_note')}
+      </p>
     </div>
   </section>
 

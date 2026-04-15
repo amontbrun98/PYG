@@ -1,6 +1,6 @@
 # Story 1.3: Astro Project Initialization
 
-Status: review
+Status: done
 
 ## Story
 

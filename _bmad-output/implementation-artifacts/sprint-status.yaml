@@ -41,7 +41,7 @@ development_status:
   epic-1: in-progress
   1-1-brand-kit-definition: in-progress
   1-2-domain-registration-digital-setup: in-progress
-  1-3-astro-project-initialization: review
+  1-3-astro-project-initialization: done
   epic-1-retrospective: optional
 
   # Epic 2: Financial Projections & Replacement Cost (Score: 8.65) -- DONE

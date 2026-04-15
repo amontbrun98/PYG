@@ -28,10 +28,31 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--color-text);
   background-color: var(--color-bg);
   margin: 0;
   padding: 0;
+}
+
+/* Scroll offset for sticky header */
+[id] {
+  scroll-margin-top: 64px;
+}
+
+/* Scroll-reveal animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

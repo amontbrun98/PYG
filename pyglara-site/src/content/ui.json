@@ -9,8 +9,9 @@
     "footer": {
       "phone": "+58 424 571 5349",
       "email": "info@pyglara.com",
-      "address": "Zona Industrial I, Barquisimeto, Estado Lara 3001, Venezuela",
-      "rif": "RIF J-07014488-0"
+      "address": "Calle 26, entre Av. 1ra y 2da, Galpón No. 25-90, Zona Industrial I, Barquisimeto, Estado Lara 3001, Venezuela",
+      "rif": "RIF J-07014488-0",
+      "partnerships": "Alianzas Estrategicas"
     },
     "whatsapp": {
       "general": "Hola, quisiera información sobre los servicios de PYGLARA.",
@@ -21,6 +22,51 @@
     },
     "meta": {
       "site_name": "PYGLARA"
+    },
+    "hero": {
+      "headline": "Galvanice su acero. Aterrice sus edificios. Una planta, dos servicios, cero importaciones.",
+      "heritage": "Barquisimeto, desde 1976",
+      "cta_whatsapp": "Solicite cotización"
+    },
+    "status": {
+      "active": "Planta Operativa — Aceptando Pedidos",
+      "kettle_timeline": "65cm — Activa | 7m — Q2 2026 | 9m — 2027"
+    },
+    "stats": {
+      "capacity_value": "300",
+      "capacity_label": "TM/mes capacidad real",
+      "rods_value": "936",
+      "rods_label": "varillas de cobre/día",
+      "years_value": "50+",
+      "years_label": "años de experiencia",
+      "competitors_value": "2",
+      "competitors_label": "galvanizadoras activas en Venezuela"
+    },
+    "cards": {
+      "galvanizing_title": "Galvanización en Caliente",
+      "galvanizing_bullet1": "Cubas hasta 9m de longitud — sin igual en la región",
+      "galvanizing_bullet2": "COVENIN 1212-81 / ASTM A123 — certificado por lote",
+      "galvanizing_bullet3": "Capacidad comprobada: 300 TM/mes",
+      "copper_title": "Varillas de Tierra",
+      "copper_bullet1": "936 varillas/día — sin competidor doméstico",
+      "copper_bullet2": "Diámetros 5/8\" a 1\", longitudes 1.2m a 3m",
+      "copper_bullet3": "Recubrimiento cobre: 300 μm ± 50 (ASTM A153)"
+    },
+    "snapshot": {
+      "heading": "Sobre PYGLARA",
+      "body": "50 años de trayectoria galvanizando Venezuela desde Barquisimeto.",
+      "equipment": "Equipamiento W. Pilling Riepe GmbH (Alemania)",
+      "standards": "COVENIN 1212-81 / ASTM A123 / ASTM A153",
+      "market": "Solo 2 galvanizadoras activas en Venezuela"
+    },
+    "facility": {
+      "heading": "Nuestras Instalaciones",
+      "alt1": "Cuba centrifuga 65cm en operación — galvanizando piezas de ferretería",
+      "alt2": "Galpones PYGLARA — Zona Industrial I, Barquisimeto",
+      "alt3": "Herrajes galvanizados — soporte tipo onda, listos para despacho",
+      "alt4": "Tornillos galvanizados recién extraídos de la cuba centrifuga",
+      "alt5": "Clavos galvanizados — producto terminado de la línea de centrifugado",
+      "alt6": "Sala de cubas de galvanización — Planta PYGLARA, Barquisimeto"
     }
   },
   "en": {
@@ -33,8 +79,9 @@
     "footer": {
       "phone": "+58 424 571 5349",
       "email": "info@pyglara.com",
-      "address": "Zona Industrial I, Barquisimeto, Lara State 3001, Venezuela",
-      "rif": "RIF J-07014488-0"
+      "address": "Calle 26, entre Av. 1ra y 2da, Galpón No. 25-90, Zona Industrial I, Barquisimeto, Lara State 3001, Venezuela",
+      "rif": "RIF J-07014488-0",
+      "partnerships": "Strategic Partnerships"
     },
     "whatsapp": {
       "general": "Hello, I'd like information about PYGLARA's services.",
@@ -45,6 +92,51 @@
     },
     "meta": {
       "site_name": "PYGLARA"
+    },
+    "hero": {
+      "headline": "Galvanize your steel. Ground your buildings. One plant, two services, zero imports.",
+      "heritage": "Barquisimeto, since 1976",
+      "cta_whatsapp": "Request a quote"
+    },
+    "status": {
+      "active": "Plant Operational — Accepting Orders",
+      "kettle_timeline": "65cm — Active | 7m — Q2 2026 | 9m — 2027"
+    },
+    "stats": {
+      "capacity_value": "300",
+      "capacity_label": "MT/month proven capacity",
+      "rods_value": "936",
+      "rods_label": "copper rods/day",
+      "years_value": "50+",
+      "years_label": "years of experience",
+      "competitors_value": "2",
+      "competitors_label": "active galvanizers in Venezuela"
+    },
+    "cards": {
+      "galvanizing_title": "Hot-Dip Galvanizing",
+      "galvanizing_bullet1": "Kettles up to 9m long — no regional competitor",
+      "galvanizing_bullet2": "COVENIN 1212-81 / ASTM A123 — per-lot certificates",
+      "galvanizing_bullet3": "Proven capacity: 300 MT/month",
+      "copper_title": "Copper Ground Rods",
+      "copper_bullet1": "936 rods/day — zero domestic competition",
+      "copper_bullet2": "Diameters 5/8\" to 1\", lengths 1.2m to 3m",
+      "copper_bullet3": "Copper coating: 300 μm ± 50 (ASTM A153)"
+    },
+    "snapshot": {
+      "heading": "About PYGLARA",
+      "body": "50 years galvanizing Venezuela from Barquisimeto.",
+      "equipment": "Equipment by W. Pilling Riepe GmbH (Germany)",
+      "standards": "COVENIN 1212-81 / ASTM A123 / ASTM A153",
+      "market": "Only 2 active galvanizers in Venezuela"
+    },
+    "facility": {
+      "heading": "Our Facilities",
+      "alt1": "65cm centrifuge in operation — galvanizing hardware parts",
+      "alt2": "PYGLARA plant — Zona Industrial I, Barquisimeto, Venezuela",
+      "alt3": "Galvanized wave brackets — finished product ready for dispatch",
+      "alt4": "Hot-dip galvanized bolts fresh from the centrifuge",
+      "alt5": "Galvanized nails — finished product from centrifuge line",
+      "alt6": "Galvanizing kettle hall — PYGLARA plant, Barquisimeto"
     }
   }
 }

@@ -1,17 +1,270 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { t, buildWhatsAppUrl } from '../../utils/i18n';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import StatusIndicator from '../../components/StatusIndicator.astro';
+import imgEsfumer from '../../assets/images/esfumer.jpeg';
+import imgPilling1 from '../../assets/images/pilling1.jpeg';
+import imgPlantClean from '../../assets/images/plant-clean.jpeg';
+import img65 from '../../assets/images/65.jpeg';
+import imgPlantExterior from '../../assets/images/plant-exterior.jpeg';
+import imgBrackets from '../../assets/images/brackets.jpeg';
+import imgNails from '../../assets/images/nails.jpeg';
+import imgNails2 from '../../assets/images/nails2.jpeg';
+
+const lang = 'en' as const;
+
+const kettles = [
+  { name: "65cm", status: "active" as const,      label_es: "Activa",        label_en: "Active" },
+  { name: "3.5m", status: "maintenance" as const, label_es: "En reparación", label_en: "Under repair" },
+  { name: "7m",   status: "pending" as const,     label_es: "Q2 2026",       label_en: "Q2 2026" },
+  { name: "9m",   status: "pending" as const,     label_es: "2027",          label_en: "2027" },
+];
 ---
+
 <BaseLayout
-  title="PYGLARA — Galvanizing in Barquisimeto, Venezuela"
-  description="Hot-dip galvanizing and copper electroplating. Installed capacity: 1,440 MT/month. Zona Industrial I, Barquisimeto, Venezuela."
-  lang="en"
+  title="PYGLARA — Hot-Dip Galvanizing & Copper Ground Rods | Barquisimeto, Venezuela"
+  description="Venezuela's only dual-capability industrial galvanizer. Hot-dip galvanizing up to 9m and copper-clad ground rods. Serving electrical, telecom, and construction sectors since 1976."
+  lang={lang}
+  activePage="home"
+  ogImage="https://pyglara.com/images/og-homepage.jpg"
 >
-  <main>
-    <h1>Prensados y Galvanizados de Lara, S.A.</h1>
-    <p>Coming soon — website under construction.</p>
-    <p>
-      Contact: <a href="https://wa.me/584245715349?text=Hello%2C%20I%27d%20like%20information%20about%20PYGLARA%27s%20services.">WhatsApp +58 424 571 5349</a>
-      &nbsp;|&nbsp; <a href="mailto:info@pyglara.com">info@pyglara.com</a>
-    </p>
-  </main>
+  <!-- Open Graph meta tags for EN — critical for LinkedIn/Slack unfurl -->
+  <meta slot="head" property="og:title" content="PYGLARA — Hot-Dip Galvanizing & Copper Ground Rods | Barquisimeto, Venezuela" />
+  <meta slot="head" property="og:description" content="Venezuela's only dual-capability industrial galvanizer. Hot-dip galvanizing up to 9m and copper-clad ground rods. Serving electrical, telecom, and construction sectors since 1976." />
+  <meta slot="head" property="og:image" content="https://pyglara.com/images/og-homepage.jpg" />
+  <meta slot="head" property="og:url" content="https://pyglara.com/en/" />
+  <meta slot="head" property="og:type" content="website" />
+  <meta slot="head" property="og:locale" content="en_US" />
+
+  <!-- Section 1: Status bar -->
+  <div
+    class="bg-navy px-4 text-xs truncate flex items-center text-green"
+    style="max-height: 40px; height: 40px;"
+  >
+    {t(lang, 'status.active')}
+  </div>
+
+  <!-- Section 2: Hero — full-bleed plant photo -->
+  <section class="relative bg-navy overflow-hidden" style="min-height: 100svh;">
+    <Image
+      src={imgEsfumer}
+      alt="7m galvanizing kettle enclosure — PYGLARA plant, Barquisimeto"
+      width={1440}
+      height={810}
+      quality={70}
+      loading="eager"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      style="opacity: 0.30;"
+    />
+
+    <div class="relative z-10 flex flex-col px-6 pt-8 max-w-2xl mx-auto" style="min-height: 100svh;">
+      <div class="flex-1 flex flex-col justify-center gap-6">
+        <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+          {t(lang, 'hero.headline')}
+        </h1>
+
+        <StatusIndicator status="active" lang={lang} kettles={kettles} />
+
+        <p class="text-white/60 text-sm">{t(lang, 'hero.heritage')}</p>
+      </div>
+    </div>
+
+    <!-- Inline WhatsApp CTA — absolute bottom-8, above fold on 375px (Carlos test) -->
+    <div class="absolute bottom-8 left-6 right-6 z-20 max-w-sm">
+      <WhatsAppButton
+        href={buildWhatsAppUrl(lang, 'general')}
+        variant="inline"
+        label={t(lang, 'hero.cta_whatsapp')}
+      />
+    </div>
+  </section>
+
+  <!-- Section 3: Stats bar -->
+  <section class="bg-navy py-12">
+    <div class="max-w-content mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="fade-up">
+        <div class="text-5xl font-bold text-white">
+          <span class="stat-number" data-target="300">0</span>
+        </div>
+        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.capacity_label')}</div>
+      </div>
+      <div class="fade-up">
+        <div class="text-5xl font-bold text-white">
+          <span class="stat-number" data-target="936">0</span>
+        </div>
+        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.rods_label')}</div>
+      </div>
+      <div class="fade-up">
+        <div class="text-5xl font-bold text-white">
+          <span class="stat-number" data-target="50">0</span><span class="text-white">+</span>
+        </div>
+        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.years_label')}</div>
+      </div>
+      <div class="fade-up">
+        <div class="text-5xl font-bold text-white">
+          <span class="stat-number" data-target="2">0</span>
+        </div>
+        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.competitors_label')}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Dual capability cards -->
+  <section class="bg-bg-alt py-14">
+    <div class="max-w-content mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Galvanizing card — Pilling kettle as bg -->
+      <div class="relative bg-navy text-white rounded overflow-hidden fade-up">
+        <!-- TODO Story 7-2: add href to service page -->
+        <Image
+          src={imgPilling1}
+          alt="W. Pilling Riepe GmbH galvanizing kettle — PYGLARA"
+          width={480}
+          height={320}
+          loading="lazy"
+          quality={70}
+          class="absolute inset-0 w-full h-full object-cover"
+          style="opacity: 0.20;"
+        />
+        <div class="relative z-10 p-6">
+          <h2 class="text-xl font-bold mb-4">{t(lang, 'cards.galvanizing_title')}</h2>
+          <ul class="space-y-2 text-white/80 text-sm mb-6">
+            <li>&#x2713; {t(lang, 'cards.galvanizing_bullet1')}</li>
+            <li>&#x2713; {t(lang, 'cards.galvanizing_bullet2')}</li>
+            <li>&#x2713; {t(lang, 'cards.galvanizing_bullet3')}</li>
+          </ul>
+          <WhatsAppButton
+            href={buildWhatsAppUrl(lang, 'galvanizing')}
+            variant="inline"
+            label={t(lang, 'hero.cta_whatsapp')}
+          />
+        </div>
+      </div>
+
+      <!-- Copper card — copper plating line as bg -->
+      <div class="relative bg-copper text-white rounded overflow-hidden fade-up">
+        <!-- TODO Story 7-3: add href to service page -->
+        <Image
+          src={imgPlantClean}
+          alt="Copper electroplating line — PYGLARA"
+          width={480}
+          height={320}
+          loading="lazy"
+          quality={70}
+          class="absolute inset-0 w-full h-full object-cover"
+          style="opacity: 0.20;"
+        />
+        <div class="relative z-10 p-6">
+          <h2 class="text-xl font-bold mb-4">{t(lang, 'cards.copper_title')}</h2>
+          <ul class="space-y-2 text-white/80 text-sm mb-6">
+            <li>&#x2713; {t(lang, 'cards.copper_bullet1')}</li>
+            <li>&#x2713; {t(lang, 'cards.copper_bullet2')}</li>
+            <li>&#x2713; {t(lang, 'cards.copper_bullet3')}</li>
+          </ul>
+          <WhatsAppButton
+            href={buildWhatsAppUrl(lang, 'copper_rods')}
+            variant="inline"
+            label={t(lang, 'hero.cta_whatsapp')}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Company snapshot -->
+  <section class="bg-bg py-14">
+    <div class="max-w-content mx-auto px-4 fade-up">
+      <h2 class="text-2xl font-bold text-navy mb-6">{t(lang, 'snapshot.heading')}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <p class="text-text leading-relaxed">{t(lang, 'snapshot.body')}</p>
+        </div>
+        <ul class="space-y-3 text-text text-sm">
+          <li class="flex items-start gap-2">
+            <span class="text-copper font-bold mt-0.5">&#x2022;</span>
+            <span>{t(lang, 'snapshot.equipment')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-copper font-bold mt-0.5">&#x2022;</span>
+            <span>{t(lang, 'snapshot.standards')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-copper font-bold mt-0.5">&#x2022;</span>
+            <span>{t(lang, 'snapshot.market')}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Facility photos — 6 real photos -->
+  <section class="bg-bg-alt py-14">
+    <div class="max-w-content mx-auto px-4">
+      <h2 class="text-2xl font-bold text-navy mb-6 fade-up">{t(lang, 'facility.heading')}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Image
+          src={img65}
+          alt={t(lang, 'facility.alt1')}
+          width={480}
+          height={360}
+          loading="lazy"
+          quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 220px;"
+        />
+        <Image
+          src={imgPlantExterior}
+          alt={t(lang, 'facility.alt2')}
+          width={480}
+          height={360}
+          loading="lazy"
+          quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 220px;"
+        />
+        <Image
+          src={imgBrackets}
+          alt={t(lang, 'facility.alt3')}
+          width={480}
+          height={360}
+          loading="lazy"
+          quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 220px;"
+        />
+        <Image
+          src={imgNails}
+          alt={t(lang, 'facility.alt4')}
+          width={480}
+          height={360}
+          loading="lazy"
+          quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 220px;"
+        />
+        <Image
+          src={imgNails2}
+          alt={t(lang, 'facility.alt5')}
+          width={480}
+          height={360}
+          loading="lazy"
+          quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 220px;"
+        />
+        <Image
+          src={imgEsfumer}
+          alt={t(lang, 'facility.alt6')}
+          width={480}
+          height={360}
+          loading="lazy"
+          quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 220px;"
+        />
+      </div>
+    </div>
+  </section>
 </BaseLayout>

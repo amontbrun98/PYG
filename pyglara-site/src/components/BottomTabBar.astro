@@ -1,0 +1,89 @@
+---
+/**
+ * BottomTabBar.astro — Fixed bottom navigation, mobile only.
+ * Story 7.1: Service page routes do not exist yet.
+ * All service tab hrefs use "#" until those stories are implemented.
+ */
+
+interface Props {
+  lang: 'es' | 'en';
+  activePage: string;
+}
+
+const { lang, activePage } = Astro.props;
+
+const tabs = [
+  {
+    key: 'galvanizing',
+    label: lang === 'es' ? 'Galv.' : 'Galv.',
+    href: '#', // TODO Story 7-2: replace href with real route
+    'data-page': 'galvanizing',
+  },
+  {
+    key: 'copper_rods',
+    label: lang === 'es' ? 'Cobre' : 'Rods',
+    href: '#', // TODO Story 7-3: replace href with real route
+    'data-page': 'copper_rods',
+  },
+  {
+    key: 'quality',
+    label: lang === 'es' ? 'Calidad' : 'Quality',
+    href: '#', // TODO Story 7-4: replace href with real route
+    'data-page': 'quality',
+  },
+  {
+    key: 'contact',
+    label: lang === 'es' ? 'Contacto' : 'Contact',
+    href: '#', // TODO Story 7-5: replace href with real route
+    'data-page': 'contact',
+  },
+];
+---
+
+<nav
+  role="navigation"
+  aria-label="Main navigation"
+  class="md:hidden fixed bottom-0 left-0 right-0 z-20 bg-bg border-t border-gray-200 flex print:hidden"
+  style="padding-bottom: env(safe-area-inset-bottom);"
+>
+  {tabs.map((tab) => {
+    const isActive = activePage === tab.key;
+    return (
+      <a
+        href={tab.href}
+        data-page={tab['data-page']}
+        aria-current={isActive ? 'page' : undefined}
+        class={`flex-1 flex flex-col items-center justify-center gap-1 py-2 text-xs ${isActive ? 'text-copper border-t-2 border-copper' : 'text-gray-500'}`}
+        style="min-height: 56px;"
+      >
+        {tab.key === 'galvanizing' && (
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 6l1.5-3h15L21 6H3z"/>
+            <rect x="3" y="6" width="18" height="14" rx="1"/>
+            <line x1="9" y1="10" x2="9" y2="16"/>
+            <line x1="15" y1="10" x2="15" y2="16"/>
+          </svg>
+        )}
+        {tab.key === 'copper_rods' && (
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="7" y1="3" x2="7" y2="21"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+            <line x1="17" y1="3" x2="17" y2="21"/>
+          </svg>
+        )}
+        {tab.key === 'quality' && (
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/>
+          </svg>
+        )}
+        {tab.key === 'contact' && (
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 7l10 7 10-7"/>
+          </svg>
+        )}
+        <span>{tab.label}</span>
+      </a>
+    );
+  })}
+</nav>

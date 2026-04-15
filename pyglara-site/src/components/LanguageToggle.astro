@@ -1,0 +1,45 @@
+---
+/**
+ * LanguageToggle.astro — ES | EN switcher in site header.
+ * Switches between /es/[path] and /en/[path].
+ * Active language is bold; inactive is a link.
+ */
+
+interface Props {
+  lang: 'es' | 'en';
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+const esHref = `/es/${currentPath}`;
+const enHref = `/en/${currentPath}`;
+---
+
+<div class="flex items-center gap-1 text-sm font-medium print:hidden">
+  {lang === 'es' ? (
+    <span class="font-bold text-white">ES</span>
+  ) : (
+    <a
+      href={esHref}
+      aria-label="Cambiar a Español"
+      class="text-white/70 hover:text-white"
+      style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 0.25rem;"
+    >
+      ES
+    </a>
+  )}
+  <span class="text-white/40 select-none">|</span>
+  {lang === 'en' ? (
+    <span class="font-bold text-white">EN</span>
+  ) : (
+    <a
+      href={enHref}
+      aria-label="Switch to English"
+      class="text-white/70 hover:text-white"
+      style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 0.25rem;"
+    >
+      EN
+    </a>
+  )}
+</div>

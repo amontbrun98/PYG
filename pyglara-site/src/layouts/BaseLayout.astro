@@ -1,16 +1,21 @@
 ---
 import '../styles/global.css';
+import { t, buildWhatsAppUrl } from '../utils/i18n';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import BottomTabBar from '../components/BottomTabBar.astro';
+import LanguageToggle from '../components/LanguageToggle.astro';
 
 interface Props {
   title: string;
   description: string;
   lang: 'es' | 'en';
+  activePage?: string;
+  ogImage?: string;
 }
 
-const { title, description, lang } = Astro.props;
+const { title, description, lang, activePage = '', ogImage } = Astro.props;
 
 // GA4 Measurement ID — replace with actual ID from Story 1.2 Task 3
-// If GA4 ID is not yet available, use placeholder 'G-XXXXXXXXXX' and update when ID is confirmed
 const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX';
 
 // Canonical URL for this page
@@ -20,10 +25,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const altLang = lang === 'es' ? 'en' : 'es';
 const altPathname = Astro.url.pathname.replace(`/${lang}/`, `/${altLang}/`);
 const altURL = new URL(altPathname, Astro.site);
+
+// Current path (strip /{lang}/ prefix for LanguageToggle)
+const currentPath = Astro.url.pathname.replace(/^\/(es|en)\//, '');
+
+// WhatsApp URL for header/footer/float (general context)
+const waGeneralUrl = buildWhatsAppUrl(lang, 'general');
+
+// LocalBusiness structured data
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Prensados y Galvanizados de Lara, S.A.",
+  "alternateName": "PYGLARA",
+  "taxID": "J-07014488-0",
+  "telephone": "+58-424-571-5349",
+  "email": "info@pyglara.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle 26, entre Av. 1ra y 2da, Galpón No. 25-90, Zona Industrial I",
+    "addressLocality": "Barquisimeto",
+    "addressRegion": "Lara",
+    "postalCode": "3001",
+    "addressCountry": "VE"
+  },
+  "url": "https://pyglara.com"
+};
 ---
 
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang={lang} style="scroll-behavior: smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,6 +64,14 @@ const altURL = new URL(altPathname, Astro.site);
     <link rel="alternate" hreflang={lang} href={canonicalURL} />
     <link rel="alternate" hreflang={altLang} href={altURL} />
     <link rel="alternate" hreflang="x-default" href={new URL('/es/', Astro.site)} />
+
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Named head slot: pages can inject additional <meta> tags (e.g. Open Graph for EN) -->
+    <slot name="head" />
+
+    <!-- LocalBusiness structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
 
     <!-- GA4 inline — no external script loader, zero CLS impact -->
     <script is:inline define:vars={{ GA4_MEASUREMENT_ID }}>
@@ -47,6 +86,161 @@ const altURL = new URL(altPathname, Astro.site);
     <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`} async></script>
   </head>
   <body>
-    <slot />
+    <!-- Header: sticky, z-20, hidden on print -->
+    <header class="bg-navy text-white sticky top-0 z-20 print:hidden">
+      <div class="flex items-center justify-between px-4 py-3 max-w-content mx-auto">
+        <!-- Logo wordmark -->
+        <a href={`/${lang}/`} class="flex items-center" aria-label="PYGLARA — Inicio">
+          <!-- TODO Story 1-1: replace with brand logo SVG -->
+          <span class="font-bold text-white text-xl tracking-wide">PYGLARA</span>
+        </a>
+
+        <!-- Desktop nav links -->
+        <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Desktop navigation">
+          <a
+            href="#"
+            data-page="galvanizing"
+            class="text-white/80 hover:text-white transition-colors"
+            style="min-height: 44px; display: inline-flex; align-items: center;"
+          >
+            <!-- TODO Story 7-2: replace href with real route -->
+            {t(lang, 'nav.galvanizing')}
+          </a>
+          <a
+            href="#"
+            data-page="copper_rods"
+            class="text-white/80 hover:text-white transition-colors"
+            style="min-height: 44px; display: inline-flex; align-items: center;"
+          >
+            <!-- TODO Story 7-3: replace href with real route -->
+            {t(lang, 'nav.copper_rods')}
+          </a>
+          <a
+            href="#"
+            data-page="quality"
+            class="text-white/80 hover:text-white transition-colors"
+            style="min-height: 44px; display: inline-flex; align-items: center;"
+          >
+            <!-- TODO Story 7-4: replace href with real route -->
+            {t(lang, 'nav.quality')}
+          </a>
+          <a
+            href="#"
+            data-page="contact"
+            class="text-white/80 hover:text-white transition-colors"
+            style="min-height: 44px; display: inline-flex; align-items: center;"
+          >
+            <!-- TODO Story 7-5: replace href with real route -->
+            {t(lang, 'nav.contact')}
+          </a>
+        </nav>
+
+        <!-- Right: language toggle + WA header button -->
+        <div class="flex items-center gap-2">
+          <LanguageToggle lang={lang} currentPath={currentPath} />
+          <WhatsAppButton variant="header" href={waGeneralUrl} />
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content — pb-16 compensates for fixed BottomTabBar on mobile -->
+    <main class="pb-16 md:pb-0">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white print:hidden">
+      <div class="max-w-content mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Brand column -->
+          <div>
+            <p class="font-bold text-xl tracking-wide mb-2">PYGLARA</p>
+            <p class="text-white/60 text-xs leading-relaxed">
+              Prensados y Galvanizados de Lara, S.A.<br />
+              {t(lang, 'footer.rif')}
+            </p>
+          </div>
+
+          <!-- Address column -->
+          <div>
+            <p class="text-white/40 text-xs font-semibold uppercase tracking-wider mb-2">
+              {lang === 'es' ? 'Dirección' : 'Address'}
+            </p>
+            <p class="text-white/70 text-sm leading-relaxed">{t(lang, 'footer.address')}</p>
+          </div>
+
+          <!-- Contact column -->
+          <div>
+            <p class="text-white/40 text-xs font-semibold uppercase tracking-wider mb-2">
+              {lang === 'es' ? 'Contacto' : 'Contact'}
+            </p>
+            <div class="space-y-2">
+              <a
+                href={`tel:${t(lang, 'footer.phone').replace(/\s/g, '')}`}
+                class="block text-sm text-white/70 hover:text-white transition-colors"
+              >
+                {t(lang, 'footer.phone')}
+              </a>
+              <a
+                href={waGeneralUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-sm text-whatsapp hover:brightness-90 transition-colors"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${t(lang, 'footer.email')}`}
+                class="block text-sm text-white/70 hover:text-white transition-colors"
+              >
+                {t(lang, 'footer.email')}
+              </a>
+              <a
+                href="#"
+                class="block text-sm text-copper hover:brightness-90 transition-colors"
+              >
+                <!-- TODO Story 7-5: replace with getRelativeLocaleUrl(lang, 'contacto') + '#alianzas' -->
+                {t(lang, 'footer.partnerships')}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 mt-8 pt-6 text-center text-white/30 text-xs">
+          &copy; {new Date().getFullYear()} Prensados y Galvanizados de Lara, S.A. — Barquisimeto, Venezuela
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bottom tab bar — mobile only, z-20 (float WA button is z-50, always above) -->
+    <BottomTabBar lang={lang} activePage={activePage} />
+
+    <!-- Float WhatsApp button — mobile only, z-50 -->
+    <WhatsAppButton variant="float" href={waGeneralUrl} />
+
+    <!-- Scroll-reveal IntersectionObserver + stat counter -->
+    <script is:inline>
+      // DOMContentLoaded wrapper ensures slot content is in the DOM before observers run
+      document.addEventListener('DOMContentLoaded', function () {
+        // Scroll-reveal: adds .visible class when elements enter viewport
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Stat counter: animates data-target numbers when .stat-number enters viewport
+        const statObserver = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const el = e.target, target = +el.dataset.target, duration = 1200;
+            let start = null;
+            const step = ts => { if (!start) start = ts; const p = Math.min((ts - start) / duration, 1); el.textContent = Math.floor(p * target); if (p < 1) requestAnimationFrame(step); };
+            requestAnimationFrame(step);
+            statObserver.unobserve(el);
+          });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+      });
+    </script>
   </body>
 </html>

@@ -86,8 +86,8 @@ development_status:
   epic-6-retrospective: optional
 
   # Epic 7: Bilingual Website (Score: 4.95)
-  epic-7: backlog
-  7-1-homepage: backlog
+  epic-7: in-progress
+  7-1-homepage: review
   7-2-galvanizing-services-page: backlog
   7-3-copper-ground-rods-page: backlog
   7-4-quality-safety-about-page: backlog

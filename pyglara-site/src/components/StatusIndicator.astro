@@ -1,0 +1,68 @@
+---
+/**
+ * StatusIndicator.astro — Operational status + kettle timeline.
+ * Server-rendered, no JS. No aria-live (static SSG page).
+ *
+ * IMPORTANT: Never mark the 3.5m kettle as active.
+ * It is confirmed inactive and under repair. (CLAUDE.md, 2026-04-15)
+ *
+ * Kettle status colors:
+ *   active      → green text  (#2D8B4E)
+ *   maintenance → amber text  (#D4A017)
+ *   pending     → copper text (#B87333)
+ */
+
+interface Kettle {
+  name: string;
+  status: 'active' | 'maintenance' | 'pending';
+  label_es: string;
+  label_en: string;
+}
+
+interface Props {
+  status: 'active' | 'maintenance' | 'limited';
+  lang: 'es' | 'en';
+  kettles: Kettle[];
+}
+
+const { status, lang, kettles } = Astro.props;
+
+const statusLabel = {
+  es: {
+    active: 'Planta Operativa — Aceptando Pedidos',
+    maintenance: 'Planta en Mantenimiento',
+    limited: 'Capacidad Limitada',
+  },
+  en: {
+    active: 'Plant Operational — Accepting Orders',
+    maintenance: 'Plant Under Maintenance',
+    limited: 'Limited Capacity',
+  },
+}[lang][status];
+
+function kettleColor(s: string): string {
+  if (s === 'active') return 'var(--color-green)';
+  if (s === 'maintenance') return 'var(--color-amber)';
+  return 'var(--color-copper)';
+}
+---
+
+<div role="status" class="flex flex-col gap-2">
+  <!-- Operational status with green CSS circle indicator -->
+  <div class="flex items-center gap-2">
+    <span
+      style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--color-green); flex-shrink: 0;"
+      aria-hidden="true"
+    ></span>
+    <span class="text-white text-sm font-medium">{statusLabel}</span>
+  </div>
+
+  <!-- Kettle timeline -->
+  <div class="flex flex-wrap gap-x-3 gap-y-1">
+    {kettles.map((k) => (
+      <span class="text-xs" style={`color: ${kettleColor(k.status)};`}>
+        {k.name} — {lang === 'es' ? k.label_es : k.label_en}
+      </span>
+    ))}
+  </div>
+</div>

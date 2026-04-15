@@ -39,30 +39,47 @@
     },
     "stats": {
       "capacity_value": "300",
-      "capacity_label": "TM/mes capacidad real",
+      "capacity_label": "TM/mes capacidad comprobada",
       "rods_value": "936",
       "rods_label": "varillas de cobre/día",
-      "years_value": "50+",
-      "years_label": "años de experiencia",
+      "years_value": "50",
+      "years_label": "años protegiendo acero venezolano",
       "competitors_value": "2",
-      "competitors_label": "galvanizadoras activas en Venezuela"
+      "competitors_label": "galvanizadoras activas en toda Venezuela",
+      "context": "Los números detrás de cada pedido que aceptamos."
+    },
+    "trust": {
+      "heading": "Por qué PYGLARA",
+      "intro": "Cuando su operación depende de acero protegido, el galvanizador que elige importa. Estos son los hechos.",
+      "bullet1_title": "Casi 5 décadas de trayectoria",
+      "bullet1_body": "Fundada en 1976, operamos sin interrupciones por calidad. Conocemos cada aleación, cada pieza difícil, cada plazo urgente.",
+      "bullet2_title": "La mayor capacidad del occidente venezolano",
+      "bullet2_body": "Cubas de galvanización hasta 9 metros de longitud. Aceptamos piezas que ningún competidor regional puede procesar.",
+      "bullet3_title": "Equipos W. Pilling Riepe GmbH — Alemania",
+      "bullet3_body": "Nuestras cubas son del fabricante alemán de referencia mundial. Tolerancias precisas, zinc uniforme, acabado consistente en cada lote.",
+      "bullet4_title": "Zinc SHG 99.99% de pureza",
+      "bullet4_body": "Sin compromiso en materiales. Zinc de alta pureza garantiza adhesión óptima y vida útil máxima para su acero.",
+      "bullet5_title": "34+ empresas atendidas",
+      "bullet5_body": "Sectores eléctrico, telecomunicaciones, construcción y agroindustrial. Clientes que regresan porque el resultado habla por sí solo.",
+      "bullet6_title": "Certificado de calidad en cada entrega",
+      "bullet6_body": "Cada lote sale con su certificado bajo COVENIN 1212-81 y ASTM A123. Documentación lista para su auditoría o licitación."
     },
     "cards": {
       "galvanizing_title": "Galvanización en Caliente",
-      "galvanizing_bullet1": "Cubas hasta 9m de longitud — sin igual en la región",
-      "galvanizing_bullet2": "COVENIN 1212-81 / ASTM A123 — certificado por lote",
-      "galvanizing_bullet3": "Capacidad comprobada: 300 TM/mes",
+      "galvanizing_bullet1": "Cubas hasta 9m — procesamos piezas que otros no pueden aceptar",
+      "galvanizing_bullet2": "Zinc SHG 99.99%: sin compromiso en pureza de materiales",
+      "galvanizing_bullet3": "Certificado COVENIN 1212-81 / ASTM A123 incluido en cada pedido",
       "copper_title": "Varillas de Tierra",
-      "copper_bullet1": "936 varillas/día — sin competidor doméstico",
+      "copper_bullet1": "936 varillas/día — sin competidor doméstico en Venezuela",
       "copper_bullet2": "Diámetros 5/8\" a 1\", longitudes 1.2m a 3m",
       "copper_bullet3": "Recubrimiento cobre: 300 μm ± 50 (ASTM A153)"
     },
     "snapshot": {
-      "heading": "Sobre PYGLARA",
-      "body": "50 años de trayectoria galvanizando Venezuela desde Barquisimeto.",
-      "equipment": "Equipamiento W. Pilling Riepe GmbH (Alemania)",
+      "heading": "Nuestra Historia",
+      "body": "Fundada en 1976 en Barquisimeto, PYGLARA lleva casi cinco décadas protegiendo el acero venezolano. Operamos con equipos originales W. Pilling Riepe GmbH de Alemania — el fabricante de referencia mundial en cubas de galvanización — y hemos atendido a más de 34 empresas en los sectores eléctrico, telecomunicaciones, construcción y agroindustrial. Somos la planta de mayor capacidad del occidente venezolano y una de solo dos galvanizadoras activas en todo el país. Cada entrega lleva su certificado de calidad.",
+      "equipment": "Equipos W. Pilling Riepe GmbH (Alemania)",
       "standards": "COVENIN 1212-81 / ASTM A123 / ASTM A153",
-      "market": "Solo 2 galvanizadoras activas en Venezuela"
+      "market": "Una de solo 2 galvanizadoras activas en Venezuela"
     },
     "facility": {
       "heading": "Nuestras Instalaciones",
@@ -117,27 +134,44 @@
       "capacity_label": "MT/month proven capacity",
       "rods_value": "936",
       "rods_label": "copper rods/day",
-      "years_value": "50+",
-      "years_label": "years of experience",
+      "years_value": "50",
+      "years_label": "years protecting Venezuelan steel",
       "competitors_value": "2",
-      "competitors_label": "active galvanizers in Venezuela"
+      "competitors_label": "active galvanizers in all of Venezuela",
+      "context": "The numbers behind every order we accept."
+    },
+    "trust": {
+      "heading": "Why PYGLARA",
+      "intro": "When your operation depends on protected steel, the galvanizer you choose matters. Here are the facts.",
+      "bullet1_title": "Nearly 5 decades of track record",
+      "bullet1_body": "Founded in 1976, we have operated without quality interruptions. We know every alloy, every difficult piece, every urgent deadline.",
+      "bullet2_title": "Largest capacity in western Venezuela",
+      "bullet2_body": "Galvanizing kettles up to 9 meters long. We accept pieces no regional competitor can process.",
+      "bullet3_title": "W. Pilling Riepe GmbH equipment — Germany",
+      "bullet3_body": "Our kettles are made by the world reference manufacturer. Precise tolerances, uniform zinc, consistent finish on every batch.",
+      "bullet4_title": "Zinc SHG 99.99% purity",
+      "bullet4_body": "No compromise on materials. High-purity zinc guarantees optimal adhesion and maximum service life for your steel.",
+      "bullet5_title": "34+ companies served",
+      "bullet5_body": "Electrical, telecommunications, construction, and agroindustrial sectors. Clients who return because the results speak for themselves.",
+      "bullet6_title": "Quality certificate with every delivery",
+      "bullet6_body": "Every batch ships with its certificate under COVENIN 1212-81 and ASTM A123. Documentation ready for your audit or tender."
     },
     "cards": {
       "galvanizing_title": "Hot-Dip Galvanizing",
-      "galvanizing_bullet1": "Kettles up to 9m long — no regional competitor",
-      "galvanizing_bullet2": "COVENIN 1212-81 / ASTM A123 — per-lot certificates",
-      "galvanizing_bullet3": "Proven capacity: 300 MT/month",
+      "galvanizing_bullet1": "Kettles up to 9m — we process pieces others cannot accept",
+      "galvanizing_bullet2": "Zinc SHG 99.99%: no compromise on material purity",
+      "galvanizing_bullet3": "COVENIN 1212-81 / ASTM A123 certificate included with every order",
       "copper_title": "Copper Ground Rods",
-      "copper_bullet1": "936 rods/day — zero domestic competition",
+      "copper_bullet1": "936 rods/day — zero domestic competition in Venezuela",
       "copper_bullet2": "Diameters 5/8\" to 1\", lengths 1.2m to 3m",
       "copper_bullet3": "Copper coating: 300 μm ± 50 (ASTM A153)"
     },
     "snapshot": {
-      "heading": "About PYGLARA",
-      "body": "50 years galvanizing Venezuela from Barquisimeto.",
-      "equipment": "Equipment by W. Pilling Riepe GmbH (Germany)",
+      "heading": "Our History",
+      "body": "Founded in 1976 in Barquisimeto, PYGLARA has spent nearly five decades protecting Venezuelan steel. We operate original W. Pilling Riepe GmbH equipment from Germany — the world reference manufacturer for galvanizing kettles — and have served over 34 companies across the electrical, telecommunications, construction, and agroindustrial sectors. We are the highest-capacity galvanizer in western Venezuela and one of only two active galvanizers in the entire country. Every delivery includes a quality certificate.",
+      "equipment": "W. Pilling Riepe GmbH equipment (Germany)",
       "standards": "COVENIN 1212-81 / ASTM A123 / ASTM A153",
-      "market": "Only 2 active galvanizers in Venezuela"
+      "market": "One of only 2 active galvanizers in Venezuela"
     },
     "facility": {
       "heading": "Our Facilities",

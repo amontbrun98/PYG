@@ -95,36 +95,67 @@ const lang = 'en' as const;
   </section>
 
   <!-- Section 3: Stats bar -->
-  <section class="bg-navy py-12">
-    <div class="max-w-content mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div class="fade-up">
-        <div class="text-5xl font-bold text-white">
-          <span class="stat-number" data-target="300">0</span>
+  <section class="bg-navy py-14">
+    <div class="max-w-content mx-auto px-4">
+      <p class="text-center text-white/40 text-xs uppercase tracking-widest mb-10 fade-up">{t(lang, 'stats.context')}</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="fade-up">
+          <div class="text-5xl font-bold text-white">
+            <span class="stat-number" data-target="300">0</span>
+          </div>
+          <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.capacity_label')}</div>
         </div>
-        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.capacity_label')}</div>
-      </div>
-      <div class="fade-up">
-        <div class="text-5xl font-bold text-white">
-          <span class="stat-number" data-target="936">0</span>
+        <div class="fade-up">
+          <div class="text-5xl font-bold text-white">
+            <span class="stat-number" data-target="936">0</span>
+          </div>
+          <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.rods_label')}</div>
         </div>
-        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.rods_label')}</div>
-      </div>
-      <div class="fade-up">
-        <div class="text-5xl font-bold text-white">
-          <span class="stat-number" data-target="50">0</span><span class="text-white">+</span>
+        <div class="fade-up">
+          <div class="text-5xl font-bold text-white">
+            <span class="stat-number" data-target="50">0</span><span class="text-white">+</span>
+          </div>
+          <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.years_label')}</div>
         </div>
-        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.years_label')}</div>
-      </div>
-      <div class="fade-up">
-        <div class="text-5xl font-bold text-white">
-          <span class="stat-number" data-target="2">0</span>
+        <div class="fade-up">
+          <div class="text-5xl font-bold text-white">
+            <span class="stat-number" data-target="2">0</span>
+          </div>
+          <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.competitors_label')}</div>
         </div>
-        <div class="text-copper text-xs mt-2 leading-snug">{t(lang, 'stats.competitors_label')}</div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Dual capability cards -->
+  <!-- Section 4: Trust / Why PYGLARA -->
+  <section class="bg-bg py-16">
+    <div class="max-w-content mx-auto px-4">
+      <div class="mb-10 fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-3">{t(lang, 'trust.heading')}</h2>
+        <p class="text-text/70 text-lg max-w-2xl">{t(lang, 'trust.intro')}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          { title: t(lang, 'trust.bullet1_title'), body: t(lang, 'trust.bullet1_body') },
+          { title: t(lang, 'trust.bullet2_title'), body: t(lang, 'trust.bullet2_body') },
+          { title: t(lang, 'trust.bullet3_title'), body: t(lang, 'trust.bullet3_body') },
+          { title: t(lang, 'trust.bullet4_title'), body: t(lang, 'trust.bullet4_body') },
+          { title: t(lang, 'trust.bullet5_title'), body: t(lang, 'trust.bullet5_body') },
+          { title: t(lang, 'trust.bullet6_title'), body: t(lang, 'trust.bullet6_body') },
+        ].map(item => (
+          <div class="flex gap-4 fade-up">
+            <span class="flex-shrink-0 rounded-full bg-copper" style="width:10px;height:10px;margin-top:6px;"></span>
+            <div>
+              <p class="font-semibold text-navy text-sm mb-1">{item.title}</p>
+              <p class="text-text/70 text-sm leading-relaxed">{item.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Dual capability cards -->
   <section class="bg-bg-alt py-14">
     <div class="max-w-content mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Galvanizing card — Pilling kettle as bg -->
@@ -185,8 +216,8 @@ const lang = 'en' as const;
     </div>
   </section>
 
-  <!-- Section 5: Company snapshot -->
-  <section class="bg-bg py-14">
+  <!-- Section 7: Company snapshot / history -->
+  <section class="bg-bg-alt py-14">
     <div class="max-w-content mx-auto px-4 fade-up">
       <h2 class="text-2xl font-bold text-navy mb-6">{t(lang, 'snapshot.heading')}</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

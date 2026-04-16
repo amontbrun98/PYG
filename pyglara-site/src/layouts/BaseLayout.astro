@@ -1,9 +1,11 @@
 ---
 import '../styles/global.css';
 import { t, buildWhatsAppUrl } from '../utils/i18n';
+import { Image } from 'astro:assets';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import BottomTabBar from '../components/BottomTabBar.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
+import logoImg from '../assets/images/logo-eloy.jpeg';
 
 interface Props {
   title: string;
@@ -91,8 +93,17 @@ const localBusiness = {
       <div class="flex items-center justify-between px-4 py-3 max-w-content mx-auto">
         <!-- Logo wordmark -->
         <a href={`/${lang}/`} class="flex items-center" aria-label="PYGLARA — Inicio">
-          <!-- TODO Story 1-1: replace with brand logo SVG -->
-          <span class="font-bold text-white text-xl tracking-wide">PYGLARA</span>
+          <div class="bg-white rounded" style="padding: 3px 6px; display:inline-flex; align-items:center;">
+            <Image
+              src={logoImg}
+              alt="PYGLARA — Prensados y Galvanizados de Lara"
+              height={36}
+              width={36}
+              quality={90}
+              loading="eager"
+              style="height:36px; width:auto; display:block;"
+            />
+          </div>
         </a>
 
         <!-- Desktop nav links -->
@@ -154,7 +165,17 @@ const localBusiness = {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Brand column -->
           <div>
-            <p class="font-bold text-xl tracking-wide mb-2">PYGLARA</p>
+            <div class="inline-flex bg-white rounded mb-3" style="padding: 4px 8px;">
+              <Image
+                src={logoImg}
+                alt="PYGLARA"
+                height={40}
+                width={40}
+                quality={90}
+                loading="lazy"
+                style="height:40px; width:auto; display:block;"
+              />
+            </div>
             <p class="text-white/60 text-xs leading-relaxed">
               Prensados y Galvanizados de Lara, S.A.<br />
               {t(lang, 'footer.rif')}

@@ -79,12 +79,24 @@ const lang = 'en' as const;
         </li>
       </ul>
 
+      <!-- Primary CTA — contained, under bullets -->
+      <div class="max-w-xs mt-2">
+        <WhatsAppButton
+          href={buildWhatsAppUrl(lang, 'galvanizing')}
+          variant="inline"
+          label={t(lang, 'hero.cta_whatsapp')}
+        />
+      </div>
+
       <!-- Secondary copper mention — subtle -->
-      <p class="text-white/40 text-xs tracking-wide">
+      <p class="text-white/40 text-xs tracking-wide mt-4">
         {t(lang, 'hero.copper_note')}
       </p>
     </div>
   </section>
+
+  <!-- Copper divider -->
+  <div class="bg-copper" style="height: 3px;"></div>
 
   <!-- Section 3: Stats bar -->
   <section class="bg-navy py-14">

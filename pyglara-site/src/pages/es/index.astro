@@ -61,12 +61,13 @@ const lang = 'es' as const;
     .hero-line-2 {
       display: block;
       background-image: url('/images/galvanized.webp');
-      background-size: 120%;
-      background-position: center 20%;
+      background-size: cover;
+      background-position: center 30%;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
+      filter: brightness(1.15) contrast(1.25) saturate(0.8);
       opacity: 0;
       animation: hero-slam-up 0.55s cubic-bezier(0.22,1,0.36,1) 0.52s forwards;
     }

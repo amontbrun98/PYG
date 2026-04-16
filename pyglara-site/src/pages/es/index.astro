@@ -21,14 +21,6 @@ const lang = 'es' as const;
   lang={lang}
   activePage="home"
 >
-  <!-- Section 1: Status bar — max 40px, green text, never wraps on 320px -->
-  <div
-    class="bg-navy px-4 text-xs truncate flex items-center text-green"
-    style="max-height: 40px; height: 40px;"
-  >
-    {t(lang, 'status.active')}
-  </div>
-
   <!-- Section 2: Hero — min-height 100svh, full-bleed plant photo -->
   <section class="relative bg-navy overflow-hidden" style="min-height: 100svh;">
     <!-- Background: 7m furnace enclosure — more visible at higher opacity -->

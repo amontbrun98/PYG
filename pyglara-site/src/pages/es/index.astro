@@ -21,69 +21,109 @@ const lang = 'es' as const;
   lang={lang}
   activePage="home"
 >
-  <!-- Section 2: Hero — min-height 100svh, full-bleed plant photo -->
+  <style>
+    @keyframes hero-slam-up {
+      0%   { opacity: 0; transform: translateY(40px); }
+      60%  { opacity: 1; transform: translateY(-4px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes hero-slam-left {
+      0%   { opacity: 0; transform: translateX(32px); }
+      60%  { opacity: 1; transform: translateX(-3px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes hero-copper-bar {
+      from { height: 0; }
+      to   { height: 100%; }
+    }
+    @keyframes hero-fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .hero-copper-bar {
+      position: absolute; left: 0; top: 0;
+      width: 5px; height: 0; background: #B87333;
+      animation: hero-copper-bar 0.6s ease 0.1s forwards;
+    }
+    .hero-tag {
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-weight: 900; text-transform: uppercase;
+      letter-spacing: 0.25em; font-size: 0.65rem;
+      opacity: 0; animation: hero-fade-in 0.4s ease 0.1s forwards;
+    }
+    .hero-h1 {
+      font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif;
+      font-weight: 900; text-transform: uppercase;
+      line-height: 0.92; letter-spacing: -0.01em;
+    }
+    .hero-line-1 { display: block; opacity: 0; animation: hero-slam-up 0.55s cubic-bezier(0.22,1,0.36,1) 0.3s forwards; }
+    .hero-line-2 { display: block; color: #B87333; opacity: 0; animation: hero-slam-up 0.55s cubic-bezier(0.22,1,0.36,1) 0.52s forwards; }
+    .hero-line-3 { display: block; opacity: 0; animation: hero-slam-up 0.55s cubic-bezier(0.22,1,0.36,1) 0.72s forwards; }
+    .hero-co-name {
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-weight: 400; font-style: normal;
+      letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.7rem;
+      opacity: 0; animation: hero-fade-in 0.5s ease 1.1s forwards;
+    }
+    .hero-sub { opacity: 0; animation: hero-slam-left 0.5s cubic-bezier(0.22,1,0.36,1) 1.0s forwards; }
+    .hero-b1  { opacity: 0; animation: hero-fade-in 0.4s ease 1.25s forwards; }
+    .hero-b2  { opacity: 0; animation: hero-fade-in 0.4s ease 1.45s forwards; }
+    .hero-b3  { opacity: 0; animation: hero-fade-in 0.4s ease 1.65s forwards; }
+    .hero-cta { opacity: 0; animation: hero-slam-up 0.5s cubic-bezier(0.22,1,0.36,1) 1.85s forwards; }
+  </style>
+
+  <!-- Hero — Option B Impact -->
   <section class="relative bg-navy overflow-hidden" style="min-height: 100svh;">
-    <!-- Background: 7m furnace enclosure — more visible at higher opacity -->
     <Image
       src={imgEsfumer}
       alt="Cuba de galvanización de 7m — Planta PYGLARA, Barquisimeto"
-      width={1440}
-      height={810}
-      quality={70}
-      loading="eager"
-      fetchpriority="high"
+      width={1440} height={810} quality={70}
+      loading="eager" fetchpriority="high"
       class="absolute inset-0 w-full h-full object-cover"
-      style="opacity: 0.55;"
+      style="opacity: 0.38;"
     />
-    <!-- Gradient overlay: dark at bottom for legibility, lighter at top to show photo -->
-    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(27,58,92,0.35) 0%, rgba(27,58,92,0.60) 40%, rgba(27,58,92,0.92) 100%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.75) 50%, rgba(10,22,40,0.97) 100%);"></div>
+    <div class="hero-copper-bar"></div>
 
-    <!-- Hero content -->
-    <div class="relative z-10 flex flex-col justify-center px-6 py-24 max-w-3xl mx-auto" style="min-height: 100svh;">
-      <!-- Tag -->
-      <p class="text-copper text-xs font-semibold uppercase tracking-widest mb-5">
-        {t(lang, 'hero.heritage')}
-      </p>
+    <div class="relative z-10 flex flex-col justify-center px-8 md:px-16 py-24 max-w-4xl" style="min-height: 100svh;">
+      <p class="hero-tag text-copper mb-6">Barquisimeto · Desde 1976</p>
 
-      <!-- Headline -->
-      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-5">
-        {t(lang, 'hero.headline')}
+      <h1 class="hero-h1 text-white mb-6" style="font-size: clamp(2.8rem, 9vw, 7rem);">
+        <span class="hero-line-1">Su acero.</span>
+        <span class="hero-line-2">Galvanizado.</span>
+        <span class="hero-line-3">Garantizado.</span>
       </h1>
 
-      <!-- Subheadline -->
-      <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
-        {t(lang, 'hero.subheadline')}
+      <p class="hero-co-name text-white/50 mb-6 tracking-widest">
+        Prensados y Galvanizados de Lara, S.A.
       </p>
 
-      <!-- Capacity bullets -->
-      <ul class="space-y-3 mb-8">
-        <li class="flex items-center gap-3 text-white text-sm md:text-base">
-          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
-          {t(lang, 'hero.bullet1')}
+      <p class="hero-sub text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-lg">
+        La mayor capacidad del occidente venezolano. Cubas hasta 9m. Certificación COVENIN + ASTM en cada entrega.
+      </p>
+
+      <ul class="space-y-2 mb-8">
+        <li class="hero-b1 flex items-center gap-3 text-white text-sm font-bold uppercase tracking-wide">
+          <span style="width:3px;height:20px;background:#B87333;display:inline-block;flex-shrink:0;"></span>
+          300 TM/mes · Cuba hasta 9m
         </li>
-        <li class="flex items-center gap-3 text-white text-sm md:text-base">
-          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
-          {t(lang, 'hero.bullet2')}
+        <li class="hero-b2 flex items-center gap-3 text-white text-sm font-bold uppercase tracking-wide">
+          <span style="width:3px;height:20px;background:#B87333;display:inline-block;flex-shrink:0;"></span>
+          Zinc SHG 99.99% · Equipo Pilling (Alemania)
         </li>
-        <li class="flex items-center gap-3 text-white text-sm md:text-base">
-          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
-          {t(lang, 'hero.bullet3')}
+        <li class="hero-b3 flex items-center gap-3 text-white text-sm font-bold uppercase tracking-wide">
+          <span style="width:3px;height:20px;background:#B87333;display:inline-block;flex-shrink:0;"></span>
+          936 varillas de cobre/día
         </li>
       </ul>
 
-      <!-- Primary CTA — contained, under bullets -->
-      <div class="max-w-xs mt-2">
+      <div class="hero-cta max-w-xs">
         <WhatsAppButton
           href={buildWhatsAppUrl(lang, 'galvanizing')}
           variant="inline"
           label={t(lang, 'hero.cta_whatsapp')}
         />
       </div>
-
-      <!-- Secondary copper mention — subtle -->
-      <p class="text-white/40 text-xs tracking-wide mt-4">
-        {t(lang, 'hero.copper_note')}
-      </p>
     </div>
   </section>
 

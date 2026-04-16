@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { buildWhatsAppUrl } from '../../utils/i18n';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import imgEsfumer from '../../assets/images/esfumer.jpeg';
+const lang = 'es' as const;
+---
+
+<BaseLayout title="Preview A — Heritage | PYGLARA" description="Preview A" lang={lang} activePage="home">
+  <style>
+    @keyframes underline-draw {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes fade-up-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .preview-label {
+      position: fixed; top: 72px; right: 12px; z-index: 99;
+      background: #B87333; color: white; font-size: 11px;
+      font-weight: 700; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 4px;
+    }
+    .co-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      animation: fade-up-in 0.9s ease 0.2s forwards;
+    }
+    .copper-line {
+      display: block; height: 2px; background: #B87333;
+      width: 0;
+      animation: underline-draw 0.7s ease 1.0s forwards;
+    }
+    .headline-word {
+      display: inline-block;
+      opacity: 0;
+      animation: fade-up-in 0.45s ease forwards;
+    }
+    .w1 { animation-delay: 1.4s; }
+    .w2 { animation-delay: 1.55s; }
+    .w3 { animation-delay: 1.70s; }
+    .w4 { animation-delay: 1.85s; }
+    .w5 { animation-delay: 2.00s; }
+    .w6 { animation-delay: 2.15s; }
+    .appear-late  { opacity: 0; animation: fade-up-in 0.6s ease 2.4s forwards; }
+    .appear-later { opacity: 0; animation: fade-up-in 0.6s ease 2.7s forwards; }
+    .appear-last  { opacity: 0; animation: fade-up-in 0.6s ease 2.9s forwards; }
+  </style>
+
+  <span class="preview-label">OPCIÓN A — Heritage</span>
+
+  <section class="relative bg-navy overflow-hidden" style="min-height: 100svh;">
+    <Image
+      src={imgEsfumer}
+      alt="Planta PYGLARA"
+      width={1440} height={810} quality={70}
+      loading="eager" fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      style="opacity: 0.52;"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(27,58,92,0.30) 0%, rgba(27,58,92,0.62) 40%, rgba(27,58,92,0.96) 100%);"></div>
+
+    <div class="relative z-10 flex flex-col justify-center px-6 py-24 max-w-3xl mx-auto" style="min-height: 100svh;">
+
+      <!-- Company name — Georgia italic, fades in first -->
+      <div class="mb-6">
+        <p class="co-name text-white/90 text-lg md:text-2xl mb-3">
+          Prensados y Galvanizados de Lara, S.A.
+        </p>
+        <span class="copper-line"></span>
+      </div>
+
+      <!-- Headline — word by word -->
+      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-5">
+        <span class="headline-word w1">Su </span><span class="headline-word w2">acero </span><span class="headline-word w3">galvanizado.</span>
+        <br />
+        <span class="headline-word w4">La </span><span class="headline-word w5">mayor </span><span class="headline-word w6">capacidad.</span>
+      </h1>
+
+      <p class="appear-late text-white/75 text-lg leading-relaxed mb-7 max-w-xl">
+        Atendemos pedidos de cualquier volumen desde Barquisimeto, con certificación de calidad en cada entrega.
+      </p>
+
+      <ul class="appear-late space-y-3 mb-7">
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          Cubas Pilling hasta 9m, la mayor capacidad del occidente venezolano
+        </li>
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          300 TM/mes de capacidad comprobada
+        </li>
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          Certificación por lote: COVENIN 1212-81 / ASTM A123
+        </li>
+      </ul>
+
+      <div class="appear-last max-w-xs">
+        <WhatsAppButton href={buildWhatsAppUrl(lang, 'galvanizing')} variant="inline" label="Solicitar cotización" />
+      </div>
+
+      <p class="appear-last text-white/35 text-xs tracking-wide mt-4">
+        También disponible: varillas de tierra cobre-enchapado
+      </p>
+    </div>
+  </section>
+</BaseLayout>

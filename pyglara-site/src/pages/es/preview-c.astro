@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { buildWhatsAppUrl } from '../../utils/i18n';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import imgEsfumer from '../../assets/images/esfumer.jpeg';
+const lang = 'es' as const;
+---
+
+<BaseLayout title="Preview C — Split Reveal | PYGLARA" description="Preview C" lang={lang} activePage="home">
+  <style>
+    @keyframes split-left {
+      from { opacity: 0; transform: translateX(-28px) skewX(-2deg); }
+      to   { opacity: 1; transform: translateX(0)    skewX(0deg); }
+    }
+    @keyframes split-right {
+      from { opacity: 0; transform: translateX(28px)  skewX(2deg); }
+      to   { opacity: 1; transform: translateX(0)     skewX(0deg); }
+    }
+    @keyframes photo-brighten {
+      from { opacity: 0.28; }
+      to   { opacity: 0.58; }
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes line-in {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @keyframes tag-in {
+      from { opacity: 0; letter-spacing: 0.5em; }
+      to   { opacity: 1; letter-spacing: 0.18em; }
+    }
+    .preview-label {
+      position: fixed; top: 72px; right: 12px; z-index: 99;
+      background: #B87333; color: white; font-size: 11px;
+      font-weight: 700; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 4px;
+    }
+    .hero-photo {
+      animation: photo-brighten 2.2s ease 0s forwards;
+    }
+    /* Company name — serif, splits in from both sides */
+    .name-part-left {
+      display: inline-block;
+      opacity: 0;
+      animation: split-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    }
+    .name-part-right {
+      display: inline-block;
+      opacity: 0;
+      animation: split-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    }
+    /* Copper underline that grows */
+    .name-line {
+      display: block; height: 2px; background: #B87333;
+      width: 0;
+      animation: line-in 0.6s ease 0.85s forwards;
+    }
+    /* Tag: letter-spacing collapse from wide to tight */
+    .tag-reveal {
+      opacity: 0;
+      animation: tag-in 0.7s ease 1.0s forwards;
+    }
+    /* Headline: big serif, split in */
+    .h1-left {
+      display: inline;
+      opacity: 0;
+      animation: split-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+    }
+    .h1-right {
+      display: inline;
+      opacity: 0;
+      animation: split-right 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+    }
+    .sub-c {
+      opacity: 0;
+      animation: fade-up 0.55s ease 1.8s forwards;
+    }
+    .bullets-c {
+      opacity: 0;
+      animation: fade-up 0.55s ease 2.1s forwards;
+    }
+    .cta-c {
+      opacity: 0;
+      animation: fade-up 0.55s ease 2.4s forwards;
+    }
+    /* Left vertical copper accent bar */
+    .v-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: linear-gradient(to bottom, #B87333, #8B5E27);
+    }
+    /* Serif mix: company name in Georgia */
+    .serif-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+    }
+    /* Headline: Georgia serif bold */
+    .serif-headline {
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+  </style>
+
+  <span class="preview-label">OPCIÓN C — Split Reveal</span>
+
+  <section class="relative bg-navy overflow-hidden" style="min-height: 100svh;">
+    <Image
+      src={imgEsfumer}
+      alt="Planta PYGLARA"
+      width={1440} height={810} quality={70}
+      loading="eager" fetchpriority="high"
+      class="hero-photo absolute inset-0 w-full h-full object-cover"
+    />
+    <!-- Gradient: lighter top to show photo, dark bottom for text -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(27,58,92,0.20) 0%, rgba(27,58,92,0.50) 35%, rgba(27,58,92,0.95) 70%);"></div>
+
+    <!-- Left accent bar -->
+    <div class="v-bar"></div>
+
+    <div class="relative z-10 flex flex-col justify-end px-8 md:px-16 pb-16 md:pb-24 max-w-4xl" style="min-height: 100svh;">
+
+      <!-- Company name — serif, splits from both sides -->
+      <div class="mb-5">
+        <div class="serif-name text-white/85 text-lg md:text-2xl mb-2 leading-snug">
+          <span class="name-part-left">Prensados y Galvanizados</span>
+          <span class="name-part-right"> de Lara, S.A.</span>
+        </div>
+        <span class="name-line"></span>
+      </div>
+
+      <!-- Tag — letter-spacing collapse -->
+      <p class="tag-reveal text-copper text-xs font-semibold uppercase mb-5">
+        Barquisimeto · Desde 1976
+      </p>
+
+      <!-- Headline — big serif, word-pair split -->
+      <h1 class="serif-headline font-bold text-white leading-tight mb-5" style="font-size: clamp(2.4rem, 7vw, 5.5rem);">
+        <span class="h1-left">Su acero galvanizado.</span><br />
+        <span class="h1-right" style="color: #B87333;">La mayor capacidad.</span>
+      </h1>
+
+      <!-- Sub -->
+      <p class="sub-c text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-xl">
+        Atendemos pedidos de cualquier volumen desde Barquisimeto, con certificación de calidad en cada entrega.
+      </p>
+
+      <!-- Bullets -->
+      <ul class="bullets-c space-y-3 mb-7">
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          Cubas Pilling hasta 9m — la mayor capacidad del occidente venezolano
+        </li>
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          300 TM/mes · Zinc SHG 99.99%
+        </li>
+        <li class="flex items-center gap-3 text-white text-sm md:text-base">
+          <span class="flex-shrink-0 rounded-full bg-copper" style="width:8px;height:8px;"></span>
+          COVENIN 1212-81 / ASTM A123 en cada entrega
+        </li>
+      </ul>
+
+      <div class="cta-c max-w-xs">
+        <WhatsAppButton href={buildWhatsAppUrl(lang, 'galvanizing')} variant="inline" label="Solicitar cotización" />
+      </div>
+
+      <p class="cta-c text-white/30 text-xs tracking-wide mt-4">
+        También disponible: varillas de tierra cobre-enchapado
+      </p>
+    </div>
+  </section>
+</BaseLayout>

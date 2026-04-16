@@ -1,11 +1,9 @@
 ---
 import '../styles/global.css';
 import { t, buildWhatsAppUrl } from '../utils/i18n';
-import { Image } from 'astro:assets';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import BottomTabBar from '../components/BottomTabBar.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
-import logoImg from '../assets/images/logo-eloy.jpeg';
 
 interface Props {
   title: string;
@@ -92,18 +90,8 @@ const localBusiness = {
     <header class="bg-navy text-white sticky top-0 z-20 print:hidden">
       <div class="flex items-center justify-between px-4 py-3 max-w-content mx-auto">
         <!-- Logo wordmark -->
-        <a href={`/${lang}/`} class="flex items-center" aria-label="PYGLARA — Inicio">
-          <div class="bg-white rounded" style="padding: 3px 6px; display:inline-flex; align-items:center;">
-            <Image
-              src={logoImg}
-              alt="PYGLARA — Prensados y Galvanizados de Lara"
-              height={36}
-              width={36}
-              quality={90}
-              loading="eager"
-              style="height:36px; width:auto; display:block;"
-            />
-          </div>
+        <a href={`/${lang}/`} class="flex items-center leading-tight" aria-label="PYGLARA — Inicio">
+          <span class="font-bold text-white text-sm md:text-base tracking-wide">Prensados y Galvanizados de Lara</span>
         </a>
 
         <!-- Desktop nav links -->
@@ -165,17 +153,7 @@ const localBusiness = {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Brand column -->
           <div>
-            <div class="inline-flex bg-white rounded mb-3" style="padding: 4px 8px;">
-              <Image
-                src={logoImg}
-                alt="PYGLARA"
-                height={40}
-                width={40}
-                quality={90}
-                loading="lazy"
-                style="height:40px; width:auto; display:block;"
-              />
-            </div>
+            <p class="font-bold text-white text-base tracking-wide mb-2">Prensados y Galvanizados de Lara</p>
             <p class="text-white/60 text-xs leading-relaxed">
               Prensados y Galvanizados de Lara, S.A.<br />
               {t(lang, 'footer.rif')}

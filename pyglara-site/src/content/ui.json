@@ -93,7 +93,7 @@
     "galv_page": {
       "hero_line1": "Su acero dura 50 años.",
       "hero_line2": "O no dura nada.",
-      "hero_sub": "Galvanización industrial en caliente — Barquisimeto, Venezuela.",
+      "hero_sub": "Galvanizamos su acero a 450 °C para que dure décadas, no años.",
 
       "problem_heading": "El acero sin protección no perdona.",
       "problem_body": "La corrosión no avisa. Empieza por los bordes, avanza por las soldaduras, y cuando se hace visible ya comprometió la estructura. Reemplazar acero corroído cuesta entre 3 y 10 veces más que haberlo galvanizado desde el inicio.",
@@ -102,8 +102,8 @@
       "solution_body": "La galvanización en caliente no es una pintura. A 450 °C, el zinc se une metalúrgicamente al acero — capa por capa — formando una barrera que no se pela, no se descama y no falla en condiciones de campo.",
       "stat_years_value": "50+",
       "stat_years_label": "años de vida útil proyectada",
-      "stat_temp_value": "450 °C",
-      "stat_temp_label": "temperatura de inmersión en zinc fundido",
+      "stat_kettle_value": "9 m",
+      "stat_kettle_label": "la cuba más grande activa en Venezuela",
       "stat_zinc_value": "99.99%",
       "stat_zinc_label": "pureza del zinc SHG utilizado",
 
@@ -111,7 +111,7 @@
       "why_1_title": "50 años de experiencia industrial",
       "why_1_body": "Fundados en 1976. Hemos galvanizado postes, torres, herrajes y estructuras para los sectores eléctrico, telecomunicaciones y construcción en Venezuela.",
       "why_2_title": "Certificación por lote en cada entrega",
-      "why_2_body": "La Ing. Miriam — con más de 36 años en galvanización industrial — emite el certificado de calidad de cada pedido bajo COVENIN 1212-81, ASTM A123 y ASTM A153.",
+      "why_2_body": "Emitimos un certificado de calidad por cada lote bajo COVENIN 1212-81, ASTM A123 y ASTM A153 — con más de 50 años de experiencia industrial respaldando cada entrega.",
       "why_3_title": "La mayor capacidad del occidente venezolano",
       "why_3_body": "Cubas de hasta 9 metros de longitud. Procesamos estructuras de gran formato que otros galvanizadores no pueden aceptar.",
       "why_4_title": "Equipos alemanes W. Pilling Riepe GmbH",
@@ -161,7 +161,20 @@
       "quality_std_1": "COVENIN 1212-81",
       "quality_std_2": "ASTM A123",
       "quality_std_3": "ASTM A153",
-      "quality_body": "Cada pedido sale con su certificado de calidad. Los certificados por lote son emitidos por la Ing. Miriam, con más de 36 años de experiencia en galvanización industrial.",
+      "quality_body": "Cada pedido sale con su certificado de calidad por lote. Más de 50 años de experiencia industrial respaldan cada entrega.",
+
+      "sectors_heading": "Sectores que servimos desde 1976",
+      "sectors_intro": "Más de 50 años protegiendo acero venezolano.",
+      "sector_1": "Eléctrico",
+      "sector_2": "Telecomunicaciones",
+      "sector_3": "Construcción",
+      "sector_4": "Industria y manufactura",
+      "sectors_stat_1_value": "50+",
+      "sectors_stat_1_label": "años de experiencia",
+      "sectors_stat_2_value": "34",
+      "sectors_stat_2_label": "clientes históricos documentados",
+      "sectors_stat_3_value": "6",
+      "sectors_stat_3_label": "reactivando órdenes en 2026",
 
       "hse_heading": "Seguridad industrial",
       "hse_body": "PYGLARA opera con protocolos de seguridad industrial para el manejo de sustancias químicas (HCl, NH4Cl, zinc fundido). Nuestras instalaciones cuentan con ventilación mecánica en la sala de cubas, equipos de protección personal y planes de emergencia actualizados.",
@@ -176,7 +189,13 @@
       "cta_final_heading": "Su acero. Protegido por décadas.",
       "cta_final_body": "Escríbanos con las dimensiones de su pieza y el volumen estimado. Le respondemos hoy.",
       "cta_final_label": "Solicitar cotización",
-      "cta_link_label": "Ver más →"
+      "cta_link_label": "Ver más →",
+
+      "cta_hero_labels": ["Solicitar cotización", "Hablar con nuestro equipo", "Pedir información"],
+      "cta_mid_labels": ["Solicitar cotización", "Enviar dimensiones por WhatsApp"],
+      "cta_final_labels": ["Solicitar cotización — respuesta hoy", "Escríbanos por WhatsApp"],
+
+      "contact_fallback": "También: info@pyglara.com · +58 424 571 5349"
     }
   },
   "en": {
@@ -272,8 +291,8 @@
     },
     "galv_page": {
       "hero_line1": "Your steel lasts 50 years.",
-      "hero_line2": "Or it doesn't last at all.",
-      "hero_sub": "Industrial hot-dip galvanizing — Barquisimeto, Venezuela.",
+      "hero_line2": "Or it rusts.",
+      "hero_sub": "We galvanize your steel at 450 °C so it lasts decades, not years.",
 
       "problem_heading": "Unprotected steel doesn't forgive.",
       "problem_body": "Corrosion doesn't announce itself. It starts at the edges, moves through welds, and by the time it's visible it has already compromised the structure. Replacing corroded steel costs 3 to 10 times more than galvanizing it from the start.",
@@ -282,8 +301,8 @@
       "solution_body": "Hot-dip galvanizing is not a paint or surface coating. At 450 °C, zinc bonds metallurgically to the steel — layer by layer — forming a barrier that doesn't peel, doesn't flake, and doesn't fail in field conditions.",
       "stat_years_value": "50+",
       "stat_years_label": "years projected service life",
-      "stat_temp_value": "450 °C",
-      "stat_temp_label": "immersion temperature in molten zinc",
+      "stat_kettle_value": "9 m",
+      "stat_kettle_label": "the largest active kettle in Venezuela",
       "stat_zinc_value": "99.99%",
       "stat_zinc_label": "purity of SHG zinc used",
 
@@ -291,7 +310,7 @@
       "why_1_title": "50 years of industrial experience",
       "why_1_body": "Founded in 1976. We have galvanized poles, towers, hardware, and structures for the electrical, telecommunications, and construction sectors in Venezuela.",
       "why_2_title": "Per-lot certification on every delivery",
-      "why_2_body": "Ing. Miriam — with over 36 years in industrial galvanizing — issues a quality certificate for every order under COVENIN 1212-81, ASTM A123, and ASTM A153.",
+      "why_2_body": "We issue a quality certificate per lot under COVENIN 1212-81, ASTM A123, and ASTM A153 — backed by more than 50 years of industrial experience on every delivery.",
       "why_3_title": "Largest capacity in western Venezuela",
       "why_3_body": "Kettles up to 9 meters long. We process large-format structures that other galvanizers cannot accept.",
       "why_4_title": "W. Pilling Riepe GmbH equipment — Germany",
@@ -341,7 +360,20 @@
       "quality_std_1": "COVENIN 1212-81",
       "quality_std_2": "ASTM A123",
       "quality_std_3": "ASTM A153",
-      "quality_body": "Every order ships with a quality certificate. Per-lot certificates are issued by Ing. Miriam, with over 36 years of experience in industrial galvanizing.",
+      "quality_body": "Every order ships with a per-lot quality certificate. More than 50 years of industrial experience back every delivery.",
+
+      "sectors_heading": "Sectors we've served since 1976",
+      "sectors_intro": "More than 50 years protecting Venezuelan steel.",
+      "sector_1": "Electrical",
+      "sector_2": "Telecommunications",
+      "sector_3": "Construction",
+      "sector_4": "Industry & manufacturing",
+      "sectors_stat_1_value": "50+",
+      "sectors_stat_1_label": "years of experience",
+      "sectors_stat_2_value": "34",
+      "sectors_stat_2_label": "historical clients documented",
+      "sectors_stat_3_value": "6",
+      "sectors_stat_3_label": "reactivating orders in 2026",
 
       "hse_heading": "Industrial safety",
       "hse_body": "PYGLARA operates with industrial safety protocols for the handling of chemical substances (HCl, NH4Cl, molten zinc). Our facilities include mechanical ventilation in the kettle hall, personal protective equipment, and current emergency response plans.",
@@ -356,7 +388,13 @@
       "cta_final_heading": "Your steel. Protected for decades.",
       "cta_final_body": "Send us your piece dimensions and estimated volume. We'll respond today.",
       "cta_final_label": "Request a quote",
-      "cta_link_label": "Learn more →"
+      "cta_link_label": "Learn more →",
+
+      "cta_hero_labels": ["Request a quote", "Talk to our team", "Get information"],
+      "cta_mid_labels": ["Request a quote", "Send dimensions via WhatsApp"],
+      "cta_final_labels": ["Request a quote — same-day response", "Message us on WhatsApp"],
+
+      "contact_fallback": "Also: info@pyglara.com · +58 424 571 5349"
     }
   }
 }

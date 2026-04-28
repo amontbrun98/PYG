@@ -11,9 +11,10 @@ interface Props {
   lang: 'es' | 'en';
   activePage?: string;
   ogImage?: string;
+  altSlug?: string;
 }
 
-const { title, description, lang, activePage = '', ogImage } = Astro.props;
+const { title, description, lang, activePage = '', ogImage, altSlug } = Astro.props;
 
 // GA4 Measurement ID — replace with actual ID from Story 1.2 Task 3
 const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX';
@@ -23,7 +24,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Alternate language URL for hreflang
 const altLang = lang === 'es' ? 'en' : 'es';
-const altPathname = Astro.url.pathname.replace(`/${lang}/`, `/${altLang}/`);
+const altPathname = altSlug
+  ? `/${altLang}/${altSlug}/`
+  : Astro.url.pathname.replace(`/${lang}/`, `/${altLang}/`);
 const altURL = new URL(altPathname, Astro.site);
 
 // Current path (strip /{lang}/ prefix for LanguageToggle)
@@ -98,12 +101,12 @@ const localBusiness = {
         <!-- Desktop nav links -->
         <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Desktop navigation">
           <a
-            href="#"
+            href={lang === 'es' ? '/es/galvanizacion/' : '/en/galvanizing/'}
             data-page="galvanizing"
+            aria-current={activePage === 'galvanizing' ? 'page' : undefined}
             class="text-white/80 hover:text-white transition-colors"
             style="min-height: 44px; display: inline-flex; align-items: center;"
           >
-            <!-- TODO Story 7-2: replace href with real route -->
             {t(lang, 'nav.galvanizing')}
           </a>
           <a
@@ -216,7 +219,7 @@ const localBusiness = {
     <BottomTabBar lang={lang} activePage={activePage} />
 
     <!-- Float WhatsApp button — mobile only, z-50 -->
-    <WhatsAppButton variant="float" href={waGeneralUrl} />
+    <WhatsAppButton variant="float" href={waGeneralUrl} ariaLabel={lang === 'es' ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'} />
 
     <!-- Scroll-reveal IntersectionObserver + stat counter -->
     <script is:inline>

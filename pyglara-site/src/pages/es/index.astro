@@ -208,7 +208,6 @@ const lang = 'es' as const;
     <div class="max-w-content mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Galvanizing card — Pilling kettle as bg -->
       <div class="relative bg-navy text-white rounded overflow-hidden fade-up">
-        <!-- TODO Story 7-2: add href to service page -->
         <Image
           src={imgPilling1}
           alt="Cuba de galvanización W. Pilling Riepe GmbH — PYGLARA"
@@ -231,6 +230,13 @@ const lang = 'es' as const;
             variant="inline"
             label={t(lang, 'hero.cta_whatsapp')}
           />
+          <a
+            href="/es/galvanizacion/"
+            class="inline-flex items-center gap-1 text-white/70 hover:text-white text-sm mt-2"
+            style="min-height: 44px;"
+          >
+            {t(lang, 'galv_page.cta_link_label')}
+          </a>
         </div>
       </div>
 

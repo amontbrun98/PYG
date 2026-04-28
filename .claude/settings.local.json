@@ -48,11 +48,32 @@
       "Bash(xargs grep:*)",
       "WebFetch(domain:www.designrush.com)",
       "WebFetch(domain:www.wecreate.com)",
-      "WebFetch(domain:www.path-robotics.com)"
+      "WebFetch(domain:www.path-robotics.com)",
+      "Bash(python3 -c ':*)",
+      "Bash(python3 fix_deck_v3.py)",
+      "Bash(python3 fix_deck_s13_s19.py)",
+      "Bash(where libreoffice:*)",
+      "Bash(where soffice:*)",
+      "Bash(python3 -c \"import subprocess; r=subprocess.run\\(['where','soffice'],capture_output=True,text=True\\); print\\(r.stdout\\)\")",
+      "Bash(python3 -c \"import comtypes\")",
+      "Bash(python3 export_pdf.py)",
+      "Bash(powershell -Command \"Unblock-File -Path 'C:\\\\Users\\\\amont\\\\Desktop\\\\PYG\\\\investor-ready\\\\01-Pitch-Deck\\\\PYGLARA_Pitch_Deck_EN_v3.pptx'; Unblock-File -Path 'C:\\\\Users\\\\amont\\\\Desktop\\\\PYG\\\\investor-ready\\\\01-Pitch-Deck\\\\PYGLARA_Pitch_Deck_ES_v3.pptx'; echo 'Unblocked OK'\")",
+      "Bash(powershell -Command ':*)",
+      "Bash(python3 fix_pptx_rels.py)",
+      "Bash(tasklist)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\amont\\\\Desktop\\\\PYG\\\\schedule_pdf_export.ps1\")",
+      "Bash('\"$tmpScript')",
+      "Bash(\"C:/Program Files/Microsoft Office/root/Office16/POWERPNT.EXE\" \"C:/Users/amont/Desktop/PYG/investor-ready/01-Pitch-Deck/PYGLARA_Pitch_Deck_EN_v3.pptx\")",
+      "Bash(python3 fix_rels_namespace.py)",
+      "Bash(python3 fix_presentation_xml.py)",
+      "Bash(ls -la \"c:/Users/amont/Desktop/PYG/investor-ready/01-Pitch-Deck/\"*.pdf)",
+      "Bash(ls -la \"c:/Users/amont/Desktop/PYG/investor-ready/01-Pitch-Deck/\"*.pptx)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:/Users/amont/Desktop/PYG/do_pdf_export.ps1\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\amont\\Desktop\\PYG\\_bmad-output\\planning-artifacts\\research",
-      "C:\\Users\\amont\\.claude\\projects\\c--Users-amont-Desktop-PYG"
+      "C:\\Users\\amont\\.claude\\projects\\c--Users-amont-Desktop-PYG",
+      "c:\\Users\\amont\\Desktop\\PYG\\investor-ready"
     ]
   }
 }

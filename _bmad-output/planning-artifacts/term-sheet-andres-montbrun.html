@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Term Sheet — Andres Montbrun / PYGLARA</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 1in 1in 1in 1in;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", serif;
+      font-size: 10.5pt;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 48px 56px;
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 13pt;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .header h2 {
+      font-size: 11pt;
+      font-weight: normal;
+      margin-bottom: 6px;
+    }
+
+    .header .meta {
+      font-size: 9.5pt;
+      color: #444;
+      margin-top: 8px;
+    }
+
+    .header .status-badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border: 1px solid #1a1a1a;
+      font-size: 9pt;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    .non-negotiable-label {
+      display: inline-block;
+      font-size: 8pt;
+      font-weight: bold;
+      color: #fff;
+      background: #1a1a1a;
+      padding: 1px 7px;
+      letter-spacing: 0.05em;
+      margin-left: 8px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .negotiable-label {
+      display: inline-block;
+      font-size: 8pt;
+      font-weight: bold;
+      color: #1a1a1a;
+      border: 1px solid #1a1a1a;
+      padding: 1px 7px;
+      letter-spacing: 0.05em;
+      margin-left: 8px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin-bottom: 8px;
+      font-size: 10pt;
+    }
+
+    .rationale {
+      font-size: 9.5pt;
+      color: #555;
+      font-style: italic;
+      margin-top: 6px;
+      padding-left: 10px;
+      border-left: 2px solid #ccc;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 10px 0;
+      font-size: 9.5pt;
+    }
+
+    th {
+      background: #1a1a1a;
+      color: #fff;
+      text-align: left;
+      padding: 6px 10px;
+      font-size: 9pt;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #e0e0e0;
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.total-row td {
+      font-weight: bold;
+      border-top: 2px solid #1a1a1a;
+      border-bottom: none;
+    }
+
+    /* Signature Block */
+    .signature-section {
+      margin-top: 28px;
+      page-break-inside: avoid;
+    }
+
+    .sig-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 40px;
+      margin-top: 16px;
+    }
+
+    .sig-block {
+      padding-top: 4px;
+    }
+
+    .sig-line {
+      border-top: 1px solid #1a1a1a;
+      margin-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    .sig-name {
+      font-size: 9.5pt;
+      font-weight: bold;
+    }
+
+    .sig-role {
+      font-size: 9pt;
+      color: #555;
+    }
+
+    .sig-date-line {
+      margin-top: 10px;
+      font-size: 9pt;
+      color: #555;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid #ccc;
+      font-size: 8.5pt;
+      color: #666;
+      font-style: italic;
+      text-align: center;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Term Sheet — Management &amp; Equity Participation</h1>
+    <h2>Prensados y Galvanizados de Lara, S.A. &nbsp;|&nbsp; RIF: J-07014488-0</h2>
+    <div class="meta">
+      Date: April 15, 2026 &nbsp;&nbsp;|&nbsp;&nbsp; Prepared by: Andres Montbrun
+    </div>
+    <div class="status-badge">Counter-Proposal</div>
+  </div>
+
+  <!-- PARTIES -->
+  <div class="section">
+    <div class="section-title">1. Parties</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Management Candidate</td>
+          <td>Andres Montbrun</td>
+        </tr>
+        <tr>
+          <td>Investor / Operator</td>
+          <td>Jorge Brillembourg</td>
+        </tr>
+        <tr>
+          <td>Investor / Operator</td>
+          <td>Ana Brillembourg</td>
+        </tr>
+        <tr>
+          <td>Shareholder (84%)</td>
+          <td>Francisco Ballesteros Zamorano</td>
+        </tr>
+        <tr>
+          <td>Shareholder (16%)</td>
+          <td>Nelly Alvarado de Ballesteros</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TITLE -->
+  <div class="section">
+    <div class="section-title">2. Title and Role <span class="non-negotiable-label">Non-Negotiable</span></div>
+    <p>Andres Montbrun shall be formally appointed <strong>General Manager</strong> of PYGLARA upon signing of this agreement. This title shall appear in all company records and in communications with clients, suppliers, banking institutions, and government entities.</p>
+  </div>
+
+  <!-- COMPENSATION -->
+  <div class="section">
+    <div class="section-title">3. Compensation</div>
+
+    <p><strong>3a. Base Salary</strong> <span class="negotiable-label">Negotiable — Floor: $3,000/month USD</span></p>
+    <p>Base salary is deferred until the <strong>first commercial order ships from the plant.</strong> Upon that event, a monthly base salary of no less than <strong>$3,000 USD</strong> shall be paid to Andres Montbrun.</p>
+    <p class="rationale">This structure protects the company's capital during the reactivation phase while ensuring the General Manager is compensated as soon as the company generates revenue. The salary floor reflects the scope of the role: web development, branding, commercial development, supplier management, team organization, banking coordination, and corporate administration — functions that would cost $4,800–$8,200/month if hired separately.</p>
+
+    <p style="margin-top:12px;"><strong>3b. Revenue-Linked Bonus</strong> <span class="negotiable-label">Negotiable — Floor: 3%</span></p>
+    <p>Once the company exceeds $50,000 USD in monthly revenue, Andres Montbrun shall receive a monthly performance bonus equal to <strong>3% of gross company revenue</strong> in addition to base salary. This applies to all revenue streams under his operational management.</p>
+  </div>
+
+  <!-- EQUITY -->
+  <div class="section">
+    <div class="section-title">4. Equity Participation <span class="negotiable-label">Milestones Negotiable — Total Floor: 6%</span></div>
+    <p>Equity shall vest in tranches tied to operational milestones achieved under Andres Montbrun's management. Total equity granted shall be no less than <strong>6.0%</strong> of the company's outstanding shares.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Milestone</th>
+          <th>Equity Tranche</th>
+          <th>Cumulative</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First $100,000 in cumulative orders shipped</td>
+          <td>1.5%</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>First $500,000 in cumulative orders shipped</td>
+          <td>1.5%</td>
+          <td>3.0%</td>
+        </tr>
+        <tr>
+          <td>$1,500,000 annual revenue run rate achieved</td>
+          <td>2.0%</td>
+          <td>5.0%</td>
+        </tr>
+        <tr>
+          <td>$3,000,000 annual revenue run rate achieved</td>
+          <td>1.0%</td>
+          <td>6.0%</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total</td>
+          <td></td>
+          <td>6.0%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Anti-Dilution Protection</strong> <span class="non-negotiable-label">Non-Negotiable</span></p>
+    <p>Any future capital raise or shareholder event shall not reduce Andres Montbrun's equity percentage without his written consent. In the event of dilution, Andres Montbrun shall retain a pro-rata right to maintain his ownership percentage.</p>
+  </div>
+
+  <!-- CHANGE OF CONTROL -->
+  <div class="section">
+    <div class="section-title">5. Change of Control <span class="non-negotiable-label">Non-Negotiable</span></div>
+    <p>In the event that PYGLARA is sold, transferred, or acquired — in whole or in part — while Andres Montbrun is actively serving as General Manager, he shall receive <strong>5% of the gross sale price,</strong> independent of and in addition to any vested equity at the time of sale.</p>
+    <p class="rationale">Andres Montbrun's contributions directly increase the operational value and commercial attractiveness of the company. This clause ensures his participation in any realized exit is protected regardless of vesting status at the time of sale.</p>
+  </div>
+
+  <!-- TERMS -->
+  <div class="section">
+    <div class="section-title">6. Term and General Conditions</div>
+    <p>This agreement becomes effective upon signing by all parties. Either party may terminate the management arrangement with <strong>60 days written notice.</strong> Upon termination for any reason other than cause, all vested equity tranches are retained by Andres Montbrun. Unvested tranches are forfeited upon voluntary resignation or termination for cause. This term sheet shall be formalized into a binding shareholders agreement within <strong>30 days of signing.</strong></p>
+  </div>
+
+  <!-- SIGNATURES -->
+  <div class="section signature-section">
+    <div class="section-title">7. Signatures</div>
+    <p>By signing below, all parties acknowledge the terms of this counter-proposal and commit to formalizing them in a definitive shareholders agreement.</p>
+
+    <div class="sig-grid">
+
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">Andres Montbrun</div>
+        <div class="sig-role">Management Candidate</div>
+        <div class="sig-date-line">Date: ___________________</div>
+      </div>
+
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">Jorge Brillembourg</div>
+        <div class="sig-role">Investor / Operator</div>
+        <div class="sig-date-line">Date: ___________________</div>
+      </div>
+
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">Ana Brillembourg</div>
+        <div class="sig-role">Investor / Operator</div>
+        <div class="sig-date-line">Date: ___________________</div>
+      </div>
+
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">Francisco Ballesteros Zamorano</div>
+        <div class="sig-role">Shareholder (84%) — PYGLARA</div>
+        <div class="sig-date-line">Date: ___________________</div>
+      </div>
+
+      <div class="sig-block" style="grid-column: 1 / -1; max-width: 340px;">
+        <div class="sig-line"></div>
+        <div class="sig-name">Nelly Alvarado de Ballesteros</div>
+        <div class="sig-role">Shareholder (16%) — PYGLARA</div>
+        <div class="sig-date-line">Date: ___________________</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    This document is a counter-proposal prepared in good faith by Andres Montbrun on April 15, 2026. Items marked Non-Negotiable represent minimum acceptable terms for this arrangement to proceed. All other terms are open for discussion. A final shareholders agreement based on agreed terms shall supersede this document. This term sheet does not constitute a binding legal agreement until signed by all parties and reviewed by qualified legal counsel.
+  </div>
+
+</body>
+</html>

@@ -67,3 +67,18 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line-1, .hero-line-2, .hero-line-3,
+  .hero-tag, .hero-co-name, .hero-sub,
+  .hero-b1, .hero-b2, .hero-b3, .hero-cta,
+  .hero-copper-bar, .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .wa-pulse {
+    animation: none !important;
+    box-shadow: none !important;
+  }
+}

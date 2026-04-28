@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PYGLARA — Servicios de Galvanizado Industrial</title>
+<style>
+@page{size:430px auto;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  background:#f0f2f5;
+  color:#1a1a1a;
+  font-size:15px;
+  line-height:1.5;
+}
+
+.page{max-width:430px;margin:0 auto;background:#fff}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  height:270px;
+  overflow:hidden;
+  background:#0d1f2d;
+}
+.hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 30%;
+  opacity:0.5;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:24px 20px;
+  background:linear-gradient(to top, rgba(13,31,45,0.97) 0%, rgba(13,31,45,0.35) 55%, transparent 100%);
+}
+.hero-label{
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+  margin-bottom:7px;
+}
+.hero h1{
+  font-size:24px;
+  font-weight:800;
+  color:#fff;
+  line-height:1.15;
+  margin-bottom:7px;
+}
+.hero h1 span{color:#7ec8e3}
+.hero-sub{
+  font-size:12px;
+  color:rgba(255,255,255,0.65);
+  letter-spacing:0.5px;
+}
+.hero-badge{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:rgba(26,82,118,0.9);
+  border:1px solid rgba(255,255,255,0.25);
+  color:#fff;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border-radius:20px;
+}
+
+/* ── SECTION BASE ── */
+.section{padding:28px 20px}
+.section+.section{border-top:1px solid #eef0f3}
+.section-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:#1a5276;
+  margin-bottom:12px;
+}
+.section-title{
+  font-size:19px;
+  font-weight:800;
+  color:#0d1f2d;
+  margin-bottom:8px;
+  line-height:1.25;
+}
+.section-intro{
+  font-size:13px;
+  color:#555;
+  line-height:1.65;
+  margin-bottom:20px;
+}
+
+/* ── SERVICE CARDS ── */
+.services{background:#f8fafd}
+.service-card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:16px;
+  box-shadow:0 1px 5px rgba(0,0,0,0.09);
+}
+.service-card:last-child{margin-bottom:0}
+.service-card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.service-card-body{padding:16px}
+.service-card-tag{
+  display:inline-block;
+  background:#e8f4fd;
+  color:#1a5276;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border-radius:20px;
+  margin-bottom:9px;
+}
+.service-card h3{
+  font-size:16px;
+  font-weight:800;
+  color:#0d1f2d;
+  margin-bottom:8px;
+}
+.service-card p{
+  font-size:13px;
+  color:#444;
+  line-height:1.65;
+  margin-bottom:12px;
+}
+.spec-box{
+  background:#f0f7ff;
+  border-left:3px solid #1a5276;
+  border-radius:0 7px 7px 0;
+  padding:9px 13px;
+  font-size:12px;
+  font-weight:600;
+  color:#1a5276;
+  margin-bottom:12px;
+}
+.material-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.mat-tag{
+  background:#f4f6f8;
+  border:1px solid #dde3ea;
+  color:#333;
+  font-size:11px;
+  font-weight:500;
+  padding:4px 10px;
+  border-radius:20px;
+}
+
+/* ── WHY GALVANIZE ── */
+.why-list{display:flex;flex-direction:column;gap:16px}
+.why-item{display:flex;gap:14px;align-items:flex-start}
+.why-icon{
+  flex-shrink:0;
+  width:42px;height:42px;
+  background:#1a5276;
+  border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+}
+.why-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.why-text h4{font-size:14px;font-weight:700;color:#0d1f2d;margin-bottom:3px}
+.why-text p{font-size:13px;color:#555;line-height:1.55}
+
+/* ── CAPACIDAD ── */
+.capacidad{background:#0d1f2d}
+.capacidad .section-label{color:#7ec8e3}
+.capacidad .section-title{color:#fff}
+.capacidad .section-intro{color:rgba(255,255,255,0.6)}
+.cap-photo{
+  width:100%;height:190px;
+  object-fit:cover;object-position:center;
+  border-radius:10px;
+  margin-bottom:20px;display:block;
+}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.stat{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:14px 8px;text-align:center;
+}
+.stat-num{font-size:22px;font-weight:800;color:#7ec8e3;line-height:1;margin-bottom:4px}
+.stat-unit{font-size:10px;font-weight:700;color:#7ec8e3;margin-left:1px}
+.stat-desc{font-size:10px;color:rgba(255,255,255,0.5);line-height:1.35}
+.normas-row{display:flex;gap:8px;flex-wrap:wrap}
+.norma-badge{
+  background:rgba(126,200,227,0.1);
+  border:1px solid rgba(126,200,227,0.3);
+  color:#7ec8e3;
+  font-size:11px;font-weight:700;
+  padding:5px 12px;border-radius:20px;
+  letter-spacing:0.5px;
+}
+
+/* ── TRAYECTORIA ── */
+.tray-list{display:flex;flex-direction:column;gap:13px}
+.tray-item{display:flex;gap:13px;align-items:flex-start}
+.tray-dot{
+  flex-shrink:0;width:8px;height:8px;
+  background:#1a5276;border-radius:50%;margin-top:6px;
+}
+.tray-item p{font-size:13px;color:#333;line-height:1.6}
+.tray-item strong{color:#0d1f2d}
+
+/* ── GALERIA ── */
+.galeria{background:#f8fafd}
+.galeria-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.galeria-grid img{
+  width:100%;height:150px;
+  object-fit:cover;border-radius:10px;display:block;
+}
+
+/* ── CONTACTO ── */
+.contacto{background:#1a5276}
+.contacto .section-label{color:rgba(255,255,255,0.5)}
+.contacto .section-title{color:#fff}
+.contacto .section-intro{color:rgba(255,255,255,0.7)}
+.cta-btn{
+  display:block;text-align:center;text-decoration:none;
+  background:#25d366;color:#fff;
+  font-size:15px;font-weight:700;
+  padding:15px 20px;border-radius:12px;
+  margin-bottom:10px;letter-spacing:0.3px;
+}
+.cta-btn.secondary{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.25);
+  color:#fff;font-size:13px;font-weight:600;
+  padding:12px 20px;
+}
+.contact-detail{
+  font-size:12px;color:rgba(255,255,255,0.5);
+  text-align:center;margin-top:16px;line-height:1.9;
+}
+
+/* ── FOOTER ── */
+.footer{
+  background:#0d1424;padding:16px 20px;
+  text-align:center;font-size:11px;
+  color:rgba(255,255,255,0.3);letter-spacing:0.5px;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── 1. HERO ── -->
+  <div class="hero">
+    <img src="../plant-photos/WhatsApp%20Image%202026-04-01%20at%201.27.38%20PM%20%288%29.jpeg" alt="Cuba de galvanizado 7 metros PYGLARA">
+    <div class="hero-overlay">
+      <div class="hero-label">Galvanizado Industrial en Caliente</div>
+      <h1>PYGLARA<br><span>Protegemos el acero.</span></h1>
+      <div class="hero-sub">Zona Industrial I — Barquisimeto, Venezuela</div>
+    </div>
+    <div class="hero-badge">Desde 1976</div>
+  </div>
+
+  <!-- ── 2. SERVICIOS ── -->
+  <div class="section services">
+    <div class="section-label">Nuestros Servicios</div>
+    <div class="section-title">Dos lineas especializadas</div>
+    <div class="section-intro">Galvanizado por inversion en caliente para grandes estructuras y galvanizado por centrifugado para ferreteria industrial. Su acero llega, nosotros lo protegemos.</div>
+
+    <!-- Servicio 1: 7m kettle -->
+    <div class="service-card">
+      <img src="../plant-photos/WhatsApp%20Image%202026-04-01%20at%201.27.38%20PM%20%281%29.jpeg" alt="Cuba W. Pilling Riepe 7 metros">
+      <div class="service-card-body">
+        <div class="service-card-tag">Gran formato</div>
+        <h3>Galvanizado por Inversion en Caliente</h3>
+        <p>La pieza se sumerge completamente en zinc fundido a 450 C. Cobertura total: interior, exterior, bordes, soldaduras, zonas de dificil acceso. Proteccion que dura decadas.</p>
+        <div class="spec-box">Cuba W. Pilling Riepe (Alemania) — piezas hasta 7 metros de largo</div>
+        <div class="material-list">
+          <span class="mat-tag">Torres electricas</span>
+          <span class="mat-tag">Postes</span>
+          <span class="mat-tag">Cablecanales</span>
+          <span class="mat-tag">Vigas y perfiles</span>
+          <span class="mat-tag">Rejas y portones</span>
+          <span class="mat-tag">Barandas</span>
+          <span class="mat-tag">Montantes</span>
+          <span class="mat-tag">Soportes solares</span>
+          <span class="mat-tag">Cercas</span>
+          <span class="mat-tag">Estructuras tubulares</span>
+          <span class="mat-tag">Pletinas y angulos</span>
+          <span class="mat-tag">Crashbarriers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Servicio 2: centrifuge -->
+    <div class="service-card">
+      <img src="../plant-photos/WhatsApp%20Image%202026-04-01%20at%201.27.38%20PM%20%287%29.jpeg" alt="Galvanizado por centrifugado PYGLARA">
+      <div class="service-card-body">
+        <div class="service-card-tag">Ferreteria industrial</div>
+        <h3>Galvanizado por Centrifugado</h3>
+        <p>Piezas pequenas galvanizadas en lote, centrifugadas para acabado limpio y uniforme sin exceso de zinc. Proceso continuo de alta productividad para volumenes industriales.</p>
+        <div class="spec-box">Cuba centrifuga 65 cm — linea activa y operativa</div>
+        <div class="material-list">
+          <span class="mat-tag">Clavos</span>
+          <span class="mat-tag">Tornillos</span>
+          <span class="mat-tag">Pernos</span>
+          <span class="mat-tag">Tuercas</span>
+          <span class="mat-tag">Arandelas</span>
+          <span class="mat-tag">Grampas</span>
+          <span class="mat-tag">Herrajes</span>
+          <span class="mat-tag">Ganchos</span>
+          <span class="mat-tag">Abrazaderas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. POR QUE GALVANIZAR ── -->
+  <div class="section">
+    <div class="section-label">El proceso</div>
+    <div class="section-title">Por que galvanizar</div>
+    <div class="section-intro">La proteccion anticorrosion mas efectiva disponible para el acero industrial. Sin comparacion con pintura o recubrimientos organicos.</div>
+
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="why-text">
+          <h4>Proteccion metalurgica permanente</h4>
+          <p>El zinc forma un enlace quimico con el acero. No se descascara, no se ampolla, no necesita retoques ni mantenimiento periodico.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="why-text">
+          <h4>Vida util de 50 años o mas</h4>
+          <p>En ambientes industriales, costeros y de exposicion exterior continua. El galvanizado supera cualquier recubrimiento alternativo.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="why-text">
+          <h4>Normas internacionales</h4>
+          <p>Trabajamos bajo COVENIN 1212-81, ASTM A123 y ASTM A153. Certificados de calidad por lote disponibles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. CAPACIDAD ── -->
+  <div class="section capacidad">
+    <div class="section-label">Escala de operacion</div>
+    <div class="section-title">Capacidad instalada</div>
+    <div class="section-intro">Equipos alemanes W. Pilling Riepe con capacidad para contratos de volumen industrial sostenido.</div>
+
+    <img class="cap-photo" src="../plant-photos/WhatsApp%20Image%202026-04-01%20at%201.25.27%20PM%20%285%29.jpeg" alt="Produccion galvanizada PYGLARA">
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">300<span class="stat-unit"> TM</span></div>
+        <div class="stat-desc">por mes, capacidad operativa comprobada</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7<span class="stat-unit"> m</span></div>
+        <div class="stat-desc">longitud maxima de pieza procesada</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-desc">lineas de produccion especializadas</div>
+      </div>
+    </div>
+
+    <div class="normas-row">
+      <div class="norma-badge">COVENIN 1212-81</div>
+      <div class="norma-badge">ASTM A123</div>
+      <div class="norma-badge">ASTM A153</div>
+    </div>
+  </div>
+
+  <!-- ── 5. TRAYECTORIA ── -->
+  <div class="section">
+    <div class="section-label">Quien somos</div>
+    <div class="section-title">50 años en Barquisimeto</div>
+
+    <div class="tray-list">
+      <div class="tray-item">
+        <div class="tray-dot"></div>
+        <p>Fundada en <strong>1976</strong> en la Zona Industrial I de Barquisimeto. Misma planta, mismo equipo, misma exigencia tecnica.</p>
+      </div>
+      <div class="tray-item">
+        <div class="tray-dot"></div>
+        <p>Mas de <strong>34 clientes industriales</strong> atendidos en los sectores electrico, telecomunicaciones y construccion a nivel nacional.</p>
+      </div>
+      <div class="tray-item">
+        <div class="tray-dot"></div>
+        <p>Equipos <strong>W. Pilling Riepe GmbH (Alemania)</strong> — fabricante lider mundial en cubas de galvanizado industrial.</p>
+      </div>
+      <div class="tray-item">
+        <div class="tray-dot"></div>
+        <p>Ing. Miriam, <strong>36 años de experiencia</strong> en planta. Certificacion de calidad emitida por lote con medicion de espesores.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. GALERIA ── -->
+  <div class="section galeria">
+    <div class="section-label">La planta</div>
+    <div class="section-title">Instalaciones</div>
+    <div class="galeria-grid">
+      <img src="../plant-photos/WhatsApp%20Image%202026-04-01%20at%201.27.38%20PM%20%281%29.jpeg" alt="Cuba Pilling Riepe 7m">
+      <img src="../plant-photos/WhatsApp%20Image%202026-04-01%20at%201.27.38%20PM%20%283%29.jpeg" alt="Nave secundaria PYGLARA">
+    </div>
+  </div>
+
+  <!-- ── 7. CONTACTO ── -->
+  <div class="section contacto">
+    <div class="section-label">Contacto</div>
+    <div class="section-title">Hablemos</div>
+    <div class="section-intro">Indicar tipo de pieza, dimensiones aproximadas y volumen mensual estimado para cotizacion rapida.</div>
+
+    <a class="cta-btn" href="https://wa.me/584245715349?text=Hola%2C%20les%20contacto%20para%20solicitar%20una%20cotizaci%C3%B3n%20de%20galvanizado.">
+      Escribir por WhatsApp
+    </a>
+    <a class="cta-btn secondary" href="tel:+584245715349">
+      Llamar: +58 424 571 5349
+    </a>
+
+    <div class="contact-detail">
+      Instagram: @pyglarasa<br>
+      Calle 26, Zona Industrial I, Barquisimeto<br>
+      Estado Lara, Venezuela
+    </div>
+  </div>
+
+  <div class="footer">
+    PRENSADOS Y GALVANIZADOS DE LARA, S.A. &nbsp;·&nbsp; RIF J-07014488-0
+  </div>
+
+</div>
+</body>
+</html>

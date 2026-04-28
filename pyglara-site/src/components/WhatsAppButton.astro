@@ -16,9 +16,10 @@ interface Props {
   href: string;
   variant: 'float' | 'inline' | 'header';
   label?: string;
+  ariaLabel?: string;
 }
 
-const { href, variant, label = 'WhatsApp' } = Astro.props;
+const { href, variant, label = 'WhatsApp', ariaLabel } = Astro.props;
 ---
 
 {variant === 'float' && (
@@ -26,7 +27,7 @@ const { href, variant, label = 'WhatsApp' } = Astro.props;
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Contactar por WhatsApp"
+    aria-label={ariaLabel ?? "WhatsApp"}
     class="md:hidden fixed bottom-6 right-4 z-50 flex items-center justify-center rounded-full bg-whatsapp text-white shadow-lg print:hidden wa-pulse"
     style="width: 56px; height: 56px; min-width: 44px; min-height: 44px;"
   >

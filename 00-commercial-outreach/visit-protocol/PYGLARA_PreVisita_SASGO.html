@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYGLARA — Pre-Visita SASGO</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#f0f4f8;color:#1a1a1a;font-size:15px;line-height:1.5}
+
+/* PRINT */
+@media print{
+  body{background:#fff;font-size:12px}
+  .no-print{display:none!important}
+  .container{max-width:100%;padding:0}
+  .section{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+  .header{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  details{display:block}
+  details summary{display:none}
+  details>*{display:block!important}
+}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#1a5276,#0e3460);color:#fff;padding:24px 20px 20px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.05);border-radius:50%}
+.header::after{content:'';position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(255,255,255,.04);border-radius:50%}
+.header .eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:.65;margin-bottom:4px}
+.header h1{font-size:20px;font-weight:800;margin-bottom:3px;letter-spacing:-.3px}
+.header .target-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:5px 16px;border-radius:20px;font-size:13px;font-weight:700;margin-top:8px;letter-spacing:.3px}
+.header .target-badge .dot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+
+/* LAYOUT */
+.container{max-width:760px;margin:0 auto;padding:16px}
+
+/* ALERT BANNER */
+.alert{display:flex;align-items:flex-start;gap:12px;background:#fff3cd;border:1px solid #ffc107;border-left:4px solid #e65c00;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#5d3e00}
+.alert .alert-icon{font-size:20px;margin-top:1px;flex-shrink:0}
+.alert strong{display:block;font-size:13px;color:#c0392b;margin-bottom:2px}
+
+/* SECTIONS */
+.section{background:#fff;border-radius:12px;padding:20px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:15px;font-weight:800;color:#1a5276;padding-bottom:8px;border-bottom:2px solid #d6eaf8;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-title .num{display:inline-flex;align-items:center;justify-content:center;background:#1a5276;color:#fff;font-size:11px;font-weight:800;width:22px;height:22px;border-radius:50%;flex-shrink:0}
+.section-title .tag{font-size:10px;font-weight:700;background:#eaf4fb;color:#1a5276;padding:2px 8px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;margin-left:auto}
+.section-title .tag.green{background:#d4edda;color:#155724}
+.section-title .tag.orange{background:#fff3cd;color:#856404}
+
+/* TARGET INFO BOX */
+.target-card{background:#eaf4fb;border:1px solid #aed6f1;border-radius:10px;padding:14px 16px;margin-bottom:4px}
+.target-card .t-row{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;font-size:13px;margin-bottom:4px}
+.target-card .t-row:last-child{margin-bottom:0}
+.target-card .t-label{font-weight:700;color:#1a5276;font-size:12px}
+.target-card .t-val{color:#333}
+.target-card .priority-tag{display:inline-block;background:#1a5276;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;letter-spacing:.5px}
+
+/* CHECKLISTS */
+.check-list{display:flex;flex-direction:column;gap:10px}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:8px;border:1.5px solid #e8eef7;cursor:pointer;transition:all .2s;background:#fafcff;-webkit-tap-highlight-color:transparent}
+.check-item:hover{border-color:#aed6f1;background:#f0f7ff}
+.check-item.checked{border-color:#27ae60;background:#f0fff4;opacity:.75}
+.check-item input[type="checkbox"]{width:18px;height:18px;margin-top:1px;cursor:pointer;accent-color:#1a5276;flex-shrink:0}
+.check-item .check-content{flex:1}
+.check-item .check-label{font-size:14px;font-weight:600;color:#222;transition:color .2s}
+.check-item.checked .check-label{text-decoration:line-through;color:#888}
+.check-item .check-sub{font-size:12px;color:#888;margin-top:2px;font-weight:400}
+.check-item .check-badge{font-size:10px;font-weight:700;background:#1a5276;color:#fff;padding:1px 7px;border-radius:8px;letter-spacing:.4px;margin-left:8px;vertical-align:middle;flex-shrink:0}
+.check-item .check-badge.green{background:#27ae60}
+.check-item .check-badge.orange{background:#e67e22}
+
+/* PROGRESS BAR */
+.progress-wrap{margin-bottom:14px}
+.progress-label{font-size:12px;font-weight:700;color:#1a5276;margin-bottom:5px;display:flex;justify-content:space-between}
+.progress-bar{height:8px;background:#e8eef7;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#1a5276,#27ae60);border-radius:4px;transition:width .4s ease;width:0%}
+
+/* TALKING POINTS */
+details{margin-bottom:8px;border-radius:8px;overflow:hidden;border:1.5px solid #d6eaf8}
+details[open]{border-color:#1a5276}
+summary{cursor:pointer;padding:11px 14px;font-size:13px;font-weight:700;color:#1a5276;background:#eaf4fb;list-style:none;display:flex;align-items:center;gap:8px;-webkit-tap-highlight-color:transparent}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'▸';margin-left:auto;font-size:14px;transition:transform .2s}
+details[open] summary::after{transform:rotate(90deg)}
+.tp-body{padding:12px 14px;background:#fff;font-size:13px;color:#333;line-height:1.6}
+.tp-body ul{padding-left:18px;margin-top:4px}
+.tp-body li{margin-bottom:6px}
+.tp-body .quote{background:#f0f7ff;border-left:3px solid #1a5276;padding:8px 12px;border-radius:0 6px 6px 0;font-style:italic;font-size:12.5px;margin:8px 0;color:#2c3e50}
+.tp-body .objection-q{font-weight:700;color:#c0392b;font-size:12.5px;margin-top:8px}
+.tp-body .objection-a{font-style:italic;font-size:12.5px;color:#2c3e50}
+
+/* LOI MODELS */
+.loi-card{background:#f8fcf8;border:1.5px solid #a9dfbf;border-radius:8px;padding:12px 14px;margin-bottom:10px;position:relative}
+.loi-card .loi-tag{font-size:10px;font-weight:800;background:#27ae60;color:#fff;padding:2px 8px;border-radius:8px;letter-spacing:.5px;margin-bottom:6px;display:inline-block}
+.loi-card .loi-tag.recommended{background:#1a5276}
+.loi-text{font-size:12.5px;color:#333;line-height:1.6;white-space:pre-wrap;font-family:inherit}
+.loi-card .copy-btn{margin-top:10px;padding:7px 14px;background:#27ae60;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s}
+.loi-card .copy-btn:hover{background:#219a52}
+.loi-card .copy-btn.copied{background:#1a5276}
+
+/* RESOURCES */
+.resource-list{display:flex;flex-direction:column;gap:10px}
+.resource-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:8px;border:1.5px solid #e8eef7;text-decoration:none;color:#333;transition:all .2s;background:#fafcff}
+.resource-item:hover{border-color:#aed6f1;background:#f0f7ff;transform:translateY(-1px)}
+.resource-item .r-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.resource-item.forms .r-icon{background:#e8f5e9}
+.resource-item.docs .r-icon{background:#e3f2fd}
+.resource-item.sheets .r-icon{background:#e8f5e9}
+.resource-item .r-content .r-title{font-size:13px;font-weight:700;color:#1a5276;margin-bottom:1px}
+.resource-item .r-content .r-desc{font-size:11.5px;color:#888}
+
+/* WHATSAPP BUTTONS */
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px 20px;background:#25d366;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;transition:background .2s;margin-bottom:8px}
+.wa-btn:hover{background:#1ebe5d}
+.wa-btn .wa-icon{font-size:20px}
+
+/* INTRO MESSAGE */
+.intro-msg{background:#f0fff4;border:1.5px solid #a9dfbf;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#1a3a1a;line-height:1.6;margin-bottom:10px;font-style:italic}
+
+/* BOTTOM BUTTONS */
+.btn-area{display:flex;flex-wrap:wrap;gap:10px;padding:8px 0 24px;justify-content:center}
+.btn-area button{padding:11px 22px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;min-width:160px}
+.btn-print{background:#1a5276;color:#fff}
+.btn-print:hover{background:#154360}
+.btn-reset{background:#eee;color:#555}
+.btn-reset:hover{background:#ddd}
+
+/* MOBILE */
+@media(max-width:600px){
+  .header h1{font-size:17px}
+  .container{padding:10px}
+  .section{padding:14px}
+  .btn-area button{width:100%}
+  .resource-item{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">Prensados y Galvanizados de Lara, S.A.</div>
+  <h1>Lista de Pre-Visita</h1>
+  <div style="font-size:12px;opacity:.8;margin-top:3px">Galvanizado en Caliente &amp; Electrodepósito de Cobre</div>
+  <div class="target-badge">
+    <span class="dot"></span>
+    SASGO — PRIORIDAD 1
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ALERT -->
+  <div class="alert">
+    <div class="alert-icon">📍</div>
+    <div>
+      <strong>Visita de campo — no es tarea de código</strong>
+      Completa este checklist antes de salir. Los recursos de Google Drive están en la sección de herramientas al final.
+    </div>
+  </div>
+
+  <!-- SECTION 1: TARGET -->
+  <div class="section">
+    <div class="section-title">
+      <span class="num">1</span>Empresa Objetivo
+      <span class="tag green">CLIENTE HISTORICO</span>
+    </div>
+    <div class="target-card">
+      <div class="t-row"><span class="t-label">Empresa</span><span class="t-val"><strong>Suministros Eléctricos SASGO, C.A.</strong></span></div>
+      <div class="t-row"><span class="t-label">RIF</span><span class="t-val">J-31248868-9</span></div>
+      <div class="t-row"><span class="t-label">Ubicación</span><span class="t-val">Zona Industrial I — mismo complejo que PYGLARA</span></div>
+      <div class="t-row"><span class="t-label">Teléfono</span><span class="t-val"><a href="tel:+582512371610">+58 251-237-1610</a> / <a href="tel:+584125363346">+58 412-536-3346</a></span></div>
+      <div class="t-row"><span class="t-label">Email</span><span class="t-val"><a href="mailto:importacion@sasgo.com.ve">importacion@sasgo.com.ve</a></span></div>
+      <div class="t-row"><span class="t-label">Sector</span><span class="t-val">Postes eléctricos, torres, herrajes — contratos CORPOELEC activos</span></div>
+      <div class="t-row"><span class="t-label">Volumen est.</span><span class="t-val"><span class="priority-tag">ALTO — 30-50 TM/mes</span></span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: PRE-VISIT CHECKLIST -->
+  <div class="section">
+    <div class="section-title">
+      <span class="num">2</span>Checklist de Preparación
+      <span class="tag orange" id="check-counter">0 / 6</span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Progreso</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+    <div class="check-list" id="previsit-checks">
+      <label class="check-item" id="ci-0">
+        <input type="checkbox" onchange="updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6)">
+        <div class="check-content">
+          <div class="check-label">Revisar Guion de Visita — sección Sector Eléctrico</div>
+          <div class="check-sub">Puntos clave: CORPOELEC, varillas de aterramiento, ASTM A123, solo 2 plantas activas en Venezuela</div>
+        </div>
+        <span class="check-badge">DOC</span>
+      </label>
+      <label class="check-item" id="ci-1">
+        <input type="checkbox" onchange="updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6)">
+        <div class="check-content">
+          <div class="check-label">Imprimir 2x Ficha de Contacto</div>
+          <div class="check-sub">Una para llenar durante la visita, una de respaldo</div>
+        </div>
+        <span class="check-badge">IMPRIMIR</span>
+      </label>
+      <label class="check-item" id="ci-2">
+        <input type="checkbox" onchange="updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6)">
+        <div class="check-content">
+          <div class="check-label">Imprimir 2x Carta de Intención</div>
+          <div class="check-sub">O llevar Expresión de Interés HTML en el teléfono (puede firmar digitalmente)</div>
+        </div>
+        <span class="check-badge">IMPRIMIR</span>
+      </label>
+      <label class="check-item" id="ci-3">
+        <input type="checkbox" onchange="updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6)">
+        <div class="check-content">
+          <div class="check-label">LOI WhatsApp Modelo 3 listo en pantalla</div>
+          <div class="check-sub">SASGO = galvanizado + varillas → usar Modelo 3. Ver sección LOI abajo.</div>
+        </div>
+        <span class="check-badge green">LISTO</span>
+      </label>
+      <label class="check-item" id="ci-4">
+        <input type="checkbox" onchange="updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6)">
+        <div class="check-content">
+          <div class="check-label">Teléfono cargado al 100%</div>
+          <div class="check-sub">Para fotos, WhatsApp, firma digital y firma de LOI</div>
+        </div>
+        <span class="check-badge orange">FÍSICO</span>
+      </label>
+      <label class="check-item" id="ci-5">
+        <input type="checkbox" onchange="updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6)">
+        <div class="check-content">
+          <div class="check-label">Tarjetas de presentación</div>
+          <div class="check-sub">Al menos 3 unidades</div>
+        </div>
+        <span class="check-badge orange">FÍSICO</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- SECTION 3: TALKING POINTS -->
+  <div class="section">
+    <div class="section-title">
+      <span class="num">3</span>Puntos Clave de Conversación
+      <span class="tag">REFERENCIA RÁPIDA</span>
+    </div>
+
+    <details open>
+      <summary>💬 Apertura (cliente histórico)</summary>
+      <div class="tp-body">
+        <div class="quote">"Buenos días, mi nombre es Andrés Montbrun, soy representante comercial de PYGLARA. Ustedes fueron clientes de nuestra planta — tenemos registros de los trabajos que se hicieron juntos. Estamos reactivando la producción y quería visitarlos personalmente para retomar la relación."</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🏭 Presentación PYGLARA — decir SIEMPRE</summary>
+      <div class="tp-body">
+        <ul>
+          <li><strong>Solo 2 plantas activas</strong> en todo Venezuela. Nosotros somos una de ellas.</li>
+          <li><strong>50 años</strong> en la industria. Equipos Pilling — Alemania (estándar mundial).</li>
+          <li><strong>Normas:</strong> COVENIN 1212-81, ASTM A123, ASTM A153. Certificado de calidad por lote.</li>
+          <li><strong>Cuba de 7m:</strong> torres, postes, estructuras. <strong>3.5m:</strong> bandejas, soportes. <strong>65cm:</strong> herrajes, tornillos.</li>
+          <li><strong>Capacidad:</strong> 1,440 TM/mes instalada. Mejor mes real: 300 TM/mes.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>⚡ Puntos específicos Sector Eléctrico (SASGO / CORPOELEC)</summary>
+      <div class="tp-body">
+        <ul>
+          <li>ASTM A123 para piezas estructurales — <strong>CORPOELEC lo requiere</strong>.</li>
+          <li>Varillas de aterramiento tipo Copperweld: 936 und/día, 5/8" a 1", 1.2–3m. <strong>No hay nadie más en Venezuela.</strong></li>
+          <li><strong>Referencia histórica:</strong> "ENELVEN (hoy CORPOELEC Zulia) nos compró 20,000 varillas en 2004-2005."</li>
+          <li>Estamos en la Zona Industrial I — logística mínima para ustedes.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>🛡️ Manejo de Objeciones</summary>
+      <div class="tp-body">
+        <p class="objection-q">"La planta estuvo parada mucho tiempo"</p>
+        <div class="quote">"Correcto — paramos en 2015 por falta de zinc SHG 99.99%, no por problemas técnicos ni financieros. Los quemadores de la cuba de 7m fueron verificados y están operativos. Estamos en proceso de reactivación con suministro ya coordinado."</div>
+        <p class="objection-q">"Ya tenemos proveedor"</p>
+        <div class="quote">"Perfecto — no buscamos reemplazar, sino ser opción adicional. Con solo 2 plantas activas en el país, tener un segundo proveedor es una póliza de seguro. Además estamos aquí mismo en la Zona Industrial I."</div>
+        <p class="objection-q">"No conozco la empresa"</p>
+        <div class="quote">"Llevamos casi 50 años aquí en la Zona I. RIF J-07014488-0. Con gusto los invitamos a visitar la planta para ver los equipos en persona."</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🤝 Cierre — Pedir LOI</summary>
+      <div class="tp-body">
+        <div class="quote">"Basado en lo que me está contando, tenemos la capacidad de atender perfectamente sus necesidades. Lo que me ayudaría mucho es tener una manifestación de su interés por escrito — no es un contrato, es simplemente una declaración de intención."</div>
+        <div class="quote"><strong>Opción WhatsApp:</strong> "Si prefiere algo más ágil, le muestro el texto en mi teléfono — usted solo lo reenvía desde su número. Es igual de válido para nosotros."</div>
+      </div>
+    </details>
+  </div>
+
+  <!-- SECTION 4: LOI MODELS -->
+  <div class="section">
+    <div class="section-title">
+      <span class="num">4</span>Modelos LOI WhatsApp
+      <span class="tag green">SASGO → MODELO 3</span>
+    </div>
+    <p style="font-size:12px;color:#888;margin-bottom:12px">El cliente copia el mensaje y lo envía desde <strong>su</strong> número de WhatsApp a PYGLARA (+58 424 571 5349). Captura la pantalla una vez recibido.</p>
+
+    <div class="loi-card">
+      <div class="loi-tag recommended">★ RECOMENDADO PARA SASGO — Modelo 3 (Galvanizado + Varillas)</div>
+      <div class="loi-text" id="loi3-text">Buenos días. Mi nombre es [NOMBRE], [CARGO] de [EMPRESA] (RIF: [RIF]). Confirmo el interés de nuestra empresa en los servicios de PYGLARA: (1) Galvanizado en caliente — estimamos [XX] TM/mes de [TIPO DE PIEZAS], y (2) Varillas de aterramiento de cobre — estimamos [XX] unidades/mes. Estamos a disposición para coordinar detalles una vez reactivada la producción. Saludos.</div>
+      <button class="copy-btn" onclick="copyLOI('loi3-text',this)">Copiar texto</button>
+    </div>
+
+    <div class="loi-card">
+      <div class="loi-tag">Modelo 1 — Solo Galvanizado</div>
+      <div class="loi-text" id="loi1-text">Buenos días. Mi nombre es [NOMBRE], [CARGO] de [EMPRESA] (RIF: [RIF]). Por medio de este mensaje confirmo el interés de nuestra empresa en utilizar los servicios de galvanizado en caliente de PYGLARA una vez reactivada la producción. Estimamos un volumen aproximado de [XX] toneladas métricas mensuales de [TIPO DE PIEZAS]. Quedamos a la orden para coordinar los detalles comerciales. Saludos.</div>
+      <button class="copy-btn" onclick="copyLOI('loi1-text',this)">Copiar texto</button>
+    </div>
+
+    <div style="margin-top:10px;padding:10px 12px;background:#fff8e1;border:1px solid #ffc107;border-radius:8px;font-size:12px;color:#5d3e00">
+      <strong>Recordatorio:</strong> el mensaje debe salir del número del <strong>cliente</strong>, no del tuyo. Guarda captura de pantalla. Anota en la Ficha: "LOI obtenida vía WhatsApp, fecha [XX]".
+    </div>
+  </div>
+
+  <!-- SECTION 5: INTRO WHATSAPP -->
+  <div class="section no-print">
+    <div class="section-title">
+      <span class="num">5</span>Mensaje de Introducción
+      <span class="tag">ENVIAR ANTES DE IR</span>
+    </div>
+    <div class="intro-msg">"Buenos días, mi nombre es Andrés Montbrun, representante comercial de PYGLARA — Prensados y Galvanizados de Lara, S.A. Somos una planta de galvanizado en caliente ubicada en la Zona Industrial I de Barquisimeto, con casi 50 años de operaciones. Estamos ampliando nuestra cartera de clientes y me gustaría coordinar una visita para presentarle nuestros servicios. Quedo atento. Saludos."</div>
+    <a class="wa-btn" href="https://wa.me/584125363346?text=Buenos+d%C3%ADas%2C+mi+nombre+es+Andr%C3%A9s+Montbrun%2C+representante+comercial+de+PYGLARA+%E2%80%94+Prensados+y+Galvanizados+de+Lara%2C+S.A.+Somos+una+planta+de+galvanizado+en+caliente+ubicada+en+la+Zona+Industrial+I+de+Barquisimeto%2C+con+casi+50+a%C3%B1os+de+operaciones.+Estamos+ampliando+nuestra+cartera+de+clientes+y+me+gustar%C3%ADa+coordinar+una+visita+para+presentarle+nuestros+servicios.+Quedo+atento.+Saludos." target="_blank">
+      <span class="wa-icon">💬</span>Enviar intro a SASGO por WhatsApp
+    </a>
+    <p style="font-size:11px;color:#aaa;text-align:center">Abre WhatsApp con el mensaje pre-cargado al número +58 412-536-3346</p>
+  </div>
+
+  <!-- SECTION 6: POST-VISIT -->
+  <div class="section">
+    <div class="section-title">
+      <span class="num">6</span>Tareas Post-Visita
+      <span class="tag orange" id="post-counter">0 / 5</span>
+    </div>
+    <div class="check-list" id="postvisit-checks">
+      <label class="check-item">
+        <input type="checkbox" onchange="updateProgress('postvisit-checks','post-counter',null,null,5)">
+        <div class="check-content">
+          <div class="check-label">Escanear / fotografiar la Ficha de Contacto completada</div>
+          <div class="check-sub">Guardar en carpeta de visitas</div>
+        </div>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" onchange="updateProgress('postvisit-checks','post-counter',null,null,5)">
+        <div class="check-content">
+          <div class="check-label">Guardar LOI (escanear carta formal o captura WhatsApp)</div>
+          <div class="check-sub">Si no se obtuvo: anotar razón y fecha de seguimiento</div>
+        </div>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" onchange="updateProgress('postvisit-checks','post-counter',null,null,5)">
+        <div class="check-content">
+          <div class="check-label">Registrar visita en el CRM (Google Sheet)</div>
+          <div class="check-sub">Pestaña 'Visitas' — datos de contacto, resultado, volumen, próximo paso</div>
+        </div>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" onchange="updateProgress('postvisit-checks','post-counter',null,null,5)">
+        <div class="check-content">
+          <div class="check-label">Programar seguimiento si LOI pendiente</div>
+          <div class="check-sub">Máximo 3 días hábiles para el follow-up</div>
+        </div>
+      </label>
+      <label class="check-item">
+        <input type="checkbox" onchange="updateProgress('postvisit-checks','post-counter',null,null,5)">
+        <div class="check-content">
+          <div class="check-label">Notas de aprendizaje para las próximas visitas</div>
+          <div class="check-sub">¿Qué funcionó? ¿Qué objetar diferente? → Aplica a Story 0.3 (Marullo) y 0.4 (GEDISA)</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- SECTION 7: RESOURCES -->
+  <div class="section no-print">
+    <div class="section-title">
+      <span class="num">7</span>Herramientas y Recursos
+    </div>
+    <div class="resource-list">
+      <a class="resource-item forms" href="https://forms.gle/4LhTRu9YfVsFxsb7A" target="_blank">
+        <div class="r-icon">📋</div>
+        <div class="r-content">
+          <div class="r-title">Formulario de Registro de Visita</div>
+          <div class="r-desc">Google Forms · Llenar después de cada visita · Compartir con equipo por WhatsApp</div>
+        </div>
+      </a>
+      <a class="resource-item docs" href="https://docs.google.com/open?id=1uPS7sBemnngtZpT57r0J35dMD2_sBOOcAJAbmBi6Oj0" target="_blank">
+        <div class="r-icon">📄</div>
+        <div class="r-content">
+          <div class="r-title">Protocolo de Visitas</div>
+          <div class="r-desc">Google Docs · Guía paso a paso: qué decir, cómo presentarse, mensajes de seguimiento</div>
+        </div>
+      </a>
+      <a class="resource-item sheets" href="https://docs.google.com/spreadsheets/d/1p4HKc5uYS9226GCI9e_ORnHLWqhCSD2S_LEM3v2WADY/edit" target="_blank">
+        <div class="r-icon">📊</div>
+        <div class="r-content">
+          <div class="r-title">CRM — Historial de Visitas y Clientes</div>
+          <div class="r-desc">Google Sheets · Pestañas: 'Clientes CRM' y 'Visitas' · Actualizar después de cada salida</div>
+        </div>
+      </a>
+      <a class="resource-item" href="PYGLARA_Expresion_de_Interes_Cliente.html" target="_blank" style="border-color:#a9dfbf;background:#f8fcf8">
+        <div class="r-icon" style="background:#e8f5e9">✍️</div>
+        <div class="r-content">
+          <div class="r-title">Expresión de Interés (firma digital)</div>
+          <div class="r-desc">HTML local · El cliente llena y firma en el teléfono — alternativa a la carta impresa</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="font-size:11px;color:#bbb;text-align:center;padding:12px 0 8px;border-top:1px solid #eee;margin-top:4px">
+    Prensados y Galvanizados de Lara, S.A. &nbsp;|&nbsp; Zona Industrial I, Calle 26, Galpón 25-90, Barquisimeto 3001
+    <br>+58 424 571 5349 &nbsp;|&nbsp; @pyglarasa &nbsp;|&nbsp; RIF J-07014488-0
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="btn-area no-print">
+    <button class="btn-print" onclick="window.print()">Imprimir / Guardar PDF</button>
+    <button class="btn-reset" onclick="resetAll()">Reiniciar checklist</button>
+  </div>
+
+</div>
+
+<script>
+function updateProgress(listId, counterId, fillId, pctId, total){
+  const list = document.getElementById(listId);
+  const checks = list.querySelectorAll('input[type="checkbox"]');
+  let done = 0;
+  checks.forEach((cb, i) => {
+    const item = cb.closest('.check-item');
+    if(cb.checked){ done++; item.classList.add('checked'); }
+    else { item.classList.remove('checked'); }
+  });
+  const counter = document.getElementById(counterId);
+  if(counter){
+    counter.textContent = done + ' / ' + total;
+    counter.className = 'tag ' + (done === total ? 'green' : done > 0 ? '' : 'orange');
+  }
+  if(fillId){
+    const fill = document.getElementById(fillId);
+    const pct = Math.round((done/total)*100);
+    fill.style.width = pct + '%';
+    if(pctId) document.getElementById(pctId).textContent = pct + '%';
+  }
+}
+
+function copyLOI(id, btn){
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function resetAll(){
+  if(!confirm('¿Reiniciar todos los checkboxes?')) return;
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.checked = false;
+    cb.closest('.check-item').classList.remove('checked');
+  });
+  updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6);
+  updateProgress('postvisit-checks','post-counter',null,null,5);
+}
+
+// Persist state in localStorage
+const KEY = 'pyglara-previsita-sasgo';
+function saveState(){
+  const state = {};
+  document.querySelectorAll('input[type="checkbox"]').forEach((cb,i) => state['cb_'+i] = cb.checked);
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+}
+function loadState(){
+  try{
+    const s = JSON.parse(localStorage.getItem(KEY)||'{}');
+    document.querySelectorAll('input[type="checkbox"]').forEach((cb,i) => {
+      if(s['cb_'+i]){ cb.checked = true; cb.closest('.check-item').classList.add('checked'); }
+    });
+    updateProgress('previsit-checks','check-counter','progress-fill','progress-pct',6);
+    updateProgress('postvisit-checks','post-counter',null,null,5);
+  }catch(e){}
+}
+document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener('change', saveState));
+loadState();
+</script>
+</body>
+</html>

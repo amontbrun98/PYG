@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYGLARA — Expresión de Interés Comercial</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#f5f5f5;color:#1a1a1a;font-size:15px;line-height:1.5}
+
+/* ── PRINT ─────────────────────────────────────────────── */
+@media print{
+  body{background:#fff;font-size:12px}
+  .no-print{display:none}
+  .container{max-width:100%;padding:0}
+  .section{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+  .disclaimer{page-break-inside:avoid}
+  .btn-area{display:none}
+  input,select,textarea{border:1px solid #aaa !important;background:#fff !important}
+  .header{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #sigCanvas{border:1px solid #aaa}
+}
+
+/* ── HEADER ─────────────────────────────────────────────── */
+.header{background:linear-gradient(135deg,#1a5276,#154360);color:#fff;padding:28px 24px;text-align:center}
+.header .logo-line{font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.header .subtitle{font-size:13px;opacity:.85;margin-bottom:12px}
+.header .doc-type{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:4px 16px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.container{max-width:800px;margin:0 auto;padding:20px}
+
+/* ── DISCLAIMER BANNER ───────────────────────────────────── */
+.disclaimer{background:#fff8e1;border:1px solid #f9a825;border-left:4px solid #f9a825;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#5d4037}
+.disclaimer strong{display:block;font-size:14px;color:#e65100;margin-bottom:4px}
+
+/* ── SECTIONS ────────────────────────────────────────────── */
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.section-title{font-size:16px;font-weight:700;color:#1a5276;padding-bottom:8px;border-bottom:2px solid #d6eaf8;margin-bottom:16px}
+.section-title .num{display:inline-block;background:#1a5276;color:#fff;font-size:12px;font-weight:700;width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;margin-right:8px}
+
+/* ── FORM FIELDS ─────────────────────────────────────────── */
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.field-row.full{grid-template-columns:1fr}
+.field-row.thirds{grid-template-columns:1fr 1fr 1fr}
+.field-group{display:flex;flex-direction:column;gap:5px}
+.field-group label{font-size:13px;font-weight:600;color:#333}
+.field-group .hint{font-size:11px;color:#999;font-style:italic}
+input[type="text"],input[type="email"],input[type="tel"],select,textarea{
+  width:100%;padding:9px 12px;border:1px solid #ccd6f0;border-radius:7px;
+  font-size:13px;font-family:inherit;background:#fafafa;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#1a5276;background:#fff;box-shadow:0 0 0 3px rgba(26,82,118,.08)}
+textarea{min-height:70px;resize:vertical}
+
+/* ── CHECKBOXES ──────────────────────────────────────────── */
+.check-group{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.check-item{display:flex;align-items:flex-start;gap:10px;font-size:13px}
+.check-item input[type="checkbox"]{width:16px;height:16px;margin-top:2px;cursor:pointer;accent-color:#1a5276}
+.check-item label{cursor:pointer;color:#333;line-height:1.4}
+.check-item label span.sub{display:block;font-size:11px;color:#888;font-weight:400}
+
+/* ── RADIO ───────────────────────────────────────────────── */
+.radio-group{display:flex;gap:16px;flex-wrap:wrap;margin-top:4px}
+.radio-item{display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer}
+.radio-item input[type="radio"]{width:16px;height:16px;accent-color:#1a5276;cursor:pointer}
+
+/* ── SIGNATURE PAD ───────────────────────────────────────── */
+.sig-pad-wrapper{display:flex;flex-direction:column;gap:8px}
+.sig-pad-label{font-size:13px;font-weight:600;color:#333;margin-bottom:2px}
+.sig-pad-hint{font-size:11px;color:#999;font-style:italic}
+#sigCanvas{
+  width:100%;height:160px;border:1.5px dashed #aac4e0;border-radius:8px;
+  background:#f8fbff;cursor:crosshair;display:block;touch-action:none}
+#sigCanvas.has-sig{border-color:#1a5276;border-style:solid;background:#fff}
+.sig-controls{display:flex;gap:8px;margin-top:4px}
+.sig-controls button{
+  padding:6px 14px;border:1px solid #ccd6f0;border-radius:6px;
+  font-size:12px;font-weight:600;cursor:pointer;background:#f0f4fc;color:#1a5276;font-family:inherit}
+.sig-controls button:hover{background:#d6eaf8}
+.sig-grid-bottom{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+.sig-info-col{display:flex;flex-direction:column;gap:10px}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.footer-note{font-size:11px;color:#aaa;text-align:center;padding:16px 0 8px;border-top:1px solid #eee;margin-top:20px}
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+.btn-area{text-align:center;padding:10px 0 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.btn-area button{padding:12px 24px;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;min-width:180px}
+.btn-print{background:#1a5276;color:#fff}
+.btn-print:hover{background:#154360}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa:hover{background:#1ebe5d}
+.btn-clear{background:#eee;color:#555}
+.btn-clear:hover{background:#ddd}
+
+/* ── INFO BOX ────────────────────────────────────────────── */
+.info-box{background:#eaf4fb;border:1px solid #aed6f1;border-radius:8px;padding:12px 16px;font-size:12px;color:#1a5276;margin-bottom:16px}
+.info-box strong{display:block;margin-bottom:3px}
+
+/* ── DATE LINE ───────────────────────────────────────────── */
+.date-line{text-align:right;font-size:12px;color:#888;margin-bottom:12px}
+
+/* ── MOBILE ──────────────────────────────────────────────── */
+@media(max-width:600px){
+  .header h1{font-size:18px}
+  .header .subtitle{font-size:12px}
+  .container{padding:12px}
+  .section{padding:16px}
+  .field-row,.field-row.thirds,.field-row.full{grid-template-columns:1fr}
+  .sig-grid-bottom{grid-template-columns:1fr}
+  .radio-group{flex-direction:column;gap:10px}
+  .btn-area button{width:100%}
+  #sigCanvas{height:130px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-line">Prensados y Galvanizados de Lara, S.A.</div>
+  <h1>Expresión de Interés Comercial</h1>
+  <div class="subtitle">Servicios de Galvanizado en Caliente y Electrodepósito de Cobre</div>
+  <div class="doc-type">Este documento NO constituye un contrato</div>
+</div>
+
+<div class="container">
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <strong>Aviso Importante — Naturaleza del Documento</strong>
+    Este formulario es una <strong>Expresión de Interés</strong> de caracter voluntario e informal. Su diligenciamiento no crea obligaciones contractuales, ni compromisos de compra o de suministro para ninguna de las partes. Tiene como único propósito facilitar la planificación comercial de PYGLARA durante su proceso de reactivación.
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-title"><span class="num">1</span>Datos de la Empresa</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Razón Social *</label>
+        <input id="f_razon" type="text" placeholder="Nombre completo de la empresa">
+      </div>
+      <div class="field-group">
+        <label>RIF *</label>
+        <input id="f_rif" type="text" placeholder="J-00000000-0">
+      </div>
+    </div>
+    <div class="field-row full">
+      <div class="field-group">
+        <label>Dirección Fiscal</label>
+        <input id="f_dir" type="text" placeholder="Calle, Zona Industrial, Ciudad, Estado">
+      </div>
+    </div>
+    <div class="field-row full">
+      <div class="field-group">
+        <label>Dirección de Planta / Almacén (si es diferente)</label>
+        <input id="f_dir2" type="text" placeholder="Dejar en blanco si es la misma">
+      </div>
+    </div>
+    <div class="field-row thirds">
+      <div class="field-group">
+        <label>Teléfono</label>
+        <input id="f_tel" type="tel" placeholder="+58 000-000-0000">
+      </div>
+      <div class="field-group">
+        <label>Correo Electrónico</label>
+        <input id="f_email" type="email" placeholder="compras@empresa.com">
+      </div>
+      <div class="field-group">
+        <label>Página Web / Instagram</label>
+        <input id="f_web" type="text" placeholder="www.empresa.com">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-title"><span class="num">2</span>Persona de Contacto</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Nombre y Apellido *</label>
+        <input id="f_nombre" type="text" placeholder="Nombre completo">
+      </div>
+      <div class="field-group">
+        <label>Cargo</label>
+        <input id="f_cargo" type="text" placeholder="Gerente de Compras, Ing. de Planta, etc.">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Teléfono / WhatsApp</label>
+        <input id="f_watel" type="tel" placeholder="+58 000-000-0000">
+      </div>
+      <div class="field-group">
+        <label>Correo Personal / Directo</label>
+        <input id="f_cemail" type="email" placeholder="nombre@empresa.com">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <div class="section-title"><span class="num">3</span>Servicios de Interés</div>
+    <p style="font-size:13px;color:#555;margin-bottom:14px">Seleccione el o los servicios sobre los cuales manifiesta interés:</p>
+    <div class="check-group">
+      <div class="check-item">
+        <input type="checkbox" id="s1">
+        <label for="s1">Galvanizado en caliente — piezas largas (kettle 7m)
+          <span class="sub">Torres eléctricas, estructuras metálicas, vigas, perfiles, etc. Hasta 7m de longitud.</span>
+        </label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="s2">
+        <label for="s2">Galvanizado en caliente — piezas medianas (kettle 3.5m)
+          <span class="sub">Bandejas portacables, soportes, monturas solares, barreras viales, etc. Hasta 3.5m.</span>
+        </label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="s3">
+        <label for="s3">Galvanizado por centrifugación (kettle 65cm)
+          <span class="sub">Tornillos, tuercas, clavos, herrajes y piezas pequeñas en lote.</span>
+        </label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="s4">
+        <label for="s4">Electrodepósito de cobre — varillas de tierra (ground rods)
+          <span class="sub">Diámetros 5/8" a 1". Longitudes 1.2m a 3m. Recubrimiento 300 um +/- 50 cobre.</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <div class="section-title"><span class="num">4</span>Volumen Estimado</div>
+    <div class="info-box">
+      <strong>Referencia orientativa — sin compromiso</strong>
+      Esta información ayuda a PYGLARA a dimensionar su capacidad operativa. No constituye pedido ni oferta formal.
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Volumen mensual estimado (toneladas métricas)</label>
+        <input id="f_vol" type="text" placeholder="Ej: 5 TM, 20 TM, 50 TM">
+        <span class="hint">Puede indicar un rango si no tiene cifra exacta</span>
+      </div>
+      <div class="field-group">
+        <label>Frecuencia de despacho esperada</label>
+        <select id="f_freq">
+          <option value="">-- Seleccionar --</option>
+          <option>Semanal</option>
+          <option>Quincenal</option>
+          <option>Mensual</option>
+          <option>Por proyecto / lote puntual</option>
+          <option>No definida aún</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row full">
+      <div class="field-group">
+        <label>Descripción del material o piezas a galvanizar</label>
+        <textarea id="f_desc" placeholder="Ej: Torres de distribución eléctrica en acero A36, aprox. 2 TM por juego. Despachos quincenales."></textarea>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>¿Tiene especificación técnica o norma requerida?</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="norma" value="Sí"> Sí</label>
+          <label class="radio-item"><input type="radio" name="norma" value="No"> No</label>
+          <label class="radio-item"><input type="radio" name="norma" value="Por definir"> Por definir</label>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Norma o especificación (si aplica)</label>
+        <input id="f_norma" type="text" placeholder="Ej: COVENIN 1212-81, ASTM A123, especificación interna">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <div class="section-title"><span class="num">5</span>Horizonte de Necesidad</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>¿Cuándo necesitaría iniciar despachos?</label>
+        <select id="f_when">
+          <option value="">-- Seleccionar --</option>
+          <option>En los próximos 30 días</option>
+          <option>Entre 1 y 3 meses</option>
+          <option>Entre 3 y 6 meses</option>
+          <option>Más de 6 meses</option>
+          <option>Sujeto a proyecto — fecha no definida</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>¿Actualmente trabaja con otro proveedor de galvanizado?</label>
+        <div class="radio-group" style="margin-top:8px">
+          <label class="radio-item"><input type="radio" name="proveedor" value="Sí"> Sí</label>
+          <label class="radio-item"><input type="radio" name="proveedor" value="No"> No</label>
+          <label class="radio-item"><input type="radio" name="proveedor" value="Importamos el servicio"> Importamos el servicio</label>
+        </div>
+      </div>
+    </div>
+    <div class="field-row full">
+      <div class="field-group">
+        <label>Comentarios adicionales o requerimientos especiales</label>
+        <textarea id="f_comments" placeholder="Tiempos de entrega, certificados de calidad, condiciones logísticas, otros..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: FIRMA -->
+  <div class="section">
+    <div class="section-title"><span class="num">6</span>Declaración y Firma</div>
+    <p style="font-size:13px;color:#444;margin-bottom:18px;line-height:1.6">
+      El abajo firmante, en representación de la empresa indicada, manifiesta <strong>interés comercial</strong> en los servicios de
+      Prensados y Galvanizados de Lara, S.A. (PYGLARA) y autoriza el uso de la información aquí suministrada con fines
+      exclusivos de planificación comercial. <strong>El presente documento no genera obligación de compra, contrato, ni
+      compromiso formal de ninguna índole para ninguna de las partes.</strong>
+    </p>
+
+    <!-- Signature pad -->
+    <div class="sig-pad-wrapper">
+      <div class="sig-pad-label">Firma del Representante</div>
+      <div class="sig-pad-hint">Firme con el dedo (celular) o el cursor (computadora)</div>
+      <canvas id="sigCanvas" width="760" height="160"></canvas>
+      <div class="sig-controls no-print">
+        <button type="button" onclick="clearSig()">Borrar firma</button>
+      </div>
+    </div>
+
+    <!-- Info below signature -->
+    <div class="sig-grid-bottom" style="margin-top:20px">
+      <div class="sig-info-col">
+        <div class="field-group">
+          <label>Nombre y Apellido del Firmante</label>
+          <input id="f_sig_nombre" type="text" placeholder="Nombre completo">
+        </div>
+        <div class="field-group">
+          <label>C.I. Nro.</label>
+          <input id="f_sig_ci" type="text" placeholder="V-00.000.000">
+        </div>
+        <div class="field-group">
+          <label>Cargo</label>
+          <input id="f_sig_cargo" type="text" placeholder="Representante Legal, Director, etc.">
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="field-group">
+          <label>Lugar y Fecha</label>
+          <input id="f_fecha" type="text" placeholder="Barquisimeto, abril 2026">
+        </div>
+        <div style="border:1.5px dashed #ccc;border-radius:8px;height:90px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:12px">
+          Sello de la Empresa (opcional)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER NOTE -->
+  <div class="footer-note">
+    Prensados y Galvanizados de Lara, S.A. &nbsp;|&nbsp; Zona Industrial I, Barquisimeto, Estado Lara 3001 &nbsp;|&nbsp;
+    Tel: +58 424 571 5349 &nbsp;|&nbsp; @pyglarasa
+    <br><br>
+    Este documento es una expresión de interés voluntaria. No constituye contrato, ni oferta vinculante, ni pedido formal.
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="btn-area no-print">
+    <button class="btn-wa" onclick="sendWhatsApp()">Enviar por WhatsApp</button>
+    <button class="btn-print" onclick="window.print()">Imprimir / Guardar PDF</button>
+    <button class="btn-clear" onclick="clearAll()">Limpiar todo</button>
+  </div>
+
+</div>
+
+<script>
+/* ── SIGNATURE PAD ─────────────────────────────────────── */
+const canvas = document.getElementById('sigCanvas');
+const ctx = canvas.getContext('2d');
+let drawing = false;
+let hasSignature = false;
+
+function resizeCanvas(){
+  const rect = canvas.getBoundingClientRect();
+  // save existing drawing
+  const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  canvas.width = rect.width * window.devicePixelRatio;
+  canvas.height = rect.height * window.devicePixelRatio;
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  ctx.strokeStyle = '#1a3a5c';
+  ctx.lineWidth = 2.2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function getPos(e){
+  const rect = canvas.getBoundingClientRect();
+  if(e.touches){
+    return {x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top};
+  }
+  return {x: e.clientX - rect.left, y: e.clientY - rect.top};
+}
+
+canvas.addEventListener('mousedown', e => { drawing=true; const p=getPos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); });
+canvas.addEventListener('mousemove', e => { if(!drawing) return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); hasSignature=true; canvas.classList.add('has-sig'); });
+canvas.addEventListener('mouseup', () => drawing=false);
+canvas.addEventListener('mouseleave', () => drawing=false);
+
+canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing=true; const p=getPos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); }, {passive:false});
+canvas.addEventListener('touchmove', e => { e.preventDefault(); if(!drawing) return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); hasSignature=true; canvas.classList.add('has-sig'); }, {passive:false});
+canvas.addEventListener('touchend', () => drawing=false);
+
+function clearSig(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hasSignature=false;
+  canvas.classList.remove('has-sig');
+}
+
+/* ── WHATSAPP ──────────────────────────────────────────── */
+function v(id){ return (document.getElementById(id)||{}).value||''; }
+function checked(id){ return document.getElementById(id).checked; }
+function radio(name){ const el=document.querySelector('input[name="'+name+'"]:checked'); return el?el.value:'No indicado'; }
+
+function sendWhatsApp(){
+  const servicios=[];
+  if(checked('s1')) servicios.push('Galvanizado 7m');
+  if(checked('s2')) servicios.push('Galvanizado 3.5m');
+  if(checked('s3')) servicios.push('Centrifugación 65cm');
+  if(checked('s4')) servicios.push('Electrodepósito de cobre');
+
+  const razon   = v('f_razon')     || 'No indicado';
+  const rif     = v('f_rif')       || 'No indicado';
+  const dir     = v('f_dir')       || 'No indicado';
+  const tel     = v('f_tel')       || 'No indicado';
+  const email   = v('f_email')     || 'No indicado';
+  const nombre  = v('f_nombre')    || 'No indicado';
+  const cargo   = v('f_cargo')     || 'No indicado';
+  const watel   = v('f_watel')     || 'No indicado';
+  const cemail  = v('f_cemail')    || 'No indicado';
+  const vol     = v('f_vol')       || 'No indicado';
+  const freq    = v('f_freq')      || 'No indicado';
+  const desc    = v('f_desc')      || 'No indicado';
+  const norma   = v('f_norma')     || radio('norma');
+  const when    = v('f_when')      || 'No indicado';
+  const prov    = radio('proveedor');
+  const comments= v('f_comments')  || '';
+  const sigNombre= v('f_sig_nombre')|| 'No indicado';
+  const sigCI   = v('f_sig_ci')    || 'No indicado';
+  const sigCargo= v('f_sig_cargo') || 'No indicado';
+  const fecha   = v('f_fecha')     || 'No indicado';
+
+  const msg =
+`*PYGLARA — Expresion de Interes Comercial*
+_Este mensaje no constituye un contrato_
+
+*1. EMPRESA*
+Razon Social: ${razon}
+RIF: ${rif}
+Direccion: ${dir}
+Tel: ${tel} | Email: ${email}
+
+*2. CONTACTO*
+Nombre: ${nombre} (${cargo})
+WhatsApp: ${watel} | Email: ${cemail}
+
+*3. SERVICIOS DE INTERES*
+${servicios.length ? servicios.join(', ') : 'No seleccionado'}
+
+*4. VOLUMEN*
+Volumen mensual: ${vol}
+Frecuencia: ${freq}
+Material: ${desc}
+Norma requerida: ${norma}
+
+*5. HORIZONTE*
+Inicio despachos: ${when}
+Proveedor actual: ${prov}
+${comments ? 'Comentarios: ' + comments : ''}
+
+*6. FIRMANTE*
+${sigNombre} — C.I. ${sigCI}
+Cargo: ${sigCargo}
+Fecha: ${fecha}
+Firma digital: ${hasSignature ? 'Firmado' : 'No firmado'}`;
+
+  const url = 'https://wa.me/17863546586?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+/* ── CLEAR ALL ─────────────────────────────────────────── */
+function clearAll(){
+  if(!confirm('Limpiar todos los campos y la firma?')) return;
+  document.querySelectorAll('input,select,textarea').forEach(e => {
+    if(e.type==='checkbox'||e.type==='radio') e.checked=false;
+    else if(e.tagName==='SELECT') e.selectedIndex=0;
+    else e.value='';
+  });
+  clearSig();
+}
+</script>
+</body>
+</html>

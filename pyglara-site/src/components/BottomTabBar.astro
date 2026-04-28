@@ -1,8 +1,6 @@
 ---
 /**
  * BottomTabBar.astro — Fixed bottom navigation, mobile only.
- * Story 7.1: Service page routes do not exist yet.
- * All service tab hrefs use "#" until those stories are implemented.
  */
 
 interface Props {
@@ -16,7 +14,7 @@ const tabs = [
   {
     key: 'galvanizing',
     label: lang === 'es' ? 'Galv.' : 'Galv.',
-    href: '#', // TODO Story 7-2: replace href with real route
+    href: lang === 'es' ? '/es/galvanizacion/' : '/en/galvanizing/',
     'data-page': 'galvanizing',
   },
   {

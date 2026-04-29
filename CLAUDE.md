@@ -31,7 +31,7 @@ This repository contains all documentation, financial models, and investor mater
 | Kettle | Length | Width | Depth | Bath Volume | Zinc Fill | Max Workpiece |
 | --- | --- | --- | --- | --- | --- | --- |
 | 7m Pilling | 7.00 m | 0.80 m | 1.40 m | 7.84 m³ | ~44 TM calculated / **50 TM per Ing. Miriam** (use 50 TM for capital planning) | ~6.8m × 0.75m (double immersion: up to ~12m) |
-| 9m Pilling | 9.00 m | 0.90 m | 1.40 m | 11.34 m³ | **~75 TM calculated / ~85–87 TM with buffer** | ~8.8m × 0.85m |
+| 9m Pilling | 9.00 m | 0.90 m | 1.40 m | 11.34 m³ | **~75 TM calculated / ~85–87 TM with buffer** | ~8.8m × 0.85m (double immersion: up to ~16m) |
 | 65cm centrifuge | — | 65 cm dia. | — | — | Shared zinc bath | Small hardware, nails, fasteners |
 
 **Zinc fill cost at $4,220/TM delivered:**

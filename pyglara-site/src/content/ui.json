@@ -54,7 +54,7 @@
       "bullet1_title": "Casi 5 décadas de trayectoria",
       "bullet1_body": "Fundada en 1976, operamos sin interrupciones por calidad. Conocemos cada aleación, cada pieza difícil, cada plazo urgente.",
       "bullet2_title": "Cubas hasta 9m. Doble inmersión hasta 12m.",
-      "bullet2_body": "Cubas de galvanización de hasta 9 metros. Con doble inmersión procesamos piezas de hasta 12 metros. Especializados en sector eléctrico, telecomunicaciones y construcción desde 1976.",
+      "bullet2_body": "Cubas Pilling de 7m y 9m. Doble inmersión: hasta 12m con la cuba de 7m, hasta ~16m con la de 9m. Especializados en sector eléctrico, telecomunicaciones y construcción desde 1976.",
       "bullet3_title": "Equipos W. Pilling Riepe GmbH (Alemania)",
       "bullet3_body": "Nuestras cubas son del fabricante alemán de referencia mundial. Tolerancias precisas, zinc uniforme, acabado consistente en cada lote.",
       "bullet4_title": "Zinc SHG 99.99% de pureza",
@@ -113,7 +113,7 @@
       "why_2_title": "Certificación por lote en cada entrega",
       "why_2_body": "Emitimos un certificado de calidad por cada lote bajo COVENIN 1212-81, ASTM A123 y ASTM A153. Más de 50 años de experiencia industrial respaldan cada entrega.",
       "why_3_title": "Especializados en construcción y sector eléctrico",
-      "why_3_body": "Atendemos el sector eléctrico, telecomunicaciones y construcción desde 1976. Cubas hasta 9 metros, con doble inmersión disponible para piezas de hasta 12 metros.",
+      "why_3_body": "Atendemos el sector eléctrico, telecomunicaciones y construcción desde 1976. Doble inmersión: hasta 12m con la cuba de 7m, hasta ~16m con la de 9m.",
       "why_4_title": "Equipos alemanes W. Pilling Riepe GmbH",
       "why_4_body": "Tolerancias precisas, zinc uniforme y acabado consistente en cada lote, sin importar el tamaño del pedido.",
 
@@ -155,7 +155,7 @@
       "kettle_7m_max": "~6.8m × 0.75m · doble inmersión: hasta ~12m",
       "kettle_9m_name": "Cuba Pilling 9m",
       "kettle_9m_dims": "9.00 m × 0.90 m × 1.40 m",
-      "kettle_9m_max": "~8.8m × 0.85m",
+      "kettle_9m_max": "~8.8m × 0.85m · doble inmersión: hasta ~16m",
 
       "quality_heading": "Normas que respaldamos",
       "quality_std_1": "COVENIN 1212-81",
@@ -253,7 +253,7 @@
       "bullet1_title": "Nearly 5 decades of track record",
       "bullet1_body": "Founded in 1976, we have operated without quality interruptions. We know every alloy, every difficult piece, every urgent deadline.",
       "bullet2_title": "Kettles up to 9m. Double-dip up to 12m.",
-      "bullet2_body": "Galvanizing kettles up to 9 meters. With double-dip we process pieces up to 12 meters. Specialized in electrical, telecom, and construction sectors since 1976.",
+      "bullet2_body": "Pilling kettles: 7m and 9m. Double-dip: up to 12m with the 7m kettle, up to ~16m with the 9m kettle. Specialized in electrical, telecom, and construction sectors since 1976.",
       "bullet3_title": "W. Pilling Riepe GmbH equipment (Germany)",
       "bullet3_body": "Our kettles are made by the world reference manufacturer. Precise tolerances, uniform zinc, consistent finish on every batch.",
       "bullet4_title": "Zinc SHG 99.99% purity",
@@ -312,7 +312,7 @@
       "why_2_title": "Per-lot certification on every delivery",
       "why_2_body": "We issue a quality certificate per lot under COVENIN 1212-81, ASTM A123, and ASTM A153. More than 50 years of industrial experience back every delivery.",
       "why_3_title": "Specialized in construction and electrical sectors",
-      "why_3_body": "Serving electrical, telecom, and construction sectors since 1976. Kettles up to 9 meters, with double-dip for pieces up to 12 meters.",
+      "why_3_body": "Serving electrical, telecom, and construction sectors since 1976. Double-dip: up to 12m with the 7m kettle, up to ~16m with the 9m kettle.",
       "why_4_title": "W. Pilling Riepe GmbH equipment (Germany)",
       "why_4_body": "Precise tolerances, uniform zinc coating, and consistent finish on every batch, regardless of order size.",
 
@@ -354,7 +354,7 @@
       "kettle_7m_max": "~6.8m × 0.75m · double-dip: up to ~12m",
       "kettle_9m_name": "9m Pilling kettle",
       "kettle_9m_dims": "9.00 m × 0.90 m × 1.40 m",
-      "kettle_9m_max": "~8.8m × 0.85m",
+      "kettle_9m_max": "~8.8m × 0.85m · double-dip: up to ~16m",
 
       "quality_heading": "Standards we stand behind",
       "quality_std_1": "COVENIN 1212-81",

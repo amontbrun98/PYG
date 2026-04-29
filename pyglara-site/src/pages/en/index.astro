@@ -16,14 +16,14 @@ const lang = 'en' as const;
 ---
 
 <BaseLayout
-  title="PYGLARA — Hot-Dip Galvanizing & Copper Ground Rods | Barquisimeto, Venezuela"
+  title="PYGLARA | Hot-Dip Galvanizing & Copper Ground Rods | Barquisimeto, Venezuela"
   description="Venezuela's only dual-capability industrial galvanizer. Hot-dip galvanizing up to 9m and copper-clad ground rods. Serving electrical, telecom, and construction sectors since 1976."
   lang={lang}
   activePage="home"
   ogImage="https://pyglara.com/images/og-homepage.jpg"
 >
-  <!-- Open Graph meta tags for EN — critical for LinkedIn/Slack unfurl -->
-  <meta slot="head" property="og:title" content="PYGLARA — Hot-Dip Galvanizing & Copper Ground Rods | Barquisimeto, Venezuela" />
+  <!-- Open Graph meta tags -->
+  <meta slot="head" property="og:title" content="PYGLARA | Hot-Dip Galvanizing & Copper Ground Rods | Barquisimeto, Venezuela" />
   <meta slot="head" property="og:description" content="Venezuela's only dual-capability industrial galvanizer. Hot-dip galvanizing up to 9m and copper-clad ground rods. Serving electrical, telecom, and construction sectors since 1976." />
   <meta slot="head" property="og:image" content="https://pyglara.com/images/og-homepage.jpg" />
   <meta slot="head" property="og:url" content="https://pyglara.com/en/" />
@@ -93,11 +93,11 @@ const lang = 'en' as const;
     .hero-cta { opacity: 0; animation: hero-slam-up 0.5s cubic-bezier(0.22,1,0.36,1) 1.85s forwards; }
   </style>
 
-  <!-- Hero — Option B Impact -->
+  <!-- Hero section -->
   <section class="relative bg-navy" style="min-height: 100svh; overflow: clip;">
     <Image
       src={imgEsfumer}
-      alt="7m galvanizing kettle enclosure — PYGLARA plant, Barquisimeto"
+      alt="7m galvanizing kettle enclosure, PYGLARA plant, Barquisimeto"
       width={1440} height={810} quality={70}
       loading="eager" fetchpriority="high"
       class="absolute inset-0 w-full h-full object-cover"
@@ -120,7 +120,7 @@ const lang = 'en' as const;
       </p>
 
       <p class="hero-sub text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-lg">
-        The largest capacity in western Venezuela. Kettles up to 9m. COVENIN + ASTM certified on every delivery.
+        Pilling kettles up to 9m. Double-dip for pieces up to 12m. COVENIN + ASTM certified on every delivery.
       </p>
 
       <ul class="space-y-2 mb-8">
@@ -151,7 +151,7 @@ const lang = 'en' as const;
   <!-- Copper divider -->
   <div class="bg-copper" style="height: 3px;"></div>
 
-  <!-- Section 3: Stats bar -->
+  <!-- Stats bar -->
   <section class="bg-navy py-14">
     <div class="max-w-content mx-auto px-4">
       <p class="text-center text-white/40 text-xs uppercase tracking-widest mb-10 fade-up">{t(lang, 'stats.context')}</p>
@@ -215,11 +215,11 @@ const lang = 'en' as const;
   <!-- Section 5: Dual capability cards -->
   <section class="bg-bg-alt py-14">
     <div class="max-w-content mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Galvanizing card — Pilling kettle as bg -->
+      <!-- Galvanizing card -->
       <div class="relative bg-navy text-white rounded overflow-hidden fade-up">
         <Image
           src={imgPilling1}
-          alt="W. Pilling Riepe GmbH galvanizing kettle — PYGLARA"
+          alt="W. Pilling Riepe GmbH galvanizing kettle, PYGLARA"
           width={480}
           height={320}
           loading="lazy"
@@ -249,12 +249,12 @@ const lang = 'en' as const;
         </div>
       </div>
 
-      <!-- Copper card — copper plating line as bg -->
+      <!-- Copper card -->
       <div class="relative bg-copper text-white rounded overflow-hidden fade-up">
         <!-- TODO Story 7-3: add href to service page -->
         <Image
           src={imgPlantClean}
-          alt="Copper electroplating line — PYGLARA"
+          alt="Copper electroplating line, PYGLARA"
           width={480}
           height={320}
           loading="lazy"
@@ -305,7 +305,7 @@ const lang = 'en' as const;
     </div>
   </section>
 
-  <!-- Section 6: Facility photos — 6 real photos -->
+  <!-- Facility photos -->
   <section class="bg-bg-alt py-14">
     <div class="max-w-content mx-auto px-4">
       <h2 class="text-2xl font-bold text-navy mb-6 fade-up">{t(lang, 'facility.heading')}</h2>

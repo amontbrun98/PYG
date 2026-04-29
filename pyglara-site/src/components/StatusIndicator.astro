@@ -29,12 +29,12 @@ const { status, lang, kettles } = Astro.props;
 
 const statusLabel = {
   es: {
-    active: 'Planta Operativa — Aceptando Pedidos',
+    active: 'Planta Operativa · Aceptando Pedidos',
     maintenance: 'Planta en Mantenimiento',
     limited: 'Capacidad Limitada',
   },
   en: {
-    active: 'Plant Operational — Accepting Orders',
+    active: 'Plant Operational · Accepting Orders',
     maintenance: 'Plant Under Maintenance',
     limited: 'Limited Capacity',
   },
@@ -61,7 +61,7 @@ function kettleColor(s: string): string {
   <div class="flex flex-wrap gap-x-3 gap-y-1">
     {kettles.map((k) => (
       <span class="text-xs" style={`color: ${kettleColor(k.status)};`}>
-        {k.name} — {lang === 'es' ? k.label_es : k.label_en}
+        {k.name} · {lang === 'es' ? k.label_es : k.label_en}
       </span>
     ))}
   </div>

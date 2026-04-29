@@ -22,9 +22,28 @@ This repository contains all documentation, financial models, and investor mater
 ### 1. Hot-Dip Galvanizing (Primary)
 - **Installed Capacity:** 1,440 tons/month (17,280 tons/year) — per Ing. Miriam. Best actual month: 300 TM. Use 300 TM/month for conservative projections.
 - **Model:** Service-only — clients bring their steel, PYG galvanizes it
-- **Kettles:** 7m Pilling (installed, waiting for zinc), 9m Pilling (pending install, valued $570K), 65cm centrifuge (ACTIVE — galvanizing nails), 3.5m (inactive — L=3.5m W=0.65m H=1.20m, salvaged from 7m, needs repair)
+- **Kettles:** 7m Pilling (installed, waiting for zinc), 9m Pilling (pending install, valued $570K), 65cm centrifuge (ACTIVE — galvanizing nails), 3.5m (DECOMMISSIONED — cannibalized as material source for 7m kettle and centrifuge; not an operational unit, not in capital plan)
 - **Manufacturer:** W. Pilling Riepe GmbH & Co. KG (Germany)
 - **Pricing:** Based on 10% zinc absorption rate, charged by weight
+
+#### Kettle Dimensions (confirmed)
+
+| Kettle | Length | Width | Depth | Bath Volume | Zinc Fill | Max Workpiece |
+| --- | --- | --- | --- | --- | --- | --- |
+| 7m Pilling | 7.00 m | 0.80 m | 1.40 m | 7.84 m³ | ~44 TM calculated / **50 TM per Ing. Miriam** (use 50 TM for capital planning) | ~6.8m × 0.75m (double immersion: up to ~12m) |
+| 9m Pilling | 9.00 m | 0.90 m | 1.40 m | 11.34 m³ | **~75 TM calculated / ~85–87 TM with buffer** | ~8.8m × 0.85m |
+| 65cm centrifuge | — | 65 cm dia. | — | — | Shared zinc bath | Small hardware, nails, fasteners |
+
+**Zinc fill cost at $4,220/TM delivered:**
+
+- 7m kettle: 50 TM × $4,220 = **$211,000** (confirmed)
+- 9m kettle: ~85 TM × $4,220 = **~$359,000** (calculated — not yet confirmed by Ing. Miriam)
+
+**What each kettle can process:**
+
+- 7m kettle: structural steel up to ~6.8m long — poles, towers, angles, channels, flat bar (pletinas), cable trays, pipe supports
+- 9m kettle: oversized structural work up to ~8.8m long — pipeline supports, large-format structural assemblies, transmission towers; **no other active Venezuelan galvanizer can process work above 7m**
+- Centrifuge: small hardware only — nails, bolts, fasteners, small brackets
 
 ### 2. Copper Electroplating (Secondary)
 - **Capacity:** 936 ground rods/day (24hr continuous cycle)
@@ -60,12 +79,13 @@ This repository contains all documentation, financial models, and investor mater
 | Primary client sector | Electrical and telecommunications |
 
 ## Fixed Cost Breakdown (Monthly)
-- Gas: $1,500-$1,800 (PDVSA contract active, varies monthly)
+
+- Gas: $1,800 (PDVSA contract active, fixed maximum — confirmed does not exceed this figure)
 - Security: $1,200
 - Salaries: $2,300
 - Electricity: $150-$200 (66 kVA contracted, 9 kVA actual at current production)
 - Cleaning/Maintenance: $100
-- **Total: $5,600/month**
+- **Total: $5,600/month (current dormant-plant level; Phase 1 operating fixed costs ~$12K–$18K/month once production roles added)**
 
 ## Physical Assets
 - **2 warehouses** (NOT 3 — corrected after Ing. Miriam meeting), total ~3,640 m2
@@ -78,22 +98,25 @@ This repository contains all documentation, financial models, and investor mater
 | Item | Estimate |
 |---|---|
 | Overhead cranes — preventive maintenance | $5,000-$10,000 |
-| 3m kettle — refractory bricks + insulation (labor internal) | $5,000-$10,000 |
 | Copper plant — rectifier renewal | $10,000-$20,000 |
 | Copper plant — tank relining (fiberglass) | $5,000-$10,000 |
-| **Total maintenance** | **$25,000-$50,000** |
+| Pre-startup chemical testing (HCl/NH4Cl concentration + iron content) | $500-$2,000 |
+| **Total maintenance** | **$15,500-$42,000** |
+
+Note: 3.5m kettle removed from maintenance plan — it is decommissioned and cannibalized as material for the 7m kettle and centrifuge.
 
 ## Phased Startup Capital
 
 | Phase | Investment | Cumulative | What It Unlocks |
-|---|---|---|---|
-| **Phase 0 (now)** | $0 | $0 | 65cm centrifuge — galvanizing nails |
-| **Phase 1** | ~$94K ($10K refractory + $84K zinc 20 tons @ $4,220/TM) | ~$94K | 3.5m kettle — cable trays, solar mounts, crash barriers. Replenish 5 tons/cycle (~$21K) |
-| **Phase 2** | ~$211K (50 tons zinc @ $4,220/TM) + $5-10K (cranes) | ~$310K-$315K | 7m production — best actual: 300 tons/month. Replenish 20 tons/cycle (~$84K) from revenue |
-| **Phase 3** | $15K-$30K (copper line) | ~$325K-$345K | Copper electroplating — ground rods, $561K-$1.05M/year potential |
-| **Phase 4** | TBD (9m install) | TBD | 9m kettle — oversized work, no regional competitor can match |
+| --- | --- | --- | --- |
+| **Phase 0 (active)** | $0 | $0 | 65cm centrifuge — galvanizing nails (currently running) |
+| **Phase 1** | ~$211K (50 tons zinc @ $4,220/TM) + $5-10K (cranes) + $168.8K (2-cycle zinc working capital reserve) | ~$385K-$390K | 7m kettle — primary revenue line. Best actual: 300 TM/month. Replenish 20 tons/cycle (~$84K) from revenue |
+| **Phase 2** | $15K-$30K (copper line repairs) | ~$400K-$420K | Copper electroplating — ground rods, $561K-$1.05M/year, zero domestic competition |
+| **Phase 3** | TBD (9m install) | TBD | 9m kettle — oversized work, no regional competitor can match |
 
-**Note (updated 2026-03-24):** Ing. Miriam's minimum investment figure: **$336,000** for 70 TM zinc (both kettles) + chemicals + 3 months gas. Zinc lead time ~60 days, then 3 weeks to reactivate. Burners confirmed GOOD. Only 2 active competitors in country.
+**Note (updated 2026-04-22):** 3.5m kettle is DECOMMISSIONED — cannibalized as material for 7m kettle and centrifuge. It is not a production phase. Phase sequence is now: Phase 0 (centrifuge, active) → Phase 1 (7m kettle) → Phase 2 (copper line) → Phase 3 (9m kettle). Gas confirmed fixed at $1,800/month maximum. Zinc working capital reserve of $168,800 (2 replenishment cycles) must be pre-positioned before Phase 1 zinc order is placed. Pre-startup chemical testing of on-site HCl/NH4Cl inventory is mandatory before 7m kettle is loaded.
+
+**Note (updated 2026-04-23):** Capital must be confirmed before zinc order is placed — financing (Epic 15) is a prerequisite to the zinc order (Epic 1, Story 1-1), not parallel to it. **Registro Mercantil expires July 2026** — renewal is the single most time-sensitive legal action in Phase 0; it blocks the Mercantil bank loan, the CAF application, and the CORPOELEC vendor registration if it lapses. Attorney must be engaged and renewal filed before end of April 2026. Ing. Miriam is preparing a market study with the biggest potential clients — expected 2026-04-24; integrate into Epic 2 client outreach list on receipt.
 
 ## Investment Thesis
 Venezuela's oil sector reopening (post-January 2026 regime change) creates massive demand for galvanized steel infrastructure. Rystad Energy projects $183B in oil & gas capex through 2040, with fabrication & construction as the #1 service segment at $41B. PDVSA pipelines have not been updated in 50 years.

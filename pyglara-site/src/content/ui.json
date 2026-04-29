@@ -34,8 +34,8 @@
       "cta_whatsapp": "Solicitar cotización"
     },
     "status": {
-      "active": "Planta Operativa — Aceptando Pedidos",
-      "kettle_timeline": "65cm — Activa | 7m — Q2 2026 | 9m — 2027"
+      "active": "Planta Operativa · Aceptando Pedidos",
+      "kettle_timeline": "65cm · Activa | 7m · Q2 2026 | 9m · 2027"
     },
     "stats": {
       "capacity_value": "300",
@@ -53,9 +53,9 @@
       "intro": "Cuando su operación depende de acero protegido, el galvanizador que elige importa. Estos son los hechos.",
       "bullet1_title": "Casi 5 décadas de trayectoria",
       "bullet1_body": "Fundada en 1976, operamos sin interrupciones por calidad. Conocemos cada aleación, cada pieza difícil, cada plazo urgente.",
-      "bullet2_title": "La mayor capacidad del occidente venezolano",
-      "bullet2_body": "Cubas de galvanización hasta 9 metros de longitud. Aceptamos piezas que ningún competidor regional puede procesar.",
-      "bullet3_title": "Equipos W. Pilling Riepe GmbH — Alemania",
+      "bullet2_title": "Cubas hasta 9m. Doble inmersión hasta 12m.",
+      "bullet2_body": "Cubas de galvanización de hasta 9 metros. Con doble inmersión procesamos piezas de hasta 12 metros. Especializados en sector eléctrico, telecomunicaciones y construcción desde 1976.",
+      "bullet3_title": "Equipos W. Pilling Riepe GmbH (Alemania)",
       "bullet3_body": "Nuestras cubas son del fabricante alemán de referencia mundial. Tolerancias precisas, zinc uniforme, acabado consistente en cada lote.",
       "bullet4_title": "Zinc SHG 99.99% de pureza",
       "bullet4_body": "Sin compromiso en materiales. Zinc de alta pureza garantiza adhesión óptima y vida útil máxima para su acero.",
@@ -66,7 +66,7 @@
     },
     "cards": {
       "galvanizing_title": "Galvanización en Caliente",
-      "galvanizing_bullet1": "Cubas hasta 9m. Procesamos piezas que otros no pueden aceptar.",
+      "galvanizing_bullet1": "Cubas Pilling hasta 9m. Doble inmersión disponible para piezas de hasta 12m.",
       "galvanizing_bullet2": "Zinc SHG 99.99%: sin compromiso en pureza de materiales",
       "galvanizing_bullet3": "Certificado COVENIN 1212-81 / ASTM A123 incluido en cada pedido",
       "copper_title": "Varillas de Tierra",
@@ -76,19 +76,19 @@
     },
     "snapshot": {
       "heading": "Nuestra Historia",
-      "body": "Fundada en 1976 en Barquisimeto, PYGLARA lleva casi cinco décadas protegiendo el acero venezolano. Operamos con equipos originales W. Pilling Riepe GmbH de Alemania — el fabricante de referencia mundial en cubas de galvanización — y hemos atendido a más de 34 empresas en los sectores eléctrico, telecomunicaciones, construcción y agroindustrial. Somos la planta de mayor capacidad del occidente venezolano y una de solo dos galvanizadoras activas en todo el país. Cada entrega lleva su certificado de calidad.",
+      "body": "Fundada en 1976 en Barquisimeto, PYGLARA lleva casi cinco décadas protegiendo el acero venezolano. Operamos con equipos originales W. Pilling Riepe GmbH de Alemania, el fabricante de referencia mundial en cubas de galvanización, y hemos atendido a más de 34 empresas en los sectores eléctrico, telecomunicaciones, construcción y agroindustrial. Una de solo dos galvanizadoras activas en todo el país. Cada entrega lleva su certificado de calidad.",
       "equipment": "Equipos W. Pilling Riepe GmbH (Alemania)",
       "standards": "COVENIN 1212-81 / ASTM A123 / ASTM A153",
       "market": "Una de solo 2 galvanizadoras activas en Venezuela"
     },
     "facility": {
       "heading": "Nuestras Instalaciones",
-      "alt1": "Cuba centrifuga 65cm en operación — galvanizando piezas de ferretería",
-      "alt2": "Galpones PYGLARA — Zona Industrial I, Barquisimeto",
-      "alt3": "Herrajes galvanizados — soporte tipo onda, listos para despacho",
+      "alt1": "Cuba centrifuga 65cm en operación, galvanizando piezas de ferretería",
+      "alt2": "Galpones PYGLARA, Zona Industrial I, Barquisimeto",
+      "alt3": "Herrajes galvanizados tipo onda, listos para despacho",
       "alt4": "Tornillos galvanizados recién extraídos de la cuba centrifuga",
-      "alt5": "Clavos galvanizados — producto terminado de la línea de centrifugado",
-      "alt6": "Sala de cubas de galvanización — Planta PYGLARA, Barquisimeto"
+      "alt5": "Clavos galvanizados, producto terminado de la línea de centrifugado",
+      "alt6": "Sala de cubas de galvanización, Planta PYGLARA, Barquisimeto"
     },
     "galv_page": {
       "hero_line1": "Su acero dura 50 años.",
@@ -99,11 +99,11 @@
       "problem_body": "La corrosión no avisa. Empieza por los bordes, avanza por las soldaduras, y cuando se hace visible ya comprometió la estructura. Reemplazar acero corroído cuesta entre 3 y 10 veces más que haberlo galvanizado desde el inicio.",
 
       "solution_heading": "El zinc no recubre el acero. Se convierte en él.",
-      "solution_body": "La galvanización en caliente no es una pintura. A 450 °C, el zinc se une metalúrgicamente al acero — capa por capa — formando una barrera que no se pela, no se descama y no falla en condiciones de campo.",
+      "solution_body": "La galvanización en caliente no es una pintura. A 450 °C, el zinc se une metalúrgicamente al acero, capa por capa, formando una barrera que no se pela, no se descama y no falla en condiciones de campo.",
       "stat_years_value": "50+",
       "stat_years_label": "años de vida útil proyectada",
-      "stat_kettle_value": "9 m",
-      "stat_kettle_label": "la cuba más grande activa en Venezuela",
+      "stat_kettle_value": "12 m",
+      "stat_kettle_label": "piezas procesables con doble inmersión",
       "stat_zinc_value": "99.99%",
       "stat_zinc_label": "pureza del zinc SHG utilizado",
 
@@ -111,11 +111,11 @@
       "why_1_title": "50 años de experiencia industrial",
       "why_1_body": "Fundados en 1976. Hemos galvanizado postes, torres, herrajes y estructuras para los sectores eléctrico, telecomunicaciones y construcción en Venezuela.",
       "why_2_title": "Certificación por lote en cada entrega",
-      "why_2_body": "Emitimos un certificado de calidad por cada lote bajo COVENIN 1212-81, ASTM A123 y ASTM A153 — con más de 50 años de experiencia industrial respaldando cada entrega.",
-      "why_3_title": "La mayor capacidad del occidente venezolano",
-      "why_3_body": "Cubas de hasta 9 metros de longitud. Procesamos estructuras de gran formato que otros galvanizadores no pueden aceptar.",
+      "why_2_body": "Emitimos un certificado de calidad por cada lote bajo COVENIN 1212-81, ASTM A123 y ASTM A153. Más de 50 años de experiencia industrial respaldan cada entrega.",
+      "why_3_title": "Especializados en construcción y sector eléctrico",
+      "why_3_body": "Atendemos el sector eléctrico, telecomunicaciones y construcción desde 1976. Cubas hasta 9 metros, con doble inmersión disponible para piezas de hasta 12 metros.",
       "why_4_title": "Equipos alemanes W. Pilling Riepe GmbH",
-      "why_4_body": "Tolerancias precisas, zinc uniforme y acabado consistente en cada lote — sin importar el tamaño del pedido.",
+      "why_4_body": "Tolerancias precisas, zinc uniforme y acabado consistente en cada lote, sin importar el tamaño del pedido.",
 
       "products_heading": "¿Qué galvanizamos?",
       "products_intro": "Si es acero estructural, probablemente podemos trabajarlo.",
@@ -137,12 +137,12 @@
       "step3_title": "Fluxado",
       "step3_desc": "Inmersión en solución de cloruro de amonio (NH4Cl) para promover la adhesión del zinc.",
       "step4_title": "Galvanizado",
-      "step4_desc": "Inmersión en zinc fundido a 450 °C — Zinc SHG 99.99% de pureza.",
+      "step4_desc": "Inmersión en zinc fundido a 450 °C. Zinc SHG 99.99% de pureza.",
       "step5_title": "Enfriamiento e inspección",
       "step5_desc": "Enfriamiento controlado, inspección visual y de espesor. Certificado emitido por lote.",
 
       "kettles_heading": "Dimensiones de proceso",
-      "kettles_caption": "¿Tiene una pieza fuera de lo común? Consúltenos — le respondemos por WhatsApp.",
+      "kettles_caption": "¿Tiene una pieza fuera de lo común? Consúltenos. Le respondemos por WhatsApp.",
       "table_aria_label": "Dimensiones de las cubas de galvanización",
       "col_kettle": "Cuba",
       "col_dimensions": "Dimensiones (L × A × P)",
@@ -151,8 +151,8 @@
       "centrifuge_dims": "65 cm ⌀",
       "centrifuge_max": "Ferretería: clavos, tornillos, herrajes",
       "kettle_7m_name": "Cuba Pilling 7m",
-      "kettle_7m_dims": "7.00 m × 0.80 m × 1.20 m",
-      "kettle_7m_max": "~6.8m × 0.75m",
+      "kettle_7m_dims": "7.00 m × 0.80 m × 1.40 m",
+      "kettle_7m_max": "~6.8m × 0.75m · doble inmersión: hasta ~12m",
       "kettle_9m_name": "Cuba Pilling 9m",
       "kettle_9m_dims": "9.00 m × 0.90 m × 1.40 m",
       "kettle_9m_max": "~8.8m × 0.85m",
@@ -180,8 +180,8 @@
       "hse_body": "PYGLARA opera con protocolos de seguridad industrial para el manejo de sustancias químicas (HCl, NH4Cl, zinc fundido). Nuestras instalaciones cuentan con ventilación mecánica en la sala de cubas, equipos de protección personal y planes de emergencia actualizados.",
 
       "photos_heading": "Instalaciones",
-      "photo_alt_1": "Cuba de galvanización W. Pilling 7m — Planta PYGLARA, Barquisimeto",
-      "photo_alt_2": "Cuba centrífuga 65cm en operación — galvanizando piezas de ferretería",
+      "photo_alt_1": "Cuba de galvanización W. Pilling 7m, Planta PYGLARA, Barquisimeto",
+      "photo_alt_2": "Cuba centrífuga 65cm en operación, galvanizando piezas de ferretería",
 
       "cta_mid_heading": "¿Tiene acero que proteger?",
       "cta_mid_body": "Cuéntenos el tipo de pieza y el volumen. Le respondemos con tiempos y condiciones.",
@@ -193,7 +193,7 @@
 
       "cta_hero_labels": ["Solicitar cotización", "Hablar con nuestro equipo", "Pedir información"],
       "cta_mid_labels": ["Solicitar cotización", "Enviar dimensiones por WhatsApp"],
-      "cta_final_labels": ["Solicitar cotización — respuesta hoy", "Escríbanos por WhatsApp"],
+      "cta_final_labels": ["Solicitar cotización hoy", "Escríbanos por WhatsApp"],
 
       "contact_fallback": "También: info@pyglara.com · +58 424 571 5349"
     }
@@ -233,8 +233,8 @@
       "cta_whatsapp": "Request a quote"
     },
     "status": {
-      "active": "Plant Operational — Accepting Orders",
-      "kettle_timeline": "65cm — Active | 7m — Q2 2026 | 9m — 2027"
+      "active": "Plant Operational · Accepting Orders",
+      "kettle_timeline": "65cm · Active | 7m · Q2 2026 | 9m · 2027"
     },
     "stats": {
       "capacity_value": "300",
@@ -252,9 +252,9 @@
       "intro": "When your operation depends on protected steel, the galvanizer you choose matters. Here are the facts.",
       "bullet1_title": "Nearly 5 decades of track record",
       "bullet1_body": "Founded in 1976, we have operated without quality interruptions. We know every alloy, every difficult piece, every urgent deadline.",
-      "bullet2_title": "Largest capacity in western Venezuela",
-      "bullet2_body": "Galvanizing kettles up to 9 meters long. We accept pieces no regional competitor can process.",
-      "bullet3_title": "W. Pilling Riepe GmbH equipment — Germany",
+      "bullet2_title": "Kettles up to 9m. Double-dip up to 12m.",
+      "bullet2_body": "Galvanizing kettles up to 9 meters. With double-dip we process pieces up to 12 meters. Specialized in electrical, telecom, and construction sectors since 1976.",
+      "bullet3_title": "W. Pilling Riepe GmbH equipment (Germany)",
       "bullet3_body": "Our kettles are made by the world reference manufacturer. Precise tolerances, uniform zinc, consistent finish on every batch.",
       "bullet4_title": "Zinc SHG 99.99% purity",
       "bullet4_body": "No compromise on materials. High-purity zinc guarantees optimal adhesion and maximum service life for your steel.",
@@ -265,7 +265,7 @@
     },
     "cards": {
       "galvanizing_title": "Hot-Dip Galvanizing",
-      "galvanizing_bullet1": "Kettles up to 9m. We process pieces others cannot accept.",
+      "galvanizing_bullet1": "Pilling kettles up to 9m. Double-dip for pieces up to 12m.",
       "galvanizing_bullet2": "Zinc SHG 99.99%: no compromise on material purity",
       "galvanizing_bullet3": "COVENIN 1212-81 / ASTM A123 certificate included with every order",
       "copper_title": "Copper Ground Rods",
@@ -275,19 +275,19 @@
     },
     "snapshot": {
       "heading": "Our History",
-      "body": "Founded in 1976 in Barquisimeto, PYGLARA has spent nearly five decades protecting Venezuelan steel. We operate original W. Pilling Riepe GmbH equipment from Germany — the world reference manufacturer for galvanizing kettles — and have served over 34 companies across the electrical, telecommunications, construction, and agroindustrial sectors. We are the highest-capacity galvanizer in western Venezuela and one of only two active galvanizers in the entire country. Every delivery includes a quality certificate.",
+      "body": "Founded in 1976 in Barquisimeto, PYGLARA has spent nearly five decades protecting Venezuelan steel. We operate original W. Pilling Riepe GmbH equipment from Germany, the world reference manufacturer for galvanizing kettles, and have served over 34 companies across the electrical, telecommunications, construction, and agroindustrial sectors. One of only two active galvanizers in the entire country. Every delivery includes a quality certificate.",
       "equipment": "W. Pilling Riepe GmbH equipment (Germany)",
       "standards": "COVENIN 1212-81 / ASTM A123 / ASTM A153",
       "market": "One of only 2 active galvanizers in Venezuela"
     },
     "facility": {
       "heading": "Our Facilities",
-      "alt1": "65cm centrifuge in operation — galvanizing hardware parts",
-      "alt2": "PYGLARA plant — Zona Industrial I, Barquisimeto, Venezuela",
-      "alt3": "Galvanized wave brackets — finished product ready for dispatch",
+      "alt1": "65cm centrifuge in operation, galvanizing hardware parts",
+      "alt2": "PYGLARA plant, Zona Industrial I, Barquisimeto, Venezuela",
+      "alt3": "Galvanized wave brackets, finished product ready for dispatch",
       "alt4": "Hot-dip galvanized bolts fresh from the centrifuge",
-      "alt5": "Galvanized nails — finished product from centrifuge line",
-      "alt6": "Galvanizing kettle hall — PYGLARA plant, Barquisimeto"
+      "alt5": "Galvanized nails, finished product from centrifuge line",
+      "alt6": "Galvanizing kettle hall, PYGLARA plant, Barquisimeto"
     },
     "galv_page": {
       "hero_line1": "Your steel lasts 50 years.",
@@ -298,11 +298,11 @@
       "problem_body": "Corrosion doesn't announce itself. It starts at the edges, moves through welds, and by the time it's visible it has already compromised the structure. Replacing corroded steel costs 3 to 10 times more than galvanizing it from the start.",
 
       "solution_heading": "Zinc doesn't coat steel. It becomes part of it.",
-      "solution_body": "Hot-dip galvanizing is not a paint or surface coating. At 450 °C, zinc bonds metallurgically to the steel — layer by layer — forming a barrier that doesn't peel, doesn't flake, and doesn't fail in field conditions.",
+      "solution_body": "Hot-dip galvanizing is not a paint or surface coating. At 450 °C, zinc bonds metallurgically to the steel, layer by layer, forming a barrier that doesn't peel, doesn't flake, and doesn't fail in field conditions.",
       "stat_years_value": "50+",
       "stat_years_label": "years projected service life",
-      "stat_kettle_value": "9 m",
-      "stat_kettle_label": "the largest active kettle in Venezuela",
+      "stat_kettle_value": "12 m",
+      "stat_kettle_label": "pieces processable with double-dip",
       "stat_zinc_value": "99.99%",
       "stat_zinc_label": "purity of SHG zinc used",
 
@@ -310,11 +310,11 @@
       "why_1_title": "50 years of industrial experience",
       "why_1_body": "Founded in 1976. We have galvanized poles, towers, hardware, and structures for the electrical, telecommunications, and construction sectors in Venezuela.",
       "why_2_title": "Per-lot certification on every delivery",
-      "why_2_body": "We issue a quality certificate per lot under COVENIN 1212-81, ASTM A123, and ASTM A153 — backed by more than 50 years of industrial experience on every delivery.",
-      "why_3_title": "Largest capacity in western Venezuela",
-      "why_3_body": "Kettles up to 9 meters long. We process large-format structures that other galvanizers cannot accept.",
-      "why_4_title": "W. Pilling Riepe GmbH equipment — Germany",
-      "why_4_body": "Precise tolerances, uniform zinc coating, and consistent finish on every batch — regardless of order size.",
+      "why_2_body": "We issue a quality certificate per lot under COVENIN 1212-81, ASTM A123, and ASTM A153. More than 50 years of industrial experience back every delivery.",
+      "why_3_title": "Specialized in construction and electrical sectors",
+      "why_3_body": "Serving electrical, telecom, and construction sectors since 1976. Kettles up to 9 meters, with double-dip for pieces up to 12 meters.",
+      "why_4_title": "W. Pilling Riepe GmbH equipment (Germany)",
+      "why_4_body": "Precise tolerances, uniform zinc coating, and consistent finish on every batch, regardless of order size.",
 
       "products_heading": "What do we galvanize?",
       "products_intro": "If it's structural steel, we can probably work with it.",
@@ -336,12 +336,12 @@
       "step3_title": "Fluxing",
       "step3_desc": "Immersion in ammonium chloride (NH4Cl) solution to promote zinc adhesion.",
       "step4_title": "Hot-Dip Galvanizing",
-      "step4_desc": "Immersion in molten zinc at 450 °C — Zinc SHG 99.99% purity.",
+      "step4_desc": "Immersion in molten zinc at 450 °C. Zinc SHG 99.99% purity.",
       "step5_title": "Cooling & Inspection",
       "step5_desc": "Controlled cooling, visual and thickness inspection. Certificate issued per lot.",
 
       "kettles_heading": "Processing dimensions",
-      "kettles_caption": "Have an unusual piece? Ask us — we'll respond via WhatsApp.",
+      "kettles_caption": "Have an unusual piece? Ask us. We'll respond via WhatsApp.",
       "table_aria_label": "Galvanizing kettle dimensions",
       "col_kettle": "Kettle",
       "col_dimensions": "Dimensions (L × W × D)",
@@ -350,8 +350,8 @@
       "centrifuge_dims": "65 cm ⌀",
       "centrifuge_max": "Hardware: nails, bolts, fasteners",
       "kettle_7m_name": "7m Pilling kettle",
-      "kettle_7m_dims": "7.00 m × 0.80 m × 1.20 m",
-      "kettle_7m_max": "~6.8m × 0.75m",
+      "kettle_7m_dims": "7.00 m × 0.80 m × 1.40 m",
+      "kettle_7m_max": "~6.8m × 0.75m · double-dip: up to ~12m",
       "kettle_9m_name": "9m Pilling kettle",
       "kettle_9m_dims": "9.00 m × 0.90 m × 1.40 m",
       "kettle_9m_max": "~8.8m × 0.85m",
@@ -379,8 +379,8 @@
       "hse_body": "PYGLARA operates with industrial safety protocols for the handling of chemical substances (HCl, NH4Cl, molten zinc). Our facilities include mechanical ventilation in the kettle hall, personal protective equipment, and current emergency response plans.",
 
       "photos_heading": "Facilities",
-      "photo_alt_1": "W. Pilling 7m galvanizing kettle — PYGLARA plant, Barquisimeto",
-      "photo_alt_2": "65cm centrifuge in operation — galvanizing hardware parts",
+      "photo_alt_1": "W. Pilling 7m galvanizing kettle, PYGLARA plant, Barquisimeto",
+      "photo_alt_2": "65cm centrifuge in operation, galvanizing hardware parts",
 
       "cta_mid_heading": "Have steel to protect?",
       "cta_mid_body": "Tell us the part type and volume. We'll respond with lead times and conditions.",
@@ -392,7 +392,7 @@
 
       "cta_hero_labels": ["Request a quote", "Talk to our team", "Get information"],
       "cta_mid_labels": ["Request a quote", "Send dimensions via WhatsApp"],
-      "cta_final_labels": ["Request a quote — same-day response", "Message us on WhatsApp"],
+      "cta_final_labels": ["Request a quote today", "Message us on WhatsApp"],
 
       "contact_fallback": "Also: info@pyglara.com · +58 424 571 5349"
     }

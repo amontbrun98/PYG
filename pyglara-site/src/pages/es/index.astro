@@ -16,7 +16,7 @@ const lang = 'es' as const;
 ---
 
 <BaseLayout
-  title="PYGLARA — Galvanización en Caliente y Varillas de Cobre | Barquisimeto, Venezuela"
+  title="PYGLARA | Galvanización en Caliente y Varillas de Cobre | Barquisimeto, Venezuela"
   description="La única galvanizadora dual en Venezuela. Galvanización en caliente hasta 9m y varillas de cobre. Sectores eléctrico, telecomunicaciones y construcción desde 1976."
   lang={lang}
   activePage="home"
@@ -84,11 +84,11 @@ const lang = 'es' as const;
     .hero-cta { opacity: 0; animation: hero-slam-up 0.5s cubic-bezier(0.22,1,0.36,1) 1.85s forwards; }
   </style>
 
-  <!-- Hero — Option B Impact -->
+  <!-- Hero section -->
   <section class="relative bg-navy" style="min-height: 100svh; overflow: clip;">
     <Image
       src={imgEsfumer}
-      alt="Cuba de galvanización de 7m — Planta PYGLARA, Barquisimeto"
+      alt="Cuba de galvanización de 7m, Planta PYGLARA, Barquisimeto"
       width={1440} height={810} quality={70}
       loading="eager" fetchpriority="high"
       class="absolute inset-0 w-full h-full object-cover"
@@ -111,7 +111,7 @@ const lang = 'es' as const;
       </p>
 
       <p class="hero-sub text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-lg">
-        La mayor capacidad del occidente venezolano. Cubas hasta 9m. Certificación COVENIN + ASTM en cada entrega.
+        Cubas Pilling hasta 9m. Doble inmersión para piezas de hasta 12m. Certificación COVENIN + ASTM en cada entrega.
       </p>
 
       <ul class="space-y-2 mb-8">
@@ -142,7 +142,7 @@ const lang = 'es' as const;
   <!-- Copper divider -->
   <div class="bg-copper" style="height: 3px;"></div>
 
-  <!-- Section 3: Stats bar — animated on scroll -->
+  <!-- Stats bar -->
   <section class="bg-navy py-14">
     <div class="max-w-content mx-auto px-4">
       <p class="text-center text-white/40 text-xs uppercase tracking-widest mb-10 fade-up">{t(lang, 'stats.context')}</p>
@@ -206,11 +206,11 @@ const lang = 'es' as const;
   <!-- Section 5: Dual capability cards -->
   <section class="bg-bg-alt py-14">
     <div class="max-w-content mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Galvanizing card — Pilling kettle as bg -->
+      <!-- Galvanizing card -->
       <div class="relative bg-navy text-white rounded overflow-hidden fade-up">
         <Image
           src={imgPilling1}
-          alt="Cuba de galvanización W. Pilling Riepe GmbH — PYGLARA"
+          alt="Cuba de galvanización W. Pilling Riepe GmbH, PYGLARA"
           width={480}
           height={320}
           loading="lazy"
@@ -240,12 +240,12 @@ const lang = 'es' as const;
         </div>
       </div>
 
-      <!-- Copper card — copper plating line as bg -->
+      <!-- Copper card -->
       <div class="relative bg-copper text-white rounded overflow-hidden fade-up">
         <!-- TODO Story 7-3: add href to service page -->
         <Image
           src={imgPlantClean}
-          alt="Línea de electrodeposición de cobre — PYGLARA"
+          alt="Línea de electrodeposición de cobre, PYGLARA"
           width={480}
           height={320}
           loading="lazy"
@@ -296,7 +296,7 @@ const lang = 'es' as const;
     </div>
   </section>
 
-  <!-- Section 6: Facility photos — 5 real photos, AC #6 satisfied -->
+  <!-- Facility photos -->
   <section class="bg-bg-alt py-14">
     <div class="max-w-content mx-auto px-4">
       <h2 class="text-2xl font-bold text-navy mb-6 fade-up">{t(lang, 'facility.heading')}</h2>

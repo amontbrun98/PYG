@@ -241,8 +241,7 @@ const lang = 'es' as const;
       </div>
 
       <!-- Copper card -->
-      <div class="relative bg-copper text-white rounded overflow-hidden fade-up">
-        <!-- TODO Story 7-3: add href to service page -->
+      <a href="/es/varillas-de-cobre/" class="block relative bg-copper text-white rounded overflow-hidden fade-up">
         <Image
           src={imgPlantClean}
           alt="Línea de electrodeposición de cobre, PYGLARA"
@@ -260,13 +259,11 @@ const lang = 'es' as const;
             <li>&#x2713; {t(lang, 'cards.copper_bullet2')}</li>
             <li>&#x2713; {t(lang, 'cards.copper_bullet3')}</li>
           </ul>
-          <WhatsAppButton
-            href={buildWhatsAppUrl(lang, 'copper_rods')}
-            variant="inline"
-            label={t(lang, 'hero.cta_whatsapp')}
-          />
+          <span class="inline-flex items-center gap-2 bg-whatsapp text-white text-sm font-semibold px-4 py-2 rounded" style="min-height: 44px; pointer-events: none;">
+            {t(lang, 'hero.cta_whatsapp')}
+          </span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 

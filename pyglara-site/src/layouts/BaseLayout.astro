@@ -110,12 +110,12 @@ const localBusiness = {
             {t(lang, 'nav.galvanizing')}
           </a>
           <a
-            href="#"
+            href={lang === 'es' ? '/es/varillas-de-cobre/' : '/en/copper-ground-rods/'}
             data-page="copper_rods"
+            aria-current={activePage === 'copper_rods' ? 'page' : undefined}
             class="text-white/80 hover:text-white transition-colors"
             style="min-height: 44px; display: inline-flex; align-items: center;"
           >
-            <!-- TODO Story 7-3: replace href with real route -->
             {t(lang, 'nav.copper_rods')}
           </a>
           <a

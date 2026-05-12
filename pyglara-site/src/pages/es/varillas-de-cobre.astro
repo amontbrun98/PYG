@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { t, buildWhatsAppUrl } from '../../utils/i18n';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import imgPlantClean from '../../assets/images/plant-clean.jpeg';
+import imgNails from '../../assets/images/nails.jpeg';
+import imgNails2 from '../../assets/images/nails2.jpeg';
+
+const lang = 'es' as const;
+const waUrl = buildWhatsAppUrl(lang, 'copper_rods');
+
+const diameters = ['5/8"', '3/4"', '1"'];
+const lengths = ['1.2 m', '1.8 m', '2.4 m', '3.0 m'];
+
+const specRows = [
+  { label: t(lang, 'copper_page.spec_coating'),   value: t(lang, 'copper_page.spec_coating_val') },
+  { label: t(lang, 'copper_page.spec_core'),       value: t(lang, 'copper_page.spec_core_val') },
+  { label: t(lang, 'copper_page.spec_standards'),  value: t(lang, 'copper_page.spec_standards_val') },
+  { label: t(lang, 'copper_page.spec_capacity'),   value: t(lang, 'copper_page.spec_capacity_val') },
+];
+---
+
+<BaseLayout
+  title="PYGLARA — Varillas de Tierra Cobre-Enchapado | Barquisimeto, Venezuela"
+  description="Varillas de tierra cobre-enchapado. Recubrimiento 300 μm ± 50. Diámetros 5/8&quot; a 1&quot;, longitudes 1.2m a 3m. Sin competidor doméstico en Venezuela. 936 unidades/día."
+  lang={lang}
+  activePage="copper_rods"
+  altSlug="copper-ground-rods"
+>
+
+  <!-- Section 1: Hero -->
+  <section class="relative bg-navy" style="min-height: 60svh; overflow: clip;">
+    <Image
+      src={imgPlantClean}
+      alt={t(lang, 'copper_page.photo_alt_1')}
+      width={1440} height={810} quality={70}
+      loading="eager" fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      style="opacity: 0.22;"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(10,22,40,0.65) 0%, rgba(10,22,40,0.82) 60%, rgba(10,22,40,0.98) 100%);"></div>
+
+    <div class="relative z-10 flex flex-col justify-center px-6 md:px-16 py-20 max-w-4xl" style="min-height: 60svh;">
+      <p class="text-white/40 text-xs tracking-widest uppercase mb-3">
+        {t(lang, 'copper_page.buyers_intro')}
+      </p>
+      <span class="inline-block border border-copper/50 text-copper text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded mb-4" style="max-width: fit-content;">
+        {t(lang, 'copper_page.hero_tag')}
+      </span>
+      <h1 class="text-white font-black leading-tight mb-5" style="font-size: clamp(2rem, 5vw, 3.8rem);">
+        {t(lang, 'copper_page.hero_heading')}
+      </h1>
+      <p class="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+        {t(lang, 'copper_page.hero_sub')}
+      </p>
+      <div class="max-w-xs">
+        <WhatsAppButton href={waUrl} variant="inline" label={t(lang, 'copper_page.cta_label')} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Stat strip (bg-copper ONLY here) -->
+  <section class="bg-copper py-10 fade-up">
+    <div class="max-w-content mx-auto px-4">
+      <div class="grid grid-cols-3 gap-4 text-center">
+        <div>
+          <p class="text-white font-black leading-none mb-1 stat-number" data-target="936" style="font-size: clamp(1.6rem, 4vw, 2.4rem);">0</p>
+          <p class="text-white/75 text-xs leading-snug">{t(lang, 'copper_page.stat_1_label')}</p>
+        </div>
+        <div>
+          <p class="text-white font-black leading-none mb-1" style="font-size: clamp(1.6rem, 4vw, 2.4rem);">{t(lang, 'copper_page.stat_2_value')}</p>
+          <p class="text-white/75 text-xs leading-snug">{t(lang, 'copper_page.stat_2_label')}</p>
+        </div>
+        <div>
+          <p class="text-white font-black leading-none mb-1" style="font-size: clamp(1.6rem, 4vw, 2.4rem);">{t(lang, 'copper_page.stat_3_value')}</p>
+          <p class="text-white/75 text-xs leading-snug">{t(lang, 'copper_page.stat_3_label')}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Spec matrix + remaining specs -->
+  <section class="bg-bg py-16 fade-up">
+    <div class="max-w-content mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy mb-3">{t(lang, 'copper_page.product_heading')}</h2>
+      <p class="text-text/60 text-base mb-8">{t(lang, 'copper_page.product_intro')}</p>
+
+      <!-- Diameter × length availability matrix -->
+      <div style="overflow-x: auto;" class="mb-10">
+        <table class="w-full text-sm text-left border-collapse" aria-label="Matriz de disponibilidad de varillas de tierra">
+          <thead>
+            <tr class="border-b-2 border-navy">
+              <th class="py-3 pr-4 font-semibold text-navy">{t(lang, 'copper_page.matrix_col_dia')}</th>
+              <th class="py-3 pr-4 font-semibold text-navy text-center">{t(lang, 'copper_page.matrix_col_12')}</th>
+              <th class="py-3 pr-4 font-semibold text-navy text-center">{t(lang, 'copper_page.matrix_col_18')}</th>
+              <th class="py-3 pr-4 font-semibold text-navy text-center">{t(lang, 'copper_page.matrix_col_24')}</th>
+              <th class="py-3 font-semibold text-navy text-center">{t(lang, 'copper_page.matrix_col_30')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {diameters.map(dia => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-navy">{dia}</td>
+                {lengths.map(() => (
+                  <td class="py-3 pr-4 text-center text-copper font-bold">{t(lang, 'copper_page.matrix_avail')}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Remaining spec rows -->
+      <div style="overflow-x: auto;">
+        <table class="w-full text-sm text-left border-collapse" style="max-width: 44rem;">
+          <thead>
+            <tr class="border-b-2 border-navy">
+              <th class="py-3 pr-4 font-semibold text-navy">{t(lang, 'copper_page.col_spec')}</th>
+              <th class="py-3 font-semibold text-navy">{t(lang, 'copper_page.col_value')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {specRows.map(row => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 text-text/70">{row.label}</td>
+                <td class="py-3 font-medium text-navy">{row.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: History + qualification + procurement note (bg-navy) -->
+  <section class="bg-navy py-16 fade-up">
+    <div class="max-w-content mx-auto px-4" style="max-width: 56rem;">
+      <h2 class="text-white font-bold leading-snug mb-5" style="font-size: clamp(1.4rem, 3vw, 2rem);">
+        {t(lang, 'copper_page.history_heading')}
+      </h2>
+      <p class="text-white/65 text-base leading-relaxed mb-10">
+        {t(lang, 'copper_page.history_body')}
+      </p>
+
+      <h2 class="text-white font-bold leading-snug mb-5" style="font-size: clamp(1.4rem, 3vw, 2rem);">
+        {t(lang, 'copper_page.diff_heading')}
+      </h2>
+      <p class="text-white/65 text-base leading-relaxed mb-8">
+        {t(lang, 'copper_page.diff_body')}
+      </p>
+
+      <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+        <p class="text-white/35 text-xs leading-relaxed">{t(lang, 'copper_page.procurement_note')}</p>
+        <a
+          href={`tel:${t(lang, 'footer.phone').replace(/\s/g, '')}`}
+          class="text-white/50 text-xs hover:text-white transition-colors whitespace-nowrap"
+          style="min-height: 44px; display: inline-flex; align-items: center;"
+        >
+          {t(lang, 'footer.phone')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Applications -->
+  <section class="bg-bg-alt py-16 fade-up">
+    <div class="max-w-content mx-auto px-4" style="max-width: 52rem;">
+      <h2 class="text-2xl font-bold text-navy mb-8">{t(lang, 'copper_page.apps_heading')}</h2>
+      <ul class="space-y-4">
+        {[
+          t(lang, 'copper_page.app_1'),
+          t(lang, 'copper_page.app_2'),
+          t(lang, 'copper_page.app_3'),
+        ].map(app => (
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 rounded-full bg-copper" style="width: 8px; height: 8px; margin-top: 7px;"></span>
+            <p class="text-text text-base leading-snug">{app}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 6: Quality + process -->
+  <section class="bg-bg py-16 fade-up">
+    <div class="max-w-content mx-auto px-4" style="max-width: 52rem;">
+      <p class="border border-copper/40 rounded px-5 py-4 text-copper text-sm font-medium mb-10" style="background: rgba(184,115,51,0.04);">
+        {t(lang, 'copper_page.cert_note')}
+      </p>
+      <h2 class="text-2xl font-bold text-navy mb-4">{t(lang, 'copper_page.process_heading')}</h2>
+      <p class="text-text/70 text-base leading-relaxed">{t(lang, 'copper_page.process_body')}</p>
+    </div>
+  </section>
+
+  <!-- Section 7: Facility photos -->
+  <section class="bg-bg-alt py-16 fade-up">
+    <div class="max-w-content mx-auto px-4">
+      <h2 class="text-2xl font-bold text-navy mb-6">{t(lang, 'copper_page.photos_heading')}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Image
+          src={imgNails}
+          alt={t(lang, 'copper_page.photo_alt_2')}
+          width={480} height={320}
+          loading="lazy" quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 260px;"
+        />
+        <Image
+          src={imgNails2}
+          alt={t(lang, 'copper_page.photo_alt_3')}
+          width={480} height={320}
+          loading="lazy" quality={70}
+          class="w-full object-cover rounded fade-up"
+          style="height: 260px;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Procurement note + final CTA -->
+  <section class="bg-navy py-16 fade-up">
+    <div class="max-w-content mx-auto px-4 text-center">
+      <p class="text-white/35 text-xs mb-8">{t(lang, 'copper_page.procurement_note')}</p>
+      <div class="flex justify-center">
+        <div class="w-full max-w-xs">
+          <WhatsAppButton href={waUrl} variant="inline" label={t(lang, 'copper_page.cta_label')} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

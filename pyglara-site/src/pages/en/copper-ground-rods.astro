@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import { t, buildWhatsAppUrl } from '../../utils/i18n';
+import { t, tArr, buildWhatsAppUrl } from '../../utils/i18n';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
 import imgPlantClean from '../../assets/images/plant-clean.jpeg';
 import imgNails from '../../assets/images/nails.jpeg';
@@ -9,6 +9,8 @@ import imgNails2 from '../../assets/images/nails2.jpeg';
 
 const lang = 'en' as const;
 const waUrl = buildWhatsAppUrl(lang, 'copper_rods');
+const heroLabels = tArr(lang, 'copper_page.cta_hero_labels');
+const finalLabels = tArr(lang, 'copper_page.cta_final_labels');
 
 const diameters = ['5/8"', '3/4"', '1"'];
 const lengths = ['1.2 m', '1.8 m', '2.4 m', '3.0 m'];
@@ -49,23 +51,24 @@ const specRows = [
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(10,22,40,0.65) 0%, rgba(10,22,40,0.82) 60%, rgba(10,22,40,0.98) 100%);"></div>
 
     <div class="relative z-10 flex flex-col justify-center px-6 md:px-16 py-20 max-w-4xl" style="min-height: 60svh;">
-      <p class="text-white/40 text-xs tracking-widest uppercase mb-3">
-        {t(lang, 'copper_page.buyers_intro')}
-      </p>
-      <span class="inline-block border border-copper/50 text-copper text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded mb-4" style="max-width: fit-content;">
-        {t(lang, 'copper_page.hero_tag')}
-      </span>
-      <h1 class="text-white font-black leading-tight mb-5" style="font-size: clamp(2rem, 5vw, 3.8rem);">
-        {t(lang, 'copper_page.hero_heading')}
+      <h1 class="font-black uppercase leading-none mb-6" style="font-size: clamp(2.4rem, 7vw, 5.5rem); font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif; letter-spacing: -0.02em;">
+        <span class="block text-white">{t(lang, 'copper_page.hero_line1')}</span>
+        <span class="block text-copper">{t(lang, 'copper_page.hero_line2')}</span>
       </h1>
-      <p class="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+      <p class="text-white/55 text-base md:text-lg leading-relaxed mb-3 max-w-lg">
         {t(lang, 'copper_page.hero_sub')}
       </p>
+      <p class="text-white/35 text-xs tracking-widest uppercase mb-8">
+        {t(lang, 'copper_page.buyers_intro')}
+      </p>
       <div class="max-w-xs">
-        <WhatsAppButton href={waUrl} variant="inline" label={t(lang, 'copper_page.cta_label')} />
+        <WhatsAppButton href={waUrl} variant="inline" labels={heroLabels} label={t(lang, 'copper_page.cta_label')} />
       </div>
     </div>
   </section>
+
+  <!-- Copper divider -->
+  <div class="bg-copper" style="height: 3px;"></div>
 
   <!-- Section 2: Stat strip (bg-copper ONLY here) -->
   <section class="bg-copper py-10 fade-up">
@@ -225,15 +228,19 @@ const specRows = [
     </div>
   </section>
 
-  <!-- Section 8: Procurement note + final CTA -->
+  <!-- Section 8: Final CTA -->
   <section class="bg-navy py-16 fade-up">
     <div class="max-w-content mx-auto px-4 text-center">
-      <p class="text-white/35 text-xs mb-8">{t(lang, 'copper_page.procurement_note')}</p>
+      <h2 class="text-white font-bold mb-4" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
+        {t(lang, 'copper_page.cta_final_heading')}
+      </h2>
+      <p class="text-white/60 text-base mb-8 max-w-lg mx-auto">{t(lang, 'copper_page.cta_final_body')}</p>
       <div class="flex justify-center">
         <div class="w-full max-w-xs">
-          <WhatsAppButton href={waUrl} variant="inline" label={t(lang, 'copper_page.cta_label')} />
+          <WhatsAppButton href={waUrl} variant="inline" labels={finalLabels} label={t(lang, 'copper_page.cta_label')} />
         </div>
       </div>
+      <p class="text-white/45 text-sm mt-6">{t(lang, 'copper_page.contact_fallback')}</p>
     </div>
   </section>
 

@@ -208,6 +208,8 @@
       "buyers_intro": "Para contratistas eléctricos, empresas EPC y distribuidores de materiales",
       "hero_tag": "Varillas de Tierra",
       "hero_heading": "Varillas de Tierra Cobre-Enchapado",
+      "hero_line1": "Varillas de Tierra",
+      "hero_line2": "Cobre-Enchapado.",
       "hero_sub": "Producción propia en Venezuela. 936 unidades/día. Sin competidor doméstico. Recubrimiento 300 μm conforme a UL 467.",
       "stat_1_value": "936",
       "stat_1_label": "unidades/día",
@@ -249,7 +251,12 @@
       "photo_alt_2": "Producción — Planta PYGLARA, Zona Industrial I, Barquisimeto",
       "photo_alt_3": "Sala de producción — Planta PYGLARA, Zona Industrial I",
       "procurement_note": "Datos de producción declarados ante SENIAT. Compra ENELVEN registrada en historial de clientes.",
-      "cta_label": "Solicitar cotización"
+      "cta_label": "Solicitar cotización",
+      "cta_hero_labels": ["Solicitar cotización", "Hablar con nuestro equipo", "Pedir información"],
+      "cta_final_labels": ["Solicitar cotización hoy", "Escríbanos por WhatsApp"],
+      "cta_final_heading": "Solicite su cotización hoy",
+      "cta_final_body": "Indique diámetro, longitud y cantidad estimada. Respondemos en horas hábiles.",
+      "contact_fallback": "También: info@pyglara.com · +58 424 571 5349"
     }
   },
   "en": {
@@ -502,7 +509,14 @@
       "photo_alt_2": "Production line — PYGLARA plant, Zona Industrial I, Barquisimeto",
       "photo_alt_3": "Production hall — PYGLARA plant, Zona Industrial I",
       "procurement_note": "Production data declared to SENIAT. ENELVEN purchase on record in client history.",
-      "cta_label": "Request a quote"
+      "cta_label": "Request a quote",
+      "hero_line1": "Copper-Clad",
+      "hero_line2": "Ground Rods.",
+      "cta_hero_labels": ["Request a quote", "Talk to our team", "Get information"],
+      "cta_final_labels": ["Request a quote today", "Message us on WhatsApp"],
+      "cta_final_heading": "Request your quote today",
+      "cta_final_body": "Tell us the diameter, length, and estimated quantity. We respond within business hours.",
+      "contact_fallback": "Also: info@pyglara.com · +58 424 571 5349"
     }
   }
 }

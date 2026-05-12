@@ -5,6 +5,7 @@ import { t, tArr, buildWhatsAppUrl } from '../../utils/i18n';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
 import imgPilling1 from '../../assets/images/pilling1.jpeg';
 import imgEsfumer from '../../assets/images/esfumer.jpeg';
+import img65 from '../../assets/images/65.jpeg';
 
 const lang = 'es' as const;
 const waUrl = buildWhatsAppUrl(lang, 'galvanizing');
@@ -32,7 +33,7 @@ const steps = [
     n: 4,
     title: t(lang, 'galv_page.step4_title'),
     desc: t(lang, 'galv_page.step4_desc'),
-    icon: 'M12 21a6 6 0 0 1-6-6c0-3 1.5-5 3.5-7 .5 2 1.5 3 3 3 0-3-1.5-5-1.5-8 4 3 7 7 7 12a6 6 0 0 1-6 6Z',
+    icon: 'M12 2c-2 5-5 8-5 13a5 5 0 0 0 10 0c0-5-3-8-5-13ZM10 17a2 2 0 0 0 4 0c0-2-2-4-2-4s-2 2-2 4Z',
   },
   {
     n: 5,
@@ -85,8 +86,11 @@ const finalLabels = tArr(lang, 'galv_page.cta_final_labels');
         <span class="block text-white">{t(lang, 'galv_page.hero_line1')}</span>
         <span class="block text-copper">{t(lang, 'galv_page.hero_line2')}</span>
       </h1>
-      <p class="text-white/55 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
+      <p class="text-white/55 text-base md:text-lg leading-relaxed mb-3 max-w-lg">
         {t(lang, 'galv_page.hero_sub')}
+      </p>
+      <p class="text-white/35 text-xs tracking-widest uppercase mb-8">
+        {t(lang, 'galv_page.hero_kettle_status')}
       </p>
       <div class="max-w-xs">
         <WhatsAppButton href={waUrl} variant="inline" labels={heroLabels} label={t(lang, 'galv_page.cta_mid_label')} />
@@ -258,28 +262,39 @@ const finalLabels = tArr(lang, 'galv_page.cta_final_labels');
             <tr class="border-b-2 border-navy">
               <th class="py-3 pr-4 font-semibold text-navy">{t(lang, 'galv_page.col_kettle')}</th>
               <th class="py-3 pr-4 font-semibold text-navy">{t(lang, 'galv_page.col_dimensions')}</th>
-              <th class="py-3 font-semibold text-navy">{t(lang, 'galv_page.col_max_piece')}</th>
+              <th class="py-3 pr-4 font-semibold text-navy">{t(lang, 'galv_page.col_max_piece')}</th>
+              <th class="py-3 font-semibold text-navy">{t(lang, 'galv_page.col_status')}</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-b border-gray-100">
               <td class="py-3 pr-4 font-medium text-text">{t(lang, 'galv_page.centrifuge_name')}</td>
               <td class="py-3 pr-4 text-text/70">{t(lang, 'galv_page.centrifuge_dims')}</td>
-              <td class="py-3 text-text/70">{t(lang, 'galv_page.centrifuge_max')}</td>
+              <td class="py-3 pr-4 text-text/70">{t(lang, 'galv_page.centrifuge_max')}</td>
+              <td class="py-3 font-semibold text-green text-xs">{t(lang, 'galv_page.status_active')}</td>
             </tr>
             <tr class="border-b border-gray-100">
               <td class="py-3 pr-4 font-medium text-text">{t(lang, 'galv_page.kettle_7m_name')}</td>
               <td class="py-3 pr-4 text-text/70">{t(lang, 'galv_page.kettle_7m_dims')}</td>
-              <td class="py-3 text-text/70">{t(lang, 'galv_page.kettle_7m_max')}</td>
+              <td class="py-3 pr-4 text-text/70">{t(lang, 'galv_page.kettle_7m_max')}</td>
+              <td class="py-3 text-text/70 text-xs">{t(lang, 'galv_page.status_q2_2026')}</td>
             </tr>
             <tr>
               <td class="py-3 pr-4 font-medium text-text">{t(lang, 'galv_page.kettle_9m_name')}</td>
               <td class="py-3 pr-4 text-text/70">{t(lang, 'galv_page.kettle_9m_dims')}</td>
-              <td class="py-3 text-text/70">{t(lang, 'galv_page.kettle_9m_max')}</td>
+              <td class="py-3 pr-4 text-text/70">{t(lang, 'galv_page.kettle_9m_max')}</td>
+              <td class="py-3 text-text/70 text-xs">{t(lang, 'galv_page.status_2027')}</td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
+
+  <!-- 9m kettle callout -->
+  <section class="bg-navy py-10 fade-up">
+    <div class="max-w-content mx-auto px-4" style="max-width: 52rem;">
+      <p class="text-white font-bold text-lg leading-snug">{t(lang, 'galv_page.kettle_9m_callout')}</p>
     </div>
   </section>
 
@@ -298,14 +313,22 @@ const finalLabels = tArr(lang, 'galv_page.cta_final_labels');
     </div>
   </section>
 
+  <!-- HSE commitment -->
+  <section class="bg-bg-alt py-12 fade-up">
+    <div class="max-w-content mx-auto px-4" style="max-width: 52rem;">
+      <h2 class="text-xl font-bold text-navy mb-4">{t(lang, 'galv_page.hse_heading')}</h2>
+      <p class="text-text/70 text-sm leading-relaxed">{t(lang, 'galv_page.hse_body')}</p>
+    </div>
+  </section>
+
   <!-- Facility photos -->
   <section class="bg-bg-alt py-16 fade-up">
     <div class="max-w-content mx-auto px-4">
       <h2 class="text-2xl font-bold text-navy mb-6">{t(lang, 'galv_page.photos_heading')}</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Image
-          src={imgPilling1}
-          alt={t(lang, 'galv_page.photo_alt_1')}
+          src={img65}
+          alt={t(lang, 'galv_page.photo_alt_65')}
           width={480} height={320}
           loading="lazy" quality={70}
           class="w-full object-cover rounded fade-up"
@@ -326,7 +349,7 @@ const finalLabels = tArr(lang, 'galv_page.cta_final_labels');
   <!-- Final CTA -->
   <section class="bg-navy py-16 fade-up">
     <div class="max-w-content mx-auto px-4 text-center">
-      <h2 class="text-white font-bold mb-4" style="font-size: clamp(1.5rem, 3.5vw, 2.2rem);">
+      <h2 class="text-white font-bold mb-4" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
         {t(lang, 'galv_page.cta_final_heading')}
       </h2>
       <p class="text-white/60 text-base mb-8 max-w-lg mx-auto">{t(lang, 'galv_page.cta_final_body')}</p>

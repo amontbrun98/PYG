@@ -37,6 +37,13 @@
       "active": "Planta Operativa · Aceptando Pedidos",
       "kettle_timeline": "65cm · Activa | 7m · Q2 2026 | 9m · 2027"
     },
+    "disaster_relief": {
+      "headline": "Venezuela nos necesita — y estamos comprometidos a ayudar",
+      "body": "El 24 de junio de 2026, dos terremotos devastaron el centro-norte del país. Más de 3,9 millones de personas resultaron afectadas. En PYGLARA nos comprometemos a apoyar de todas las formas posibles a quienes más lo necesitan. Por favor, únase a nosotros y done a la causa.",
+      "cta": "Donar ahora",
+      "photo_alt": "Madre e hijo en los escombros del terremoto del 24 de junio de 2026 en Venezuela",
+      "photo_alt2": "Equipos de rescate ante edificios derrumbados por el terremoto en Venezuela, junio 2026"
+    },
     "stats": {
       "capacity_value": "300",
       "capacity_label": "TM/mes capacidad comprobada",
@@ -296,6 +303,13 @@
     "status": {
       "active": "Plant Operational · Accepting Orders",
       "kettle_timeline": "65cm · Active | 7m · Q2 2026 | 9m · 2027"
+    },
+    "disaster_relief": {
+      "headline": "Venezuela needs us — and we are committed to helping",
+      "body": "On June 24, 2026, two devastating earthquakes struck north-central Venezuela. More than 3.9 million people were affected. At PYGLARA we are committed to supporting those in need in every way we can. Please join us and donate to the cause.",
+      "cta": "Donate now",
+      "photo_alt": "Mother and child amid rubble from the June 24, 2026 Venezuela earthquake",
+      "photo_alt2": "Rescue teams before collapsed buildings from the June 2026 Venezuela earthquake"
     },
     "stats": {
       "capacity_value": "300",

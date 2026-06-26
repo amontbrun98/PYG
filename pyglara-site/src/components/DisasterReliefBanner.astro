@@ -1,0 +1,90 @@
+---
+import { t } from '../utils/i18n';
+
+interface Props {
+  lang: 'es' | 'en';
+  donateUrl?: string;
+}
+
+const {
+  lang,
+  donateUrl = 'https://gofund.me/6eadac244',
+} = Astro.props;
+
+const headline = t(lang, 'disaster_relief.headline');
+const body = t(lang, 'disaster_relief.body');
+const cta = t(lang, 'disaster_relief.cta');
+const photoAlt = t(lang, 'disaster_relief.photo_alt');
+const photoAlt2 = t(lang, 'disaster_relief.photo_alt2');
+---
+
+<section id="disaster-relief-banner" class="py-10" style="background: #fff5f5; border-left: 4px solid #dc2626;">
+  <div class="max-w-content mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+
+      <!-- Collage: 2 stacked photos -->
+      <div class="fade-up" style="display: flex; flex-direction: column; gap: 6px;">
+        <img
+          src="/images/disaster-relief/GettyImages-2282697226-rz.jpg"
+          alt={photoAlt}
+          loading="lazy"
+          style="width: 100%; height: 210px; object-fit: cover; border-radius: 3px; object-position: center 20%;"
+        />
+        <img
+          src="/images/disaster-relief/venezueladis-1024x681.jpg"
+          alt={photoAlt2}
+          loading="lazy"
+          style="width: 100%; height: 130px; object-fit: cover; border-radius: 3px; object-position: center 40%;"
+        />
+      </div>
+
+      <!-- Content -->
+      <div class="fade-up">
+        <div class="flex items-start justify-between mb-3">
+          <h2 class="text-2xl md:text-3xl font-bold" style="color: #b91c1c;">
+            {headline}
+          </h2>
+          <button
+            id="disaster-dismiss-btn"
+            aria-label={lang === 'es' ? 'Cerrar aviso' : 'Close notice'}
+            style="flex-shrink: 0; color: #dc2626; font-size: 1.5rem; line-height: 1; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer;"
+          >
+            ×
+          </button>
+        </div>
+
+        <p style="color: #374151; font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.5rem;">
+          {body}
+        </p>
+
+        <a
+          href={donateUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display: inline-block; background: #dc2626; color: #fff; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 3px; text-decoration: none; font-size: 0.95rem; min-height: 44px; line-height: 1.4;"
+        >
+          {cta}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const banner = document.getElementById('disaster-relief-banner');
+  const btn = document.getElementById('disaster-dismiss-btn');
+
+  if (banner) {
+    try {
+      if (sessionStorage.getItem('disaster-relief-dismissed') === 'true') {
+        banner.style.display = 'none';
+      }
+    } catch (_) {}
+
+    btn?.addEventListener('click', () => {
+      try { sessionStorage.setItem('disaster-relief-dismissed', 'true'); } catch (_) {}
+      banner.style.display = 'none';
+    });
+  }
+</script>

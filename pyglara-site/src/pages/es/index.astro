@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { t, buildWhatsAppUrl } from '../../utils/i18n';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import DisasterReliefBanner from '../../components/DisasterReliefBanner.astro';
 import imgEsfumer from '../../assets/images/esfumer.jpeg';
 import imgPilling1 from '../../assets/images/pilling1.jpeg';
 import imgPlantClean from '../../assets/images/plant-clean.jpeg';
@@ -83,6 +84,12 @@ const lang = 'es' as const;
     .hero-b3  { opacity: 0; animation: hero-fade-in 0.4s ease 1.65s forwards; }
     .hero-cta { opacity: 0; animation: hero-slam-up 0.5s cubic-bezier(0.22,1,0.36,1) 1.85s forwards; }
   </style>
+
+  <!-- Disaster Relief Banner -->
+  <DisasterReliefBanner
+    lang={lang}
+    donateUrl="https://gofund.me/6eadac244"
+  />
 
   <!-- Hero section -->
   <section class="relative bg-navy" style="min-height: 100svh; overflow: clip;">

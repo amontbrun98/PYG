@@ -19,5 +19,8 @@
     "googleapis": "171.4.0",
     "resend": "6.11.0",
     "tailwindcss": "4.2.2"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.61.1"
   }
 }
